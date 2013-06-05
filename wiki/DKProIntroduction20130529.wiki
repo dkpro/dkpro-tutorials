@@ -1,7 +1,6 @@
 #labels Featured
 = Setup =
 
-Prepare the setup: soon to come
    
 Checkout a simple linguistic annotation pipeline: (checkout as Maven project)
    * https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
@@ -22,8 +21,8 @@ You should work through this part of the tutorial on your own ("self-directed le
    * When to create a multi-module Maven project?
    * When to create a job in jenkins?
 
-== Learning Material ==
-   * [https://docs.google.com/file/d/0B5GlzQMPC1tPaTZvZGpzOGZJV1E/edit?usp=sharing DKPro Development Infratructure]
+== Learning Material Soon to Come ==
+
 
 Version Control SVN Guidelines soon to come
    * [[CheckingInAProject][Checking a new Maven project into SVN]]
