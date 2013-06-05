@@ -38,10 +38,12 @@ Java  Guidelines soon to come
 
 = Introduction to UIMA =
 
-   * [https://docs.google.com/file/d/0B5GlzQMPC1tPOXAzczdyc2JMWjQ/edit?usp=sharing Slides UIMA]
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pptx Slides UIMA (pptx)]
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pdf Slides UIMA (pdf)]
    * Example project UIMA: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/uimaintro/de.tudarmstadt.kdsl.teaching.uimaintro
 
 = Introduction to DKPro Core =
 
-   * [https://docs.google.com/file/d/0B5GlzQMPC1tPUHdWeGZ6ZUVOM1E/edit?usp=sharing Slides DKPro Core]
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pptx Slides DKPro Core (pptx)]
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pdf Slides DKPro Core (pdf)]
    * Example project DKPro Core: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
