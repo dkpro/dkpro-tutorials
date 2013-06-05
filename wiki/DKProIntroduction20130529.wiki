@@ -1,0 +1,43 @@
+= Setup =
+
+Prepare the setup: soon to come
+   
+Checkout a simple linguistic annotation pipeline: (checkout as Maven project)
+   * https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
+
+Copy the German example text documents extracted from [[http://www.pedocs.de/][pedocs]] into any folder of your choice (e.g., ~/dkpro) and adapt the parameters for the input and output paths in the !RunLinguisticAnnotationPipeline accordingly:
+   * [https://docs.google.com/file/d/0B5GlzQMPC1tPM3J4bWhKUHFSa1U/edit?usp=sharing 184.txt]
+   * [https://docs.google.com/file/d/0B5GlzQMPC1tPMHYteHJTOWt0bkE/edit?usp=sharing 142.txt]
+
+To check if your setup is ok, build the project.  Running the pipeline requires that you adapt the input and output paths according to your folder layout.
+
+
+= Introduction to the Java Development Infrastructure =
+You should work through this part of the tutorial on your own ("self-directed learning"). The best way to learn this content is by practicing (i.e. by doing). After working through the material listed below, you should be able to answer the following questions:
+   * What are Maven artifacts and where are they stored?
+   * Which Maven repositories do you know? What are the differences between them?
+   * Committing a newly created Maven project to SVN: which folders and files should never be commited?
+   * When should you create trunk/tags folders for your Maven project?
+   * When to create a multi-module Maven project?
+   * When to create a job in jenkins?
+
+== Learning Material ==
+   * [https://docs.google.com/file/d/0B5GlzQMPC1tPaTZvZGpzOGZJV1E/edit?usp=sharing DKPro Development Infratructure]
+
+Version Control SVN Guidelines soon to come
+   * [[CheckingInAProject][Checking a new Maven project into SVN]]
+   * [[EclipseSynchronize][Synchronizing your workspace]]
+
+Maven Guidelines soon to come
+   * [[CreateSingleModuleProject][Creating a Single-Module Project]]
+   * [[CreateMultiModuleProject][Multi-Module Projects]] (when to use, how to create, refactoring)
+   * [[MavenTroubleshooting][Maven Troubleshooting]]
+   * [[MavenDependencyManagement][Dependency Management]]
+
+Java  Guidelines soon to come
+
+= Introduction to UIMA and to DKPro Core =
+
+   * [https://drive.google.com/folderview?id=0B5GlzQMPC1tPVkxxbmZwb05GcXc&usp=sharing Slides]
+   * Example project UIMA: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/uimaintro/de.tudarmstadt.kdsl.teaching.uimaintro
+   * Example project DKPro Core: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
