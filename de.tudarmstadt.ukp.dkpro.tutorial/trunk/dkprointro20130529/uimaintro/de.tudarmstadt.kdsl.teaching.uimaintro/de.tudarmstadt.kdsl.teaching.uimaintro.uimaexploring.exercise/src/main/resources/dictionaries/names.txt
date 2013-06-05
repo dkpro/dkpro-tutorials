@@ -1,0 +1,29 @@
+% Each line follows the format:
+%
+% Name <SUR|GIV>
+%
+% Name: may contain multiple tokens
+% SUR: surname/lastname 
+% GIV: given name/firstname
+Bastian GIV
+Becker SUR
+Beltz SUR
+Combe SUR
+Eikenbusch SUR
+Frank GIV
+Franz GIV
+Friedrich GIV
+Iby SUR
+Kempfert SUR
+Langer SUR
+Kölbl SUR
+Lutz GIV
+Plato SUR
+Plato GIV
+Radnitzky SUR
+Rolf GIV
+Rolff SUR
+Niethammer SUR
+Schratz SUR
+Straub SUR
+von Ilsemann SUR
