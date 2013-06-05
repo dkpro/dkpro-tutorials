@@ -5,9 +5,7 @@
 Checkout a simple linguistic annotation pipeline: (checkout as Maven project)
    * https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
 
-Copy the German example text documents extracted from [[http://www.pedocs.de/][pedocs]] into any folder of your choice (e.g., ~/dkpro) and adapt the parameters for the input and output paths in the !RunLinguisticAnnotationPipeline accordingly:
-   * [https://docs.google.com/file/d/0B5GlzQMPC1tPM3J4bWhKUHFSa1U/edit?usp=sharing 184.txt]
-   * [https://docs.google.com/file/d/0B5GlzQMPC1tPMHYteHJTOWt0bkE/edit?usp=sharing 142.txt]
+Copy some German example text documents (.txt format) into any folder of your choice (e.g., ~/dkpro) and adapt the parameters for the input and output paths in the !RunLinguisticAnnotationPipeline accordingly.
 
 To check if your setup is ok, build the project.  Running the pipeline requires that you adapt the input and output paths according to your folder layout.
 
@@ -22,7 +20,6 @@ You should work through this part of the tutorial on your own ("self-directed le
    * When to create a job in jenkins?
 
 == Learning Material Soon to Come ==
-
 
 Version Control SVN Guidelines soon to come
    * [[CheckingInAProject][Checking a new Maven project into SVN]]
@@ -39,11 +36,11 @@ Java  Guidelines soon to come
 = Introduction to UIMA =
 
    * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pptx Slides UIMA (pptx)]
-   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pdf Slides UIMA (pdf)]
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pdf pdf]
    * Example project UIMA: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/uimaintro/de.tudarmstadt.kdsl.teaching.uimaintro
 
 = Introduction to DKPro Core =
 
    * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pptx Slides DKPro Core (pptx)]
-   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pdf Slides DKPro Core (pdf)]
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pdf pdf]
    * Example project DKPro Core: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
