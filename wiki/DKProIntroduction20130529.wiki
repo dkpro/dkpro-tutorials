@@ -11,7 +11,7 @@ To check if your setup is ok, build the project.  Running the pipeline requires 
 
 
 = Introduction to the Java Development Infrastructure =
-You should work through this part of the tutorial on your own ("self-directed learning"). The best way to learn this content is by practicing (i.e. by doing). After working through the material listed below, you should be able to answer the following questions:
+The best way to learn this content is by practicing (i.e. by doing). After working through the material listed below (*soon to be fleshed out*), you should be able to answer at least the following questions:
    * What are Maven artifacts and where are they stored?
    * Which Maven repositories do you know? What are the differences between them?
    * Committing a newly created Maven project to SVN: which folders and files should never be commited?
