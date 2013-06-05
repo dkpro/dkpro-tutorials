@@ -1,3 +1,4 @@
+#labels Featured
 = Setup =
 
 Prepare the setup: soon to come
