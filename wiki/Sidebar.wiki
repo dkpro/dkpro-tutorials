@@ -3,4 +3,4 @@
  * Development Infrastructure
    * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
  * Tutorial Dates
-   * [DKProIntroduction20130529 DKPro Core and UIMA (29 May 2010)]
+   * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
