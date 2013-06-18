@@ -2,6 +2,7 @@
 
  * General
    * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
+   * [CheckingInAProject Checking in a new project]
  * Maven
    * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Maven Repositories]
    * [CreateSingleModuleMavenProject Single-Module Projects]
