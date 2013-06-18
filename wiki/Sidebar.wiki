@@ -1,5 +1,6 @@
 #summary The sidebar used for all Wiki pages
 
  * Development Infrastructure
+   * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
  * Tutorial Dates
    * [DKProIntroduction20130529 DKPro Core and UIMA (29 May 2010)]
