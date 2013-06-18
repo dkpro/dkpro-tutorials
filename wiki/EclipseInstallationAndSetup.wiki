@@ -77,7 +77,7 @@ http://dkpro-tutorials.googlecode.com/svn/wiki/images/Eclipse_ContentAssist_Favo
 
 Add these types via the *New Type* button:
 
-   * {{{de.tudarmstadt.ukp.dkpro.core.util.CasUtils}}} - commonly used methods for CAS access, e.g. {{{iterate}}}.
+   * {{{org.uimafit.util.CasUtils}}} - commonly used methods for CAS access, e.g. {{{iterate}}}.
    * {{{de.tudarmstadt.ukp.dkpro.core.util.IOUtil}}} - in particular the {{{close()}}} method for closing streams
    * {{{org.uimafit.factory.AnalysisEngineFactory}}} - e.g. {{{createPrimitiveDescription()}}}
    * {{{org.uimafit.factory.CollectionReaderFactory}}} - e.g. {{{createDescription()}}}
