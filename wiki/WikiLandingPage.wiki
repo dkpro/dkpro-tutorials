@@ -1,0 +1,3 @@
+Welcome at the DKPro tutorials and training wiki!
+
+This wiki provides many resources concerning technologies that you will encounter in the area of DKPro Core.
