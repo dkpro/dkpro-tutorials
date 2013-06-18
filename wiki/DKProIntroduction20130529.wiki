@@ -1,4 +1,4 @@
-#labels Featured
+#labels Featured,Under-Construction
 = Setup =
 
    
@@ -19,26 +19,26 @@ The best way to learn this content is by practicing (i.e. by doing). After worki
    * When to create a multi-module Maven project?
    * When to create a job in jenkins?
 
-== Learning Material Soon to Come ==
+== Learning Material ==
 
 Installing Eclipse
-   * [[EclipseInstallationAndSetup][Eclipse Installation and Setup]]
+   * [EclipseInstallationAndSetup Eclipse Installation and Setup]
 
 Maven Guidelines soon to come
    * Connecting to Maven repositories, [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
-   * [[CreateSingleModuleProject][Creating a Single-Module Project]]
+   * [CreateSingleModuleMavenProject Creating a Single-Module Project]
 <wiki:comment>
 
-   * [[CreateMultiModuleProject][Multi-Module Projects]] (when to use, how to create, refactoring)
+   * [CreateMultiModuleMavenProject Multi-Module Projects] (when to use, how to create, refactoring)
 </wiki:comment>
 
-   * [[MavenTroubleshooting][Maven Troubleshooting]]
-   * [[MavenDependencyManagement][Dependency Management]]
+   * [MavenTroubleshooting Maven Troubleshooting]
+   * [MavenDependencyManagement Dependency Management]
 
 
 Version Control SVN Guidelines soon to come
-   * [[CheckingInAProject][Checking a new Maven project into SVN]]
-   * [[EclipseSynchronize][Synchronizing your workspace]]
+   * [CheckingInAProject Checking a new Maven project into SVN]
+   * [EclipseSynchronize Synchronizing your workspace]
 
 Java  Guidelines soon to come
 
