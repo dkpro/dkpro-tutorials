@@ -1,0 +1,77 @@
+#summary This page describes how you can synchronize with the remote SVN repository.
+
+=Sharing changes and staying up-to-date=
+
+There is more to sharing changes and getting changes from others than a simple _update_ and _commit_. In fact using those two functions without further consideration can easily be harmful and lead to problems.
+
+Please be sure to stick to the workflow outlined here to _synchronize_ your workspace with the central repository.
+
+==Preparations==
+
+*Before you commit* any changes to the repository make sure that
+
+   * there are *no compilation errors*
+   * you have run *all test cases* and none of them fail 
+
+==Adding a new component to version control==
+   * On a single file: Right click on the file. _Eclipse -> Team -> Add to Version Control_
+   * On a whole project: Right click on the project. _Eclipse -> Team -> Synchronize with Repository_
+      * Right click on the project name in the next dialog and choose _commit_.
+      * Add all files you want to add to version control
+
+==Updating from the server==
+   * *Never* simply do a _Team -> Update_!
+   * See the section on _Synchronizing_ below.
+      
+==Committing changes==
+   * *Never* simply do a _Team -> Commit_!
+   * See the section on _Synchronizing_ below.
+
+==Synchronizing==
+   # *Select Related Project for Synchronization* <br/>
+     Select all the projects you want to synchronize. When you are developing for DKPro, it is a good idea to select at least all projects starting with _dkpro_ as well as _lexsemresource_ and _ukp_lib_.
+   # *Synchronize Selected Projects* <br/>
+     Right-click on a selected project and use _Team -> Synchronize_
+      * Eclipse may ask if you want to switch to the _Synchronize_ perspective. If you want this, enable _remember my decision_ and continue with _yes_.
+      * To get a better view of incoming changes enable _changesets_<br/>     <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/SvnChangeSets.jpg" alt="SvnChangeSets.jpg" width='1081' height='187' /> 
+      * Here an explanation of the symbols used in the _Synchronize_ perspective:
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/inc_change.gif" alt="inc_change.gif" width='24' height='16' /> incoming changes - files that have changed on the server
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/inc_new.gif" alt="inc_new.gif" width='24' height='16' /> incoming new files - new files on the server.
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/inc_delete.gif" alt="inc_delete.gif" width='24' height='16' /> incoming deletions - files that were removed on the server and that are going to be removed from your machine when you _update_.
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/out_change.gif" alt="out_change.gif" width='24' height='16' /> outgoing changes - files that you have modified locally and will be sent to the server when you commit.
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/out_new.gif" alt="out_new.gif" width='24' height='16' /> outgoing additiosn - files you have added locally and will be sent to the server when you commit.
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/out_delete.gif" alt="out_delete.gif" width='24' height='16' /> outgoing deletions - files that you have deleted locally and will be deleted on the server when you commit.
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/con_change.gif" alt="con_change.gif" width='24' height='16' /> there are local changes and changes on the server. See section "Resolving conflicts" below
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/con_new.gif" alt="con_new.gif" width='24' height='16' /> the file has locally been added and is also new on the server. Either _Override and Update_ to use the file on the server or _Mark as merged_ to stick with your file and commit it to the server next time.
+         * <img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/con_delete.gif" alt="con_delete.gif" width='24' height='16' /> the file has been changed but was deleted on the server. Use _Override and Update_ to also delete the file on your machine or _Mark as merged_ if the file is still needed. In the latter case commit it next time.
+   # *Handle Conflicts* 
+      * Resolve any conflicts on the files you wish to commit (see _Resolving conflicts_ section below)
+      * After resolving the conflicts select all the files/projects you wish to update, right-click and select _update_.
+      * Test if things are still working as expected, e.g. by running the JUnit test.
+   # *Review Changes and Commit*
+      * Review your files to see what you have changed (make notes if you cannot remember all)
+      * Select your files, right click and choose _commit_.
+      * Write a commit message explaining your changes (use your notes if you could not remember all)
+
+=Resolving conflicts=
+
+   # Eclipse will show conflicts on folders that contain conflicting files (<img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/con_change.gif" alt="con_change.gif" width='24' height='16' />,<img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/con_new.gif" alt="out_delete.gif" width='24' height='16' />,<img src="http://dkpro-tutorials.googlecode.com/svn/wiki/images/con_delete.gif" alt="con_delete.gif" width='24' height='16' />). 
+   # Open the folders to locate the actually conflicting file and _double click_ on it. 
+   # A _Comparison View_ will open.
+   # Locate the small red square above the scrollbar on the right - this is the _status indicator_. 
+   # Locate the button "Copy all non-conflicting changes" on the right side of the toolbar on top of the comparison view and click it.
+   # Now all the non-critical incoming changes have been accounted for. If the _status indicator_ is now green, select _Mark as merged_ and save the file when asked. You are done.
+   # If the _status indicator_ is still red, save the file (CTRL-S)
+   # Now locate the sections marked in red. Use the button on the line linking two red sections. This will append the servers text (right) from that section to your local text (left).
+   # After the text has been appended, you need to make sure it still makes sense. Usually some things will be duplicate now. Fix them. If you do not know how to do this, maybe you have to *talk* to someone.
+   # if the _status indicator_ is still red, repeat steps 8 and 9 until it becomes green. *Do NOT save while doing this!*
+   # once the _status indicator_ becomes green, select _Mark as merged_
+
+==Best practice==
+   * *Small Changesets*: Keep the changeset (the set of changed files you commit) small.
+      * If your changes break something, is it a lot easier to roll back the changes.
+   * *Write Meaningful Messages*: Always fill the commit comment to tell the others why you changed things. While not being verbose, you should clearly state what changes your commit introduces.
+
+==Troubleshooting==
+   * An error during a commit might lead to locks on the files
+      * Solution: select the problematic project in Eclipse, right-click and select _Team -> cleanup_.
