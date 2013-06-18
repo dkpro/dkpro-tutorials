@@ -5,7 +5,8 @@
    * [CheckingInAProject Checking in a new Project]
    * [EclipseSynchronizeWorkspace Synchronizing]
  * Maven
-   * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Maven Repositories]
+   * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Repositories]
    * [CreateSingleModuleMavenProject Single-Module Projects]
+   * [MavenTroubleshooting Troubleshooting]
  * Tutorial Dates
    * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
