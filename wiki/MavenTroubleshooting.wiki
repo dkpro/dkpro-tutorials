@@ -1,0 +1,30 @@
+#summary When you run into trouble with Maven, this page may help you solve your problems.
+
+Most Maven problems are caused by problems with the _settings.xml_ or with one of the repositories that contain the Maven artifacts.
+
+==Check your settings.xml==
+   * password, user correct?
+   * does the settings.xml contain a syntax error?
+   * do you have access permission for the Artifactory that is specified in the settings.xml? (can only be fixed by UKP sysadmins)
+
+{{{!ArtifactDescriptorException and other errors with downloading SNAPSHOT dependencies}}}
+
+   * In Eclipse, _Windows > Preferences > Maven > User Settings_:  _Update Settings_
+   * Check your _settings.xml_ and update if there is a newer version in the wiki
+   * Try {{{mvn clean install}}} on the command line (if applicable, upgrade to the latest Maven version before!)
+
+==Check the Maven repositories==
+
+Is the artifact really in the artifactory (exact group id, artifact id and version; check that there is not only a _pom.xml_ of that artifact but also a Jar file)?
+
+===UKP public Artifactory===
+   * is it down?
+===Local Maven repository in .m2/repository===
+   * Delete the subfolder in .m2/repository that causes the errors, so Maven has to reload the artifacts
+   * Do a clean / rebuild of your project(s) in eclipse 
+
+
+==!ArtifactTransferException==
+   * If you get an "!ArtifactTransferException" so that Maven cannot update dependencies any more, you should remove all your failed downloads. On the console, run
+   * {{{find ~/.m2 -name "*.lastUpdated" -exec grep -q "Could not transfer" {} \; -print -exec rm {} \;}}}
+   * Then right click on your project in Eclipse and choose _Maven->Update Dependencies_  or perform a _Project->Clean_
