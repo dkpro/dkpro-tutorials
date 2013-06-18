@@ -2,3 +2,4 @@
 
  * Development Infrastructure
  * Tutorial Dates
+   * [DKProIntroduction20130529 DKPro Core and UIMA (29 May 2010)]
