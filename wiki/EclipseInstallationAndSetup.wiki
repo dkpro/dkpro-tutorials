@@ -73,7 +73,7 @@ The settings for Content Assist may be found at *Windows/Preferences/Java/Editor
 The list below describes some basic imports which are frequently used in the context of UIMA. 
 If you recognize that you often need static imports, you may enhance this list for your settings.
 
-http://code.google.com/p/dkpro-tutorials/source/browse/wiki/images/Eclipse_ContentAssist_Favorites.png
+http://dkpro-tutorials.googlecode.com/svn/wiki/images/Eclipse_ContentAssist_Favorites.png
 
 Add these types via the *New Type* button:
 
