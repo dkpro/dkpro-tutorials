@@ -2,6 +2,6 @@
 
  * Development Infrastructure
    * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
-   * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Maven Repositories @ UKP]
+   * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Maven Repositories]
  * Tutorial Dates
    * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
