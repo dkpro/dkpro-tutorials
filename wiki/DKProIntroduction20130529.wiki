@@ -21,15 +21,24 @@ The best way to learn this content is by practicing (i.e. by doing). After worki
 
 == Learning Material Soon to Come ==
 
+Installing Eclipse
+
+
+Maven Guidelines soon to come
+   * Connecting to Maven repositories, [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
+   * [[CreateSingleModuleProject][Creating a Single-Module Project]]
+<wiki:comment>
+
+   * [[CreateMultiModuleProject][Multi-Module Projects]] (when to use, how to create, refactoring)
+</wiki:comment>
+
+   * [[MavenTroubleshooting][Maven Troubleshooting]]
+   * [[MavenDependencyManagement][Dependency Management]]
+
+
 Version Control SVN Guidelines soon to come
    * [[CheckingInAProject][Checking a new Maven project into SVN]]
    * [[EclipseSynchronize][Synchronizing your workspace]]
-
-Maven Guidelines soon to come
-   * [[CreateSingleModuleProject][Creating a Single-Module Project]]
-   * [[CreateMultiModuleProject][Multi-Module Projects]] (when to use, how to create, refactoring)
-   * [[MavenTroubleshooting][Maven Troubleshooting]]
-   * [[MavenDependencyManagement][Dependency Management]]
 
 Java  Guidelines soon to come
 
