@@ -38,7 +38,7 @@ Maven Guidelines soon to come
 
 Version Control SVN Guidelines soon to come
    * [CheckingInAProject Checking a new Maven project into SVN]
-   * [EclipseSynchronize Synchronizing your workspace]
+   * [EclipseSynchronizeWorkspace Synchronizing your workspace]
 
 Java  Guidelines soon to come
 
