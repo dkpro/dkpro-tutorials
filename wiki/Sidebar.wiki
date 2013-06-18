@@ -1,8 +1,9 @@
 #summary The sidebar used for all Wiki pages
 
- * General
+ * Eclipse
    * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
    * [CheckingInAProject Checking in a new Project]
+   * [EclipseSynchronizeWorkspace Synchronizing]
  * Maven
    * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Maven Repositories]
    * [CreateSingleModuleMavenProject Single-Module Projects]
