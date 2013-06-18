@@ -21,3 +21,64 @@ The pre-packaged bundles are based on the Eclipse Classic distribution from http
    * Task Management: Mylyn, is included in Eclipse Classic. Use Help->Install New Software, select "--All available sites--" and choose Collaboration -> Mylyn
 
 Other plug-ins may also be included. A full list should be included in the README file accompanying the pre-packaged bundle.
+
+=Eclipse Workspace Settings=
+
+While the pre-packaged Eclipse ships with the most important plugins being installed, it is still necessary that you manually configure your workspace settings. This section guides you through this process.
+
+==Code Style File==
+
+For a uniform source code appearance everybody should install the following code style file. Install it in Eclipse via *Window/Preferences/Java/Code Style/Formatter/Import*.
+
+   * [http://code.google.com/p/dkpro-core-asl/downloads/detail?name=DKProCoreStyle_20120326.xml DKPro Code Style]
+
+Even though the formatting style is originally taken from the DKPro developers' resources, it reflects reasonable settings for other Java projects as well.
+
+==Strongly Suggested Settings==
+
+Everybody should make sure these the Eclipse workspace conforms to these settings.
+
+|| *Setting* || *Value* || *Description* ||
+|| *Window/Preferences/General/Workspace* || || ||
+|| Text file encoding || UTF-8 || Encoding of all text files (including source files) ||
+|| New text file line delimiter || Windows || Line ending used for all text files saved in Eclipse. When files are opened this setting has no effect since line-endings are transparently converted by Java ||
+|| *Window/Preferences/General/Editors/Text Editors* || || ||
+|| Display tab width || 4 || || 
+
+==Further Useful Settings==
+
+Furthermore, the following settings may be helpful.
+
+|| *Setting* || *Value* || *Description* ||
+|| *Window/Preferences/General/Editors/Text Editors* || || || 
+|| Show print margin || on || Display a line indicating the recommended maximum line length ||
+|| Print margin column || 100 || Lines should not be wider than 100 characters. ||
+|| Show line numbers || on || Shows line numbers left in the editors. Helps navigating. ||
+|| *Window/Preferences/UIMA Preferences* |||||| 
+|| Automatically run !JCasGen when Types change || off || You may want to create types without JCas wrappers ||
+|| *Window/Preferences/Java/Editor/Save Actions* ||||||
+|| Additional actions || on || Perform additional actions when the file is saved ||
+|| *Window/Preferences/Java/Editor/Save Actions/Additional actions/* ||||||
+|| Add missing @Override annotations || on || Removes unnecessary warnings (Choose: _Configure/Missing Code_)||
+|| Add missing @Deprecated annotations || on || Removes unnecessary warnings (Choose: _Configure/Missing Code_)||
+|| Remove unused imports || on || Removes unnecessary warnings (Choose: _Configure/Unnecessary Code_) ||
+|| Remove trailing whitespace || All lines || Code style (Choose: _Configure/Code Organization_)||
+|| Use blocks in if/while/for/do statements || Always || Code style (Choose: _Configure/Code Style_)||
+|| Convert for loops to enhanced for loops || on || Converts to =for(X x : listOfX)= - style loops if possible (Choose: _Configure/Code Style_) ||
+
+==Better content assist==
+
+Eclipse can automatically offer commonly used static methods via its content assist feature.
+The settings for Content Assist may be found at *Windows/Preferences/Java/Editor/Content Assist/Favorites*.
+The list below describes some basic imports which are frequently used in the context of UIMA. 
+If you recognize that you often need static imports, you may enhance this list for your settings.
+
+http://code.google.com/p/dkpro-tutorials/source/browse/wiki/images/Eclipse_ContentAssist_Favorites.png
+
+Add these types via the *New Type* button:
+
+   * {{{de.tudarmstadt.ukp.dkpro.core.util.CasUtils}}} - commonly used methods for CAS access, e.g. {{{iterate}}}.
+   * {{{de.tudarmstadt.ukp.dkpro.core.util.IOUtil}}} - in particular the {{{close()}}} method for closing streams
+   * {{{org.uimafit.factory.AnalysisEngineFactory}}} - e.g. {{{createPrimitiveDescription()}}}
+   * {{{org.uimafit.factory.CollectionReaderFactory}}} - e.g. {{{createDescription()}}}
+   * {{{de.tudarmstadt.ukp.dkpro.core.util.ComponentFactory}}} - for {{{getDKProTypeSystem()}}}
