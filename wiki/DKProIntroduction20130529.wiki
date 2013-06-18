@@ -24,7 +24,7 @@ The best way to learn this content is by practicing (i.e. by doing). After worki
 Installing Eclipse
    * [EclipseInstallationAndSetup Eclipse Installation and Setup]
 
-Maven Guidelines soon to come
+Maven Guidelines
    * Connecting to Maven repositories, [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
    * [CreateSingleModuleMavenProject Creating a Single-Module Project]
 <wiki:comment>
@@ -36,11 +36,13 @@ Maven Guidelines soon to come
    * [MavenDependencyManagement Dependency Management]
 
 
-Version Control SVN Guidelines soon to come
+Version Control SVN Guidelines
    * [CheckingInAProject Checking a new Maven project into SVN]
    * [EclipseSynchronizeWorkspace Synchronizing your workspace]
 
-Java  Guidelines soon to come
+Java Guidelines
+
+   * [http://www.oracle.com/technetwork/java/codeconv-138413.html Java Code Conventions]
 
 = Introduction to UIMA =
 
