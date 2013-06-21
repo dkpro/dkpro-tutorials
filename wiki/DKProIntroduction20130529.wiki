@@ -19,7 +19,7 @@ The best way to learn this content is by practicing (i.e. by doing). After worki
    * When to create a multi-module Maven project?
    * When to create a job in jenkins?
 
-== Learning Material ==
+== Step-by-step Instructions ==
 
 Installing Eclipse
    * [EclipseInstallationAndSetup Eclipse Installation and Setup]
