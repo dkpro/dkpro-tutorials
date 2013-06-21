@@ -21,7 +21,7 @@ The best way to learn this content is by practicing (i.e. by doing). After worki
 
 == Slides ==
 
-[http://code.google.com/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproDevelopment.pdf Slides DKPro Java Development Infrastructure pdf]
+[https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproDevelopment.pdf Slides DKPro Java Development Infrastructure pdf]
 
 == Step-by-step Instructions ==
 
