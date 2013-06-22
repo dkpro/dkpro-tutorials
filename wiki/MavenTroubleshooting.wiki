@@ -7,7 +7,7 @@ Most Maven problems are caused by problems with the _settings.xml_ or with one o
    * does the settings.xml contain a syntax error?
    * do you have access permission for the Artifactory that is specified in the settings.xml? (can only be fixed by UKP sysadmins)
 
-{{{!ArtifactDescriptorException and other errors with downloading SNAPSHOT dependencies}}}
+{{{ArtifactDescriptorException and other errors with downloading SNAPSHOT dependencies}}}
 
    * In Eclipse, _Windows > Preferences > Maven > User Settings_:  _Update Settings_
    * Check your _settings.xml_ and update if there is a newer version in the wiki
