@@ -28,5 +28,5 @@ When you create a new UKP-internal or KDSL-internal Maven project, be sure to us
 </parent>
 </code>
 
-=Check in you project=
-Check in you newly created Maven project in the SVN under _NICE_PROJECT_NAME/trunk_, see also [CheckingInAProject].
+=Check in your project=
+Check in your newly created Maven project in the SVN under _NICE_PROJECT_NAME/trunk_, see also [CheckingInAProject].
