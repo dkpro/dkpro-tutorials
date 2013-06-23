@@ -2,9 +2,9 @@
 
 =Check-in process for new projects=
 
-This document explains how to check a *new experiment* into our SVN repository using Eclipse.  If you already have an (empty) project under version control, you may be interested in how to [EclipseSynchronize check single files into an existing project].
+This document explains how to check a *new experiment* into a SVN repository using Eclipse. We assume that you have an SVN repository that you want to commit to.  If you already have an (empty) project under version control, you may be interested in how to [EclipseSynchronize check single files into an existing project].
 
-We assume that you have an SVN repository that you want to commit to. The remote address of the repository is denoted with  _SVN_URL_ here. Further, we suppose that you want to version your project in the subdirectory _experiments_.
+The remote address of the SVN repository is denoted with  _SVN_URL_ here. Further, we suppose that you want to version your project in the subdirectory _experiments_.
 
  # *Create a Project* If you haven't already created your project, create as you normally would.  Normally this would be via _File -> New -> Other… -> Maven -> Maven Project_. 
 Choose reasonable values for Group Id and Artifact Id (should be all lower-case); in the following we use the following value for both Group and Artifact Id: {{{de.tudarmstadt.ukp.experiments.YOURINITIALS.EXPERIMENTNAME}}}.
