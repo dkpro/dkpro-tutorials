@@ -17,16 +17,12 @@ Choose reasonable values for Group Id and Artifact Id (should be all lower-case)
 
 =What you should not commit to SVN=
 
-*VERY IMPORTANT: Subversion repositories ONLY GROW. It is NOT POSSIBLE TO DELETE ANYTHING from them.*
-
-Therefore, please, read the following sections carefully and always ignore as much files as possible - but no more - from version control.
-
 ==Checking in a newly created Maven project==
    * never commit the folders _target_, _.settings_ and the files _.project_ and _.classpath_ to a repository
    * set them to svn:ignore
 
 ==Large corpora and lexical resources==
-   * Large corpora and large lexical resources should be stored outside the workspace (e.g., lexical resources might be kept in a database), consider using the environment variable {{{DKPRO_HOME}}} when working with DKPro
+   * Large corpora and large lexical resources should be stored outside the workspace (e.g., lexical resources might be kept in a database).
    * Never commit corpora or other large resources (anything larger than a typical source code file is considered large) to a repository.
 
 ==Resources used for testing==
