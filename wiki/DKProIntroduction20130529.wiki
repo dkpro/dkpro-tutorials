@@ -20,7 +20,7 @@ The best way to learn this content is by practicing (i.e. by doing). After worki
    * Committing a newly created Maven project to SVN: which folders and files should never be commited?
    * When should you create trunk/tags folders for your Maven project?
    * When to create a multi-module Maven project?
-   * When to create a job in jenkins?
+   * What is Continuous Integration and when should you consider using it?
 
 == Slides ==
 
