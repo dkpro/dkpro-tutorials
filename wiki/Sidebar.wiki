@@ -1,13 +1,14 @@
 #summary The sidebar used for all Wiki pages
 
- * Eclipse
-   * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
-   * [CheckingInAProject Checking in a new Project]
-   * [EclipseSynchronizeWorkspace Synchronizing]
- * Maven
-   * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Repositories]
-   * [MavenDependencyManagement Dependency Management]
-   * [CreateSingleModuleMavenProject Single-Module Projects]
-   * [MavenTroubleshooting Troubleshooting]
- * Tutorial Dates
+ * Tutorials
    * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
+ * Developer Cheat Sheets
+   * Eclipse
+     * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
+     * [CheckingInAProject Checking in a new Project]
+     * [EclipseSynchronizeWorkspace Synchronizing]
+   * Maven
+     * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Repositories]
+     * [MavenDependencyManagement Dependency Management]
+     * [CreateSingleModuleMavenProject Single-Module Projects]
+     * [MavenTroubleshooting Troubleshooting]
