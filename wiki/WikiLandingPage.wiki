@@ -1,3 +1,3 @@
-Welcome to the DKPro tutorials and training wiki!
+This wiki is intended as a guide through the tutorials and trainings content provided at this site.
 
-This wiki provides many resources concerning technologies that you will encounter in the area of DKPro Core.
+The project site and the wiki are still under development. In the coming weeks, we will flesh out the learning content and add new tutorials - so stay tuned!
