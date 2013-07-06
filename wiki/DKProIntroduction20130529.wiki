@@ -2,19 +2,9 @@
 = Introduction to DKPro - 2013-05-29 =
 This tutorial was held on May 29 by Dr. Judith Eckle-Kohler and Roland Kluge at [http://www.dipf.de/en/dipf-news/ DIPF], Frankfurt in the context of the [http://www.kdsl.tu-darmstadt.de/de/knowledge-discovery-in-scientific-literature/ PhD program Knowledge Discovery in Scientific Literature]. It is designed as a one-day tutorial with programming part. The tutorial material has been developed by Dr. Judith Eckle-Kohler, Richard Eckart de Castilho, Roland Kluge, and Dr. Torsten Zesch. The tutorial covers an introduction to the DKPro Java development infrastructure (e.g., Maven, Continuous Integration), UIMA and DKPro-Core.
 
-= Setup =
-
-   
-Checkout a simple linguistic annotation pipeline: (checkout as Maven project)
-   * https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
-
-Copy some German example text documents (.txt format) into any folder of your choice (e.g., ~/dkpro) and adapt the parameters for the input and output paths in the !RunLinguisticAnnotationPipeline accordingly.
-
-To check if your setup is ok, build the project.  Running the pipeline requires that you adapt the input and output paths according to your folder layout.
-
 
 = Introduction to the Java Development Infrastructure =
-The best way to learn this content is by practicing (i.e. by doing). After working through the material listed below, you should be able to answer at least the following questions:
+ After working through the slides and material listed below, you should be able to answer at least the following questions:
    * What are Maven artifacts and where are they stored?
    * Which Maven repositories do you know? What are the differences between them?
    * Committing a newly created Maven project to SVN: which folders and files should never be commited?
