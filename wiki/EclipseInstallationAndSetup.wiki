@@ -2,7 +2,7 @@
 
 =Installing Eclipse=
 
-A *pre-packaged Eclipse* can be obtained from [http://public.ukp.informatik.tu-darmstadt.de/kdsl/eclipse-SDK-4.2-linux-gtk-ukp-20120727-x86_64.tar.bz2 the UKP public file server].
+A *pre-packaged Eclipse (for Linux only)* can be obtained from [http://public.ukp.informatik.tu-darmstadt.de/kdsl/eclipse-SDK-4.2-linux-gtk-ukp-20120727-x86_64.tar.bz2 the UKP public file server].
    * Download and install the latest pre-packaged version for your platform.
    * If you like, adapt the template script [http://dkpro-tutorials.googlecode.com/svn/wiki/files/start_eclipse.sh start_eclipse.sh], which configures your workspace, e.g., environment variables; this is not strictly necessary, however.
 
