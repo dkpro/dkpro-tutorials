@@ -22,6 +22,10 @@ The pre-packaged bundles are based on the Eclipse Classic distribution from http
 
 Other plug-ins may also be included. A full list should be included in the README file accompanying the pre-packaged bundle.
 
+
+=Further links=
+  * [http://www.sonatype.com/Request/Book/Developing-with-Eclipse-Maven m2eclipse book (Copyright © 2010 Sonatype, Inc.)]
+
 =Eclipse Workspace Settings=
 
 While the pre-packaged Eclipse ships with the most important plugins being installed, it is still necessary that you manually configure your workspace settings. This section guides you through this process.
