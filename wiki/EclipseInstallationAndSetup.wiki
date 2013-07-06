@@ -24,7 +24,7 @@ Other plug-ins may also be included. A full list should be included in the READM
 
 
 =Further links=
-  * [http://www.sonatype.com/Request/Book/Developing-with-Eclipse-Maven m2eclipse book (Copyright © 2010 Sonatype, Inc.)]
+  * [http://www.sonatype.com/books/m2eclipse-book/reference/ m2eclipse book (Copyright © 2010 Sonatype, Inc.)]
 
 =Eclipse Workspace Settings=
 
