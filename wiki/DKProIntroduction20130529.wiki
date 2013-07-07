@@ -14,7 +14,7 @@ This tutorial was held on May 29 by Dr. Judith Eckle-Kohler and Roland Kluge at 
 
 == Slides ==
 
-[https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproDevelopment.pdf Slides DKPro Java Development Infrastructure pdf]
+Soon to come 
 
 == Step-by-step Instructions ==
 
