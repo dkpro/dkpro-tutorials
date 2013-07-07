@@ -34,25 +34,18 @@
   		<type>jar</type>
   		<scope>compile</scope>
   	</dependency>
+
+ 	<dependency>
+	    <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+	    <artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
+   </dependency>
   	
-     <dependency>
-         <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-         <artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
-     </dependency> 		
+  	<dependency>
+     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
+		<artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-model-tagger-de-maxent</artifactId>
+   </dependency> 
   	
-     <dependency>
-             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-             <artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-bin</artifactId>
-     </dependency>                  
-     <dependency>
-             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-             <artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-de</artifactId>
-     </dependency>
-     <dependency>
-             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-             <artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-model-en</artifactId>
-     </dependency>
-          		  	
+           		  	
     <dependency>
     	<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
     	<artifactId>de.tudarmstadt.ukp.dkpro.core.tokit-asl</artifactId>
@@ -79,7 +72,7 @@
   		
         <dependency>
             <groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-            <artifactId>de.tudarmstadt.ukp.dkpro.core.treetagger-asl</artifactId>
+            <artifactId>de.tudarmstadt.ukp.dkpro.core.opennlp-asl</artifactId>
             <version>1.4.0</version>
             <type>pom</type>
             <scope>import</scope>

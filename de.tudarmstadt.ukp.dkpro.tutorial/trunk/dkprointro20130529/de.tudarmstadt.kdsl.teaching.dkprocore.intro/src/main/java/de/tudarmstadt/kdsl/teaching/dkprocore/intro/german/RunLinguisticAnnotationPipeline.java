@@ -13,9 +13,8 @@ import org.uimafit.factory.AnalysisEngineFactory;
 import org.uimafit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
+import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerChunkerTT4J;
-import de.tudarmstadt.ukp.dkpro.core.treetagger.TreeTaggerPosLemmaTT4J;
 
 
 /**
@@ -57,13 +56,13 @@ public class RunLinguisticAnnotationPipeline
 		
 		AnalysisEngineDescription tagger =
 			AnalysisEngineFactory.createPrimitiveDescription(
-				TreeTaggerPosLemmaTT4J.class,		
-				TreeTaggerPosLemmaTT4J.PARAM_LANGUAGE_CODE, "de");
+					OpenNlpPosTagger.class,		
+					OpenNlpPosTagger.PARAM_PRINT_TAGSET, false);
 		
 		
-		AnalysisEngineDescription chunker = 
-			AnalysisEngineFactory.createPrimitiveDescription(TreeTaggerChunkerTT4J.class,
-					TreeTaggerChunkerTT4J.PARAM_PRINT_TAGSET, true);
+		//AnalysisEngineDescription chunker = 
+			//AnalysisEngineFactory.createPrimitiveDescription(TreeTaggerChunkerTT4J.class,
+			//		TreeTaggerChunkerTT4J.PARAM_PRINT_TAGSET, true);
 
 		AnalysisEngineDescription lemmaPostprocessor =
 			AnalysisEngineFactory.createPrimitiveDescription(
@@ -98,9 +97,9 @@ public class RunLinguisticAnnotationPipeline
 		// if we had created a usual reader instance (CollectionReader), the reader would have been
 		// empty after the first pipeline, because a reader instance passes on all CASes filled with text
 		// to the subsequent components
-		SimplePipeline.runPipeline(reader, tokenizer, tagger, lemmaPostprocessor, tokenLemmaWriter);
-		SimplePipeline.runPipeline(reader, tokenizer, tagger, chunker, lemmaPostprocessor, sentenceChunkWriter);
-		SimplePipeline.runPipeline(reader, tokenizer, tagger, chunker, lemmaPostprocessor, fineGrainedPosTagWriter);
+		//SimplePipeline.runPipeline(reader, tokenizer, tagger, lemmaPostprocessor, tokenLemmaWriter);
+		//SimplePipeline.runPipeline(reader, tokenizer, tagger, chunker, lemmaPostprocessor, sentenceChunkWriter);
+		SimplePipeline.runPipeline(reader, tokenizer, tagger, fineGrainedPosTagWriter);
 		
 		
 }
