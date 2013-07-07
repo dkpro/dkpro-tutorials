@@ -44,15 +44,16 @@ Java Guidelines
 = Introduction to UIMA =
 
 == Slides ==
-  [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pptx Slides UIMA pptx], [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroUima.pdf pdf]
+
+[https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/tags/dkprointro20130529/dkproIntroUima.pdf Slides UIMA pdf]
 
 == Tutorial Code ==
-  Example project UIMA: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/uimaintro/de.tudarmstadt.kdsl.teaching.uimaintro
+  Example project UIMA: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/uimaintro/de.tudarmstadt.kdsl.teaching.uimaintro
 
 = Introduction to DKPro Core =
 == Slides ==
 
-   [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pptx Slides DKPro Core pptx], [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/slides/dkproIntroCore.pdf pdf]
+[https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/tags/dkprointro20130529/dkproIntroCore.pdf Slides DKPro Core pdf]
 
 == Tutorial Code ==
-  Example project DKPro Core: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/dkprointro20130529/de.tudarmstadt.kdsl.teaching.dkprocore.intro
+  Example project DKPro Core: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/trunk/de.tudarmstadt.kdsl.teaching.dkprocore.intro
