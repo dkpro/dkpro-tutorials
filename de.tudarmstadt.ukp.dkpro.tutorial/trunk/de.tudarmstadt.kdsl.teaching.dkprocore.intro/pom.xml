@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>dkpro-parent-pom</artifactId>
 		<groupId>de.tudarmstadt.ukp.dkpro.core</groupId>
-		<version>2</version>
+		<version>4</version>
 	</parent>
   <groupId> de.tudarmstadt.kdsl.teaching.dkprocore</groupId>
   <artifactId> de.tudarmstadt.kdsl.teaching.dkprocore.intro</artifactId>
