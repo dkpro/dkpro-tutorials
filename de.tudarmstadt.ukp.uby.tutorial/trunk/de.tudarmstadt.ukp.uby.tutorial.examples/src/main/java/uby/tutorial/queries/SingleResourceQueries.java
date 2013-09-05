@@ -67,8 +67,7 @@ public class SingleResourceQueries {
 		Lexicon verbNet = uby.getLexiconByName("VerbNet");
 		for(LexicalEntry le : uby.getLexicalEntries(verbLemma, EPartOfSpeech.verb, verbNet)){
 			System.out.println("LexicalEntry: "+le.getId());
-			String lemma = le.getLemmaForm();
-			System.out.println("Lemma: "+lemma);
+			System.out.println("Lemma: "+verbLemma);
 			for(Sense sense : le.getSenses()){				
 				System.out.println("- Sense: "+sense.getId());
 				System.out.println("- Example: "+sense.getSenseExamples().get(0).getTextRepresentations().get(0).getWrittenText());

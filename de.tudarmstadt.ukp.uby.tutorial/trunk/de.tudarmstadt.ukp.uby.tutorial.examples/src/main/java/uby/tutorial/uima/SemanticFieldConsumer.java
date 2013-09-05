@@ -12,7 +12,6 @@ import org.apache.uima.resource.ResourceInitializationException;
 import org.uimafit.descriptor.ConfigurationParameter;
 import org.uimafit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.V;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
 import de.tudarmstadt.ukp.dkpro.core.api.semantics.type.SemanticField;
@@ -47,35 +46,30 @@ extends org.uimafit.component.JCasAnnotator_ImplBase{
     public void process(JCas jcas)
         throws AnalysisEngineProcessException{
 		for (Sentence sentence : JCasUtil.select(jcas, Sentence.class)) {
-			List<SemanticField> semanticFieldAnnotations = JCasUtil.selectCovered(jcas, SemanticField.class, sentence);
-			for (int j = 0; j < semanticFieldAnnotations.size(); j++) {
-				SemanticField semanticField = semanticFieldAnnotations.get(j);
-				
-				writeTokenAndSemanticField(semanticField.getCoveredText() +" " 
-						+semanticField.getValue() +" " 
-						+"\n");
-			}
-
-/*			List<Token> sentenceTokens = JCasUtil.selectCovered(jcas, Token.class, sentence);			
+			
+			List<Token> sentenceTokens = JCasUtil.selectCovered(jcas, Token.class, sentence);			
 			for (int i = 0; i < sentenceTokens.size(); i++) {
 				Token token = sentenceTokens.get(i);
 				
-				List<SemanticField> semanticFieldAnnotations = JCasUtil.selectCovered(jcas, SemanticField.class, token);
+				
+				List<SemanticField> semanticFieldAnnotations = JCasUtil.selectCovering(jcas, SemanticField.class, token.getBegin(), token.getEnd());
 				for (int j = 0; j < semanticFieldAnnotations.size(); j++) {
-					SemanticField semanticField = semanticFieldAnnotations.get(i);
+					SemanticField semanticField = semanticFieldAnnotations.get(j);
 					
 					writeTokenAndSemanticField(token.getCoveredText() +" " 
 							+token.getLemma().getValue() +" " 
+							+token.getPos().getType().getShortName()+" " 
 							+semanticField.getValue() +" " 
 							+"\n");
 				}
 				
 			}
-			*/
-			
+						
 		}				
 
     }
+
+			
 
 	private void writeTokenAndSemanticField(String string)
 	{
