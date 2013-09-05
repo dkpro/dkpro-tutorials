@@ -1,7 +1,6 @@
-# Supplementary material and example code for the UBY tutorial 2013:
-# The Practitioner's Cookbook for Linked Lexical Resources
 
-= The Practitioner's Cookbook for Linked Lexical Resources - Training Content =
+
+= The Practitioner's Cookbook for Linked Lexical Resources - Training Content UBY =
 
 == Step-by-step Instructions for the Setup ==
 
