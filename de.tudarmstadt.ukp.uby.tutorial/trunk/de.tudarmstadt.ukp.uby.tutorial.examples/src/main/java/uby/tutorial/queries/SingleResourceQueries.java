@@ -54,6 +54,16 @@ public class SingleResourceQueries {
 			SynargSemargMap.put(synSem.getSyntacticArgument(), synSem.getSemanticArgument());
 		}
 
+		Lexicon wordNet = uby.getLexiconByName("WordNet");
+	    String lemma = "student";
+	    for(LexicalEntry le : uby.getLexicalEntries(lemma, EPartOfSpeech.noun, wordNet)) {
+	    	System.out.println(le.getLemmaForm() +" in WordNet:");
+	    	for (Sense sense:le.getSenses()) {
+	    		System.out.println("- WordNet sense ID: "+sense.getMonolingualExternalRefs().get(0).getExternalReference());	    	}
+
+	    } // for le
+
+	    
 		Lexicon verbNet = uby.getLexiconByName("VerbNet");
 		for(LexicalEntry le : uby.getLexicalEntries(verbLemma, EPartOfSpeech.verb, verbNet)){
 			System.out.println("LexicalEntry: "+le.getId());
