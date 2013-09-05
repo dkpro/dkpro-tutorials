@@ -1,0 +1,24 @@
+# Supplementary material and example code for the UBY tutorial 2013:
+# The Practitioner's Cookbook for Linked Lexical Resources
+
+= The Practitioner's Cookbook for Linked Lexical Resources - Training Content =
+
+== Step-by-step Instructions for the Setup ==
+
+Import a UBY database dump into a MySQL database
+  * [http://code.google.com/p/uby/wiki/DbImportTutorial How to import a UBY database dump (uby@Google Code)]
+
+Installing Eclipse
+   * [EclipseInstallationAndSetup Eclipse Installation and Setup]
+
+Maven Guidelines
+   * Connecting to Maven repositories, [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
+
+
+Check out the tutorial project in Eclipse:
+  * Eclipse -> Window -> Open Perspective -> Other -> SVN Repository Exploring -> Add SVN Repository
+  * Give the URL of the repository
+  * Right click on the trunk/tag/branch of the project you want to checkout -> Check out as Maven Project (do not rename the project) 
+
+== Tutorial Code ==
+  Tutorial project: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.uby.tutorial/trunk/de.tudarmstadt.ukp.uby.tutorial.examples
