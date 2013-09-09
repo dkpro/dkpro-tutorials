@@ -1,4 +1,3 @@
-
 = The Practitioner's Cookbook for Linked Lexical Resources - UBY Code Examples =
 
 == Step-by-step Instructions for the Setup ==
@@ -9,8 +8,8 @@ Import a UBY database dump into a MySQL database
 Installing Eclipse
    * [EclipseInstallationAndSetup Eclipse Installation and Setup]
 
-Maven Guidelines
-   * Connecting to Maven repositories, [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
+Connecting to Maven repositories
+   * The pom in the example Maven project is configured to connect to public Maven repositories maintained by UKP Lab, TU Darmstadt. If you encounter problems, you can follow the instructions here: [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
 
 
 Check out the tutorial project in Eclipse:
