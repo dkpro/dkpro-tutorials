@@ -14,7 +14,7 @@ Connecting to Maven repositories
 
 Check out the tutorial project in Eclipse:
   * Eclipse -> Window -> Open Perspective -> Other -> SVN Repository Exploring -> Add SVN Repository
-  * Give the URL of the repository
+  * Give the URL of the repository: https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.uby.tutorial/trunk/de.tudarmstadt.ukp.uby.tutorial.examples
   * Right click on the trunk/tag/branch of the project you want to checkout -> Check out as Maven Project (do not rename the project) 
 
 == Tutorial Code ==
