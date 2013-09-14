@@ -15,9 +15,9 @@ import org.uimafit.pipeline.SimplePipeline;
 import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpSegmenter;
-import de.tudarmstadt.ukp.dkpro.core.dictionaryannotator.semantictagging.UbySemanticFieldAnnotator;
-import de.tudarmstadt.ukp.dkpro.core.dictionaryannotator.semantictagging.UbySemanticFieldResource;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
+import de.tudarmstadt.ukp.uby.resource.UbySemanticFieldResource;
+import de.tudarmstadt.ukp.uby.uima.annotator.UbySemanticFieldAnnotator;
 
 public class LinguisticAnnotationPipeline {
 	
