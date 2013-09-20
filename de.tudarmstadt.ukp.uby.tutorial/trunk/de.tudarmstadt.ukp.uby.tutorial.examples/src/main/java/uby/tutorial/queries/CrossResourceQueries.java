@@ -36,7 +36,7 @@ public class CrossResourceQueries {
 
 	    uby = new Uby(db);
 	    
-	    String lemma = "loiter";	
+	    String lemma = "life";	
 	    
 	    showSenseLinks(lemma);
 	    showSemanticLabels(lemma, true); // not only single word lemmas, but also lemma phrases
@@ -105,8 +105,8 @@ public class CrossResourceQueries {
 		    			System.out.print("\n");
 		    		} else {
 		    			printSenseInformation(sense);
-		    			System.out.println("No semantic labels for " +sense.getId() +" of "
-		    					+lemma +" in " +lexEntry.getLexicon().getName());
+		    			System.out.println("No semantic labels for " +sense.getId() 
+		    					+" in " +lexEntry.getLexicon().getName());
 		    			System.out.print("\n");
 		    		}
 		    	}
