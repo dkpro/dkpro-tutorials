@@ -1,15 +1,14 @@
 package uby.tutorial.uima;
 
 import static org.apache.uima.fit.factory.AnalysisEngineFactory.createEngineDescription;
+import static org.apache.uima.fit.factory.CollectionReaderFactory.createReaderDescription;
 import static org.apache.uima.fit.factory.ExternalResourceFactory.createExternalResourceDescription;
-import static org.apache.uima.fit.factory.CollectionReaderFactory.createDescription;
 
 import java.io.IOException;
 
 import org.apache.uima.UIMAException;
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
-import org.apache.uima.fit.factory.AnalysisEngineFactory;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 
 import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpLemmatizer;
@@ -24,11 +23,9 @@ public class LinguisticAnnotationPipeline {
 	public static void main(String[] args)
 		    throws UIMAException, IOException
 		{
-				
-				CollectionReaderDescription reader = createDescription(
+				CollectionReaderDescription reader = createReaderDescription(
 						TextReader.class,
-						TextReader.PARAM_PATH, "src/main/resources",
-						TextReader.PARAM_PATTERNS, new String[] { "[+]*.txt", "[-]broken.txt" },
+						TextReader.PARAM_SOURCE_LOCATION, "input/Wikipedia_English.txt",
 						TextReader.PARAM_LANGUAGE, "en"
 						);
 				
@@ -37,8 +34,7 @@ public class LinguisticAnnotationPipeline {
 				AnalysisEngineDescription posTagger = createEngineDescription(ClearNlpPosTagger.class);
 				AnalysisEngineDescription lemmatizer = createEngineDescription(ClearNlpLemmatizer.class);
 				
-			    AnalysisEngineDescription semanticFieldAnnotator = createEngineDescription(
-
+			    AnalysisEngineDescription semanticFieldAnnotator = 
 			    	        createEngineDescription(
 			    	                UbySemanticFieldAnnotator.class,
 			    	                UbySemanticFieldAnnotator.PARAM_UBY_SEMANTIC_FIELD_RESOURCE,
@@ -47,17 +43,14 @@ public class LinguisticAnnotationPipeline {
 			    	                        UbySemanticFieldResource.PARAM_DRIVER, "com.mysql.jdbc.Driver",
 			    	                        UbySemanticFieldResource.PARAM_DRIVER_NAME, "mysql",
 			    	                        UbySemanticFieldResource.PARAM_USERNAME, "root",
-			    	                        UbySemanticFieldResource.PARAM_PASSWORD, "pass")));
-
-
+			    	                        UbySemanticFieldResource.PARAM_PASSWORD, "pass"));
 
 				AnalysisEngineDescription semanticFieldWriter =
-						AnalysisEngineFactory.createPrimitiveDescription(
+						createEngineDescription(
 							SemanticFieldConsumer.class,
 							SemanticFieldConsumer.PARAM_OUTPUT, "target/tokensSemanticFields.txt");
 
-				
-				
+							
 				SimplePipeline.runPipeline(reader, tokenizer, posTagger, lemmatizer, semanticFieldAnnotator, semanticFieldWriter);
 				
 				
