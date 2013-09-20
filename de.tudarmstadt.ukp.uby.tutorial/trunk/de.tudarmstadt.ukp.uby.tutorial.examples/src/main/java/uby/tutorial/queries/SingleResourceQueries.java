@@ -14,6 +14,7 @@ import de.tudarmstadt.ukp.lmf.model.core.Sense;
 import de.tudarmstadt.ukp.lmf.model.enums.ELabelTypeSemantics;
 import de.tudarmstadt.ukp.lmf.model.enums.EPartOfSpeech;
 import de.tudarmstadt.ukp.lmf.model.meta.SemanticLabel;
+import de.tudarmstadt.ukp.lmf.model.mrd.Equivalent;
 import de.tudarmstadt.ukp.lmf.model.semantics.SemanticArgument;
 import de.tudarmstadt.ukp.lmf.model.semantics.SynSemArgMap;
 import de.tudarmstadt.ukp.lmf.model.syntax.SubcategorizationFrame;
@@ -31,6 +32,7 @@ public class SingleResourceQueries {
 	private static HashMap<SyntacticArgument, SemanticArgument> SynargSemargMap  = new HashMap<SyntacticArgument, SemanticArgument>();
 
 	private static String verbLemma = "prefer";
+	private static String nounLemma = "student";
 
 
 	public static void main(String[] args) throws Exception
@@ -46,7 +48,7 @@ public class SingleResourceQueries {
 
 	    Uby uby = new Uby(db);
 		session = uby.getSession();
-		
+		System.out.println(uby.getLexiconNames()); System.out.print("\n");
 		
 		Criteria criteriaSynSem = session.createCriteria(SynSemArgMap.class);
 		List<SynSemArgMap> SynSemArgMaps = criteriaSynSem.list(); // retrieve complete SynSemArgMap table
@@ -55,13 +57,29 @@ public class SingleResourceQueries {
 		}
 
 		Lexicon wordNet = uby.getLexiconByName("WordNet");
-	    String lemma = "student";
-	    for(LexicalEntry le : uby.getLexicalEntries(lemma, EPartOfSpeech.noun, wordNet)) {
-	    	System.out.println(le.getLemmaForm() +" in WordNet:");
+	    for(LexicalEntry le : uby.getLexicalEntries(nounLemma, EPartOfSpeech.noun, wordNet)) {
+	    	System.out.println("Senses of " +le.getLemmaForm() +" in WordNet:");
 	    	for (Sense sense:le.getSenses()) {
-	    		System.out.println("- WordNet sense ID: "+sense.getMonolingualExternalRefs().get(0).getExternalReference());	    	}
-
+	    		System.out.println("---- WordNet sense ID: "+sense.getMonolingualExternalRefs().get(0).getExternalReference());	    	
+    		}
+	    	System.out.print("\n");
 	    } // for le
+
+
+		Lexicon wiktionary = uby.getLexiconByName("WiktionaryEN");
+	    for(LexicalEntry le : uby.getLexicalEntries(nounLemma, EPartOfSpeech.noun, wiktionary)) {
+	    	for (Sense sense:le.getSenses()) {
+	    	   	if (!sense.getEquivalents().isEmpty()) {
+	    	   		System.out.println("Translations for " +sense.getId() +" in Wiktionary:");
+		    		for (Equivalent eq: sense.getEquivalents()){
+		                   System.out.println(eq.getLanguageIdentifier() +" translation : " +eq.getWrittenForm());              
+		    		}
+		    		System.out.print("\n");
+	    	   	}
+	    	}
+	    } // for le
+
+ 
 
 	    
 		Lexicon verbNet = uby.getLexiconByName("VerbNet");
