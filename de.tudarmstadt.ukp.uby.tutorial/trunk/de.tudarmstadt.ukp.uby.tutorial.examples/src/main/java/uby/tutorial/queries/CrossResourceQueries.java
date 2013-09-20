@@ -20,6 +20,7 @@ public class CrossResourceQueries {
 		private static final String uby_pass = "pass";
 		
 		private static Uby uby;
+		private static Collection<LexicalEntry> lexicalEntries;
 
 
 		public static void main(String[] args) throws Exception
@@ -35,10 +36,11 @@ public class CrossResourceQueries {
 
 	    uby = new Uby(db);
 	    
-	    String lemma = "exhibit";	
+	    String lemma = "loiter";	
 	    
 	    showSenseLinks(lemma);
-	    showSemanticLabels(lemma);
+	    showSemanticLabels(lemma, true); // not only single word lemmas, but also lemma phrases
+	    // showSemanticLabels(lemma, false);
 	    showWordNetWiktionaryLinks(lemma);
 	    
 	}
@@ -47,13 +49,12 @@ public class CrossResourceQueries {
 		private static void showWordNetWiktionaryLinks(String lemma) throws UbyInvalidArgumentException {
 		    
 		    Lexicon wordNet = uby.getLexiconByName("WordNet");
-		    String noun = "album";
 		    System.out.println("************************************");
 		    System.out.println("* WordNet - Wiktionary Sense Links");
 		    System.out.println("************************************");
 		    
-		    for(LexicalEntry le : uby.getLexicalEntries(noun, EPartOfSpeech.noun, wordNet)) {
-		    	System.out.println("WordNet senses of " +noun +" are linked to the following Wiktionary senses: ");
+		    for(LexicalEntry le : uby.getLexicalEntries(lemma, EPartOfSpeech.noun, wordNet)) {
+		    	System.out.println("WordNet senses of " +lemma +" are linked to the following Wiktionary senses: ");
 		    	for (Sense sense:le.getSenses()) {		    			    		
 		    		Collection<SenseAxis> sas = uby.getSenseAxesBySense(sense);
 					if (!sas.isEmpty()) {
@@ -77,12 +78,18 @@ public class CrossResourceQueries {
 		}
 
 
-		private static void showSemanticLabels(String lemma) {
-		    System.out.println("*******************");
-		    System.out.println("* Semantic Labels");
-		    System.out.println("*******************");
+		private static void showSemanticLabels(String lemma, boolean includePhrases) {
+		    System.out.println("*********************************************");
+		    System.out.println("* Semantic Labels of lemmas with the prefix ");
+		    System.out.println("* " +lemma);
+		    System.out.println("**********************************************");
 
-		    for (LexicalEntry lexEntry : uby.getLexicalEntries(lemma, null, null)) {
+		    if (includePhrases) {
+		    	lexicalEntries = uby.getLexicalEntriesByLemmaPrefix(lemma, null, null);
+		    } else {
+		    	lexicalEntries = uby.getLexicalEntries(lemma, null, null);
+		    }
+		    for (LexicalEntry lexEntry : lexicalEntries) {
 		    	
 		    	System.out.println(lexEntry.getLemmaForm() +", POS = " +lexEntry.getPartOfSpeech() 
 		    			+" (Id = " +lexEntry.getId() +"):");
