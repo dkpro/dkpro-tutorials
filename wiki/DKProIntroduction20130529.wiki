@@ -1,4 +1,3 @@
-#labels Featured
 = Introduction to DKPro - 2013-05-29 =
 This tutorial was held on May 29 by Dr. Judith Eckle-Kohler and Roland Kluge at [http://www.dipf.de/en/dipf-news/ DIPF], Frankfurt in the context of the [http://www.kdsl.tu-darmstadt.de/de/knowledge-discovery-in-scientific-literature/ PhD program Knowledge Discovery in Scientific Literature]. It is designed as a one-day tutorial with programming part. The tutorial material has been developed by Dr. Judith Eckle-Kohler, Richard Eckart de Castilho, Roland Kluge, and Dr. Torsten Zesch. The tutorial covers an introduction to the DKPro Java development infrastructure (e.g., Maven, Continuous Integration), UIMA and DKPro-Core.
 
