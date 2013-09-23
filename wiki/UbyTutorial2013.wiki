@@ -2,6 +2,11 @@
 
 == Step-by-step Instructions for the Setup ==
 
+System requirements
+  * 7 GB free disk space for the uby_open dump
+  * MySQL server installed
+  * 4 GB RAM minimum
+
 Import a UBY database dump into a MySQL database
   * [http://code.google.com/p/uby/wiki/DbImportTutorial How to import a UBY database dump (uby@Google Code)]
 
