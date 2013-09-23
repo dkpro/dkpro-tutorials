@@ -1,0 +1,21 @@
+Although semiconductors are still a major component of the area's economy, Silicon Valley has been most famous in recent 
+years for innovations in software and Internet services. Silicon Valley has significantly influenced computer operating 
+systems, software, and user interfaces.
+Using money from NASA and the United States Air Force, Doug Engelbart invented the mouse and hypertext-based 
+collaboration tools in the mid-1960s, while at Stanford Research Institute (now SRI International). When Engelbart's 
+Augmentation Research Center declined in influence due to personal conflicts and the loss of government funding, 
+Xerox hired some of Engelbart's best researchers. In turn, in the 1970s and 1980s, Xerox's Palo Alto Research Center (PARC) 
+played a pivotal role in object-oriented programming, graphical user interfaces (GUIs), Ethernet, PostScript, and 
+laser printers.
+While Xerox marketed equipment using its technologies, for the most part its technologies flourished elsewhere. 
+The diaspora of Xerox inventions led directly to 3Com and Adobe Systems, and indirectly to Cisco, Apple Computer, 
+and Microsoft. Apple's Macintosh GUI was largely a result of Steve Jobs' visit to PARC and the subsequent hiring of 
+key personnel. Cisco's impetus stemmed from the need to route a variety of protocols over Stanford's campus Ethernet.
+Silicon Valley is generally considered to have been the center of the dot-com bubble, which started in the mid-1990s 
+and collapsed after the NASDAQ stock market began to decline dramatically in April 2000. During the bubble era, 
+real estate prices reached unprecedented levels. For a brief time, Sand Hill Road was home to the most expensive 
+commercial real estate in the world, and the booming economy resulted in severe traffic congestion.
+After the dot-com crash, Silicon Valley continues to maintain its status as one of the top research and development 
+centers in the world. A 2006 The Wall Street Journal story found that 12 of the 20 most inventive towns in America 
+were in California, and 10 of those were in Silicon Valley. San Jose led the list with 3,867 utility patents filed 
+in 2005, and number two was Sunnyvale, at 1,881 utility patents.
