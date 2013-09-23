@@ -55,12 +55,19 @@ extends org.apache.uima.fit.component.JCasAnnotator_ImplBase{
 				List<SemanticField> semanticFieldAnnotations = JCasUtil.selectCovering(jcas, SemanticField.class, token.getBegin(), token.getEnd());
 				for (int j = 0; j < semanticFieldAnnotations.size(); j++) {
 					SemanticField semanticField = semanticFieldAnnotations.get(j);
-					
-					writeTokenAndSemanticField(token.getCoveredText() +" " 
-							+token.getLemma().getValue() +" " 
-							+token.getPos().getType().getShortName()+" " 
-							+semanticField.getValue() +" " 
-							+"\n");
+					if (semanticField.getValue().equals("UNKNOWN")) {
+						writeTokenAndSemanticField(token.getCoveredText() +"\t" 
+								+token.getLemma().getValue() +"\t" 
+								+token.getPos().getType().getShortName()+"\t" 
+								+"---" 
+								+"\n");
+					} else {
+						writeTokenAndSemanticField(token.getCoveredText() +"\t" 
+								+token.getLemma().getValue() +"\t" 
+								+token.getPos().getType().getShortName()+"\t" 
+								+semanticField.getValue() +" " 
+								+"\n");
+					}
 				}
 				
 			}
