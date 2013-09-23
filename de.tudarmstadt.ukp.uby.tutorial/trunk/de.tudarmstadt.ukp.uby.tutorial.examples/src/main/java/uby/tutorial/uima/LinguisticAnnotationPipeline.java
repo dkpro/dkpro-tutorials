@@ -48,7 +48,7 @@ public class LinguisticAnnotationPipeline {
 				AnalysisEngineDescription semanticFieldWriter =
 						createEngineDescription(
 							SemanticFieldConsumer.class,
-							SemanticFieldConsumer.PARAM_OUTPUT, "target/tokensSemanticFields.txt");
+							SemanticFieldConsumer.PARAM_OUTPUT, "output/exampleTextWithSemanticFields.txt");
 
 							
 				SimplePipeline.runPipeline(reader, tokenizer, posTagger, lemmatizer, semanticFieldAnnotator, semanticFieldWriter);
