@@ -15,6 +15,7 @@ import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.clearnlp.ClearNlpSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
+import de.tudarmstadt.ukp.uby.resource.UbyResourceLocator;
 import de.tudarmstadt.ukp.uby.resource.UbySemanticFieldResource;
 import de.tudarmstadt.ukp.uby.uima.annotator.UbySemanticFieldAnnotator;
 
@@ -44,15 +45,31 @@ public class LinguisticAnnotationPipeline {
 			    	                        UbySemanticFieldResource.PARAM_DRIVER_NAME, "mysql",
 			    	                        UbySemanticFieldResource.PARAM_USERNAME, "root",
 			    	                        UbySemanticFieldResource.PARAM_PASSWORD, "pass"));
-
+			    
+			    
+			    // this analysis engine writes some linguistic annotations to a file
+			    // this is also an example of an analysis engine that calls UBY as an external resource in order to 
+			    // look up semantic labels of common nouns, which are then written to the console
 				AnalysisEngineDescription semanticFieldWriter =
 						createEngineDescription(
 							SemanticFieldConsumer.class,
-							SemanticFieldConsumer.PARAM_OUTPUT, "output/exampleTextWithSemanticFields.txt");
+							SemanticFieldConsumer.PARAM_OUTPUT, "output/exampleTextWithSemanticFields.txt",
+							SemanticFieldConsumer.PARAM_UBY_RESOURCE,
+	    	                createExternalResourceDescription(UbyResourceLocator.class,
+	    	                		UbyResourceLocator.PARAM_URL, "localhost/uby_open_0_3_0",
+	    	                		UbyResourceLocator.PARAM_DRIVER, "com.mysql.jdbc.Driver",
+	    	                		UbyResourceLocator.PARAM_DRIVER_NAME, "mysql",
+	    	                		UbyResourceLocator.PARAM_USERNAME, "root",
+	    	                		UbyResourceLocator.PARAM_PASSWORD, "pass")
+								);
 
 							
-				SimplePipeline.runPipeline(reader, tokenizer, posTagger, lemmatizer, semanticFieldAnnotator, semanticFieldWriter);
-				
-				
+				SimplePipeline.runPipeline(reader, 
+											tokenizer, 
+											posTagger, 
+											lemmatizer, 
+											semanticFieldAnnotator, 
+											semanticFieldWriter);
+								
 		}
 }
