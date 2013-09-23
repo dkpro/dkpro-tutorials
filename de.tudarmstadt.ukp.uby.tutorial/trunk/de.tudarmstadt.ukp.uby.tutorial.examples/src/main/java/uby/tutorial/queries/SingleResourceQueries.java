@@ -48,7 +48,7 @@ public class SingleResourceQueries {
 
 	    Uby uby = new Uby(db);
 		session = uby.getSession();
-		System.out.println(uby.getLexiconNames()); System.out.print("\n");
+		System.out.println("Names of all available lexicons: " +uby.getLexiconNames()); System.out.print("\n");
 		
 		Criteria criteriaSynSem = session.createCriteria(SynSemArgMap.class);
 		List<SynSemArgMap> SynSemArgMaps = criteriaSynSem.list(); // retrieve complete SynSemArgMap table
@@ -58,7 +58,7 @@ public class SingleResourceQueries {
 
 		Lexicon wordNet = uby.getLexiconByName("WordNet");
 	    for(LexicalEntry le : uby.getLexicalEntries(nounLemma, EPartOfSpeech.noun, wordNet)) {
-	    	System.out.println("Senses of " +le.getLemmaForm() +" in WordNet:");
+	    	System.out.println("Senses of lemma " +le.getLemmaForm() +" in WordNet:");
 	    	for (Sense sense:le.getSenses()) {
 	    		System.out.println("---- WordNet sense ID: "+sense.getMonolingualExternalRefs().get(0).getExternalReference());	    	
     		}
@@ -70,7 +70,8 @@ public class SingleResourceQueries {
 	    for(LexicalEntry le : uby.getLexicalEntries(nounLemma, EPartOfSpeech.noun, wiktionary)) {
 	    	for (Sense sense:le.getSenses()) {
 	    	   	if (!sense.getEquivalents().isEmpty()) {
-	    	   		System.out.println("Translations for " +sense.getId() +" in Wiktionary:");
+	    	   		System.out.println("Translations for " +sense.getId() +" of lemma "
+	    	   				+nounLemma +" in Wiktionary:");
 		    		for (Equivalent eq: sense.getEquivalents()){
 		                   System.out.println(eq.getLanguageIdentifier() +" translation : " +eq.getWrittenForm());              
 		    		}
@@ -84,7 +85,7 @@ public class SingleResourceQueries {
 	    
 		Lexicon verbNet = uby.getLexiconByName("VerbNet");
 		for(LexicalEntry le : uby.getLexicalEntries(verbLemma, EPartOfSpeech.verb, verbNet)){
-			System.out.println("LexicalEntry: "+le.getId());
+			System.out.println("VerbNet lexical entry of: "+verbLemma);
 			System.out.println("Lemma: "+verbLemma);
 			for(Sense sense : le.getSenses()){				
 				System.out.println("- Sense: "+sense.getId());

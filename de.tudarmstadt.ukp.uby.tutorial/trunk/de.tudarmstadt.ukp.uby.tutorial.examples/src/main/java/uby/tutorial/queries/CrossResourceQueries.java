@@ -39,8 +39,15 @@ public class CrossResourceQueries {
 	    String lemma = "life";	
 	    
 	    showSenseLinks(lemma);
-	    showSemanticLabels(lemma, true); // not only single word lemmas, but also lemma phrases
-	    // showSemanticLabels(lemma, false);
+	    
+	    // shows Uby information of the lemma as given
+	    showSemanticLabels(lemma, false);
+
+	    // shows not only Uby information of the lemma as given, but also of (lemma) phrases that start with the given lemma
+	    // depending on the frequency of the lemma as prefix, a large number of senses may be displayed
+	    // showSemanticLabels(lemma, true); 
+	    
+	    
 	    showWordNetWiktionaryLinks(lemma);
 	    
 	}
