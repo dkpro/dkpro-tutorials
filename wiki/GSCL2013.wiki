@@ -8,7 +8,11 @@
    * UIMA Eclipse Plugins available here
    * Internet connection
 
-== Step-by-step Instructions for the Setup ==
+== Slides ==
+
+   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/GSCL2013/tags/latest/slides/GSCL2013UIMATutorialUKP.pdf Slides]
+
+== Code ==
 
    * Check out the code from Subversion 
 {{{
