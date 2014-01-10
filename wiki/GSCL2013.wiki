@@ -1,0 +1,33 @@
+#summary One-sentence summary of this page.
+
+= UIMA@GSCL 2013 Tutorial (UKP) =
+
+== System requirements ==
+   * Eclipse (recent version, 4.3 Standard recommended)
+   * m2e plugin installed in Eclipse (available via Help -> Install new software)
+   * UIMA Eclipse Plugins available here
+   * Internet connection
+
+== Step-by-step Instructions for the Setup ==
+
+   * Check out the code from Subversion 
+{{{
+svn co https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/GSCL2013/tags/latest GSCL2013
+}}}
+   * In Eclipse select *File -> Import -> General -> Existing Maven projects*
+   * Point the dialog to the folder you extracted the archive to, make sure all projects are selected and press the *Finish* button
+   * The system will now fetch all necessary libraries and resources from the internet. After the process is complete and Eclipse is at rest, you can check out the examples.
+
+
+
+If you have questions or problems with the examples, [https://groups.google.com/forum/#!forum/dkpro-core-user post a question to our discussion group] or [mailto:dkpro-core-user@googlegroups.com mail us] - we will try to provide some assistance.
+
+
+This is the material from the UIMA tutorial held in conjunction with the 3rd UIMA@GCSL workshop.
+Slides 1 - Apache UIMA™, Apache uimaFIT™, and DKPro Core component collection
+Slides 2 - Apache UIMA Ruta™  
+Examples - Examples from the workshop
+Note on using the examples: 
+System requirements
+Installation
+Extract the archive to your harddisk
