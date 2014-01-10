@@ -35,4 +35,5 @@
   		<version>2.1.0</version>
   	</dependency>
   </dependencies>
+  <name>UIMA@GSCL 2013 - Running Ruta in a pipeline</name>
 </project>

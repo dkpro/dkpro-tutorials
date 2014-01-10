@@ -72,4 +72,5 @@
 			<artifactId>de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl</artifactId>
 		</dependency>
 	</dependencies>
+	<name>UIMA@GSCL 2013 - Using DKPro Core components</name>
 </project>

@@ -33,4 +33,5 @@
 			<artifactId>de.tudarmstadt.ukp.dkpro.core.textcat-asl</artifactId>
 		</dependency>
 	</dependencies>
+	<name>UIMA@GSCL 2013 - Different styles of running a pipeline</name>
 </project>

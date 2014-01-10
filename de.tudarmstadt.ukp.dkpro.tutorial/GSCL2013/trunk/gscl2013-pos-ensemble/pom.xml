@@ -4,7 +4,7 @@
 	<groupId>de.tudarmstadt.ukp.tutorial.gscl2013</groupId>
 	<artifactId>gscl2013-pos-ensemble</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Part-of-Speech Tagging Ensemble</name>
+	<name>UIMA@GSCL 2013 - Part-of-Speech tagging ensemble</name>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
