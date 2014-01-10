@@ -1,7 +1,8 @@
 This wiki is intended as a guide through the tutorials and training content provided on this site.
 
 Content Overview:
-  *  [http://code.google.com/p/dkpro-tutorials/wiki/DKProIntroduction20130529 Introduction to UIMA, uimaFIT and DKPro-Core]
-  * [UbyTutorial2013 Supplementary material and example code for the UBY tutorial 2013]
+   * [GSCL2013 24 Sep 2013: UIMA@GSCL 2013]
+   * [UbyTutorial2013 07 Sep 2013: UBY Tutorial 2013]
+   * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
 
 The project site and the wiki are still under development. In the coming weeks, we will flesh out the learning content and add new tutorials - so stay tuned!
