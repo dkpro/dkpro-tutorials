@@ -7,7 +7,7 @@ This is the material from the UIMA tutorial held in conjunction with the 3rd UIM
 == System requirements ==
    * Eclipse (recent version, 4.3 Standard recommended)
    * m2e plugin installed in Eclipse (available via Help -> Install new software)
-   * UIMA Eclipse Plugins available here
+   * UIMA Eclipse Plugins available [http://uima.apache.org/downloads.cgi here]
    * Internet connection
 
 == Slides ==
