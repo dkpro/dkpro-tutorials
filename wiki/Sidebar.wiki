@@ -3,6 +3,7 @@
  * Tutorials
    * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
    * [UbyTutorial2013 UBY Tutorial 2013]
+   * [GSCL2013 UIMA@GSCL 2013 Tutorial (UKP)]
  * Developer Cheat Sheets
    * Eclipse
      * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
