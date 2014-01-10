@@ -10,13 +10,13 @@
 
 == Slides ==
 
-   * [https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/GSCL2013/tags/latest/slides/GSCL2013UIMATutorialUKP.pdf Slides]
+   * [https://dkpro-tutorials.googlecode.com/svn/GSCL2013/tags/latest/slides/GSCL2013UIMATutorialUKP.pdf Slides]
 
 == Code ==
 
    * Check out the code from Subversion 
 {{{
-svn co https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/GSCL2013/tags/latest GSCL2013
+svn co https://dkpro-tutorials.googlecode.com/svn/GSCL2013/tags/latest GSCL2013
 }}}
    * In Eclipse select *File -> Import -> General -> Existing Maven projects*
    * Point the dialog to the folder you extracted the archive to, make sure all projects are selected and press the *Finish* button
