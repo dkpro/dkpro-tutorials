@@ -2,6 +2,8 @@
 
 = UIMA@GSCL 2013 Tutorial (UKP) =
 
+This is the material from the UIMA tutorial held in conjunction with the 3rd UIMA@GCSL workshop. The material here covers only the part contributed by UKP. Look for the materials of the part on Ruta on [http://uima.apache.org/gscl13.html this page].
+
 == System requirements ==
    * Eclipse (recent version, 4.3 Standard recommended)
    * m2e plugin installed in Eclipse (available via Help -> Install new software)
@@ -27,7 +29,6 @@ svn co https://dkpro-tutorials.googlecode.com/svn/GSCL2013/tags/latest GSCL2013
 If you have questions or problems with the examples, [https://groups.google.com/forum/#!forum/dkpro-core-user post a question to our discussion group] or [mailto:dkpro-core-user@googlegroups.com mail us] - we will try to provide some assistance.
 
 
-This is the material from the UIMA tutorial held in conjunction with the 3rd UIMA@GCSL workshop.
 Slides 1 - Apache UIMA™, Apache uimaFIT™, and DKPro Core component collection
 Slides 2 - Apache UIMA Ruta™  
 Examples - Examples from the workshop
