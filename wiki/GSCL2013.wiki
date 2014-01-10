@@ -24,15 +24,4 @@ svn co https://dkpro-tutorials.googlecode.com/svn/GSCL2013/tags/latest GSCL2013
    * Point the dialog to the folder you extracted the archive to, make sure all projects are selected and press the *Finish* button
    * The system will now fetch all necessary libraries and resources from the internet. After the process is complete and Eclipse is at rest, you can check out the examples.
 
-
-
 If you have questions or problems with the examples, [https://groups.google.com/forum/#!forum/dkpro-tutorials-discuss post a question to our discussion group] or [mailto:dkpro-tutorials-discuss@googlegroups.com mail us] - we will try to provide some assistance.
-
-
-Slides 1 - Apache UIMA™, Apache uimaFIT™, and DKPro Core component collection
-Slides 2 - Apache UIMA Ruta™  
-Examples - Examples from the workshop
-Note on using the examples: 
-System requirements
-Installation
-Extract the archive to your harddisk
