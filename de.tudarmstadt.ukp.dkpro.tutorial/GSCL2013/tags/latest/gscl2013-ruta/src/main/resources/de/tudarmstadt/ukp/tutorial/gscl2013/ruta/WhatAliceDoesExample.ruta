@@ -1,0 +1,8 @@
+PACKAGE de.tudarmstadt.ukp.tutorial.gscl2013.ruta;
+
+TYPESYSTEM POS;
+DECLARE AliceAction;
+
+"Alice" V {->MARK(AliceAction,2)};
+
+ 

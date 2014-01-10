@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>de.tudarmstadt.ukp.tutorial.gscl2013.ruta.WhatAliceDoesExampleTypeSystem</name>
+    <types>
+        <typeDescription>
+            <name>de.tudarmstadt.ukp.teaching.uima2.unit4.WhatAliceDoesExample.AliceAction</name>
+            <description>Type defined in de.tudarmstadt.ukp.teaching.uima2.unit4.WhatAliceDoesExample</description>
+            <supertypeName>uima.tcas.Annotation</supertypeName>
+        </typeDescription>
+    </types>
+</typeSystemDescription>
