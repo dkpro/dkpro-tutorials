@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.tudarmstadt.ukp.tutorial.gscl2013</groupId>
+	<artifactId>gscl2013</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>gscl2013-dkpro</module>
+		<module>gscl2013-pipeline</module>
+		<module>gscl2013-pos-ensemble</module>
+		<module>gscl2013-ruta</module>
+		<module>gscl2013-slides</module>
+		<module>gscl2013-types</module>
+	</modules>
+	<scm>
+		<developerConnection>scm:svn:https://dkpro-tutorials.googlecode.com/svn/de.tudarmstadt.ukp.dkpro.tutorial/GSCL2013/trunk</developerConnection>
+	</scm>
+	<name>UIMA@GSCL 2013 - UIMA Tutorial (UKP)</name>
+	<description>This is the part of the UIMA@GSCL 2013 tutorial contributed by the UKP Lab.</description>
+</project>
