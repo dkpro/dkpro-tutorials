@@ -14,7 +14,7 @@ This is the material from the UIMA tutorial held in conjunction with the 3rd UIM
 
    * [https://dkpro-tutorials.googlecode.com/svn/GSCL2013/tags/latest/slides/GSCL2013UIMATutorialUKP.pdf Slides]
 
-== Code ==
+== Examples ==
 
    * Check out the code from Subversion 
 {{{
