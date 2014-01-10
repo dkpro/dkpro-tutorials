@@ -1,7 +1,7 @@
 #summary The sidebar used for all Wiki pages
 
  * Tutorials
-   * [GSCL2013 24 Sep 2013: UIMA@GSCL 2013 Tutorial (UKP)]
+   * [GSCL2013 24 Sep 2013: UIMA@GSCL 2013]
    * [UbyTutorial2013 07 Sep 2013: UBY Tutorial 2013]
    * [DKProIntroduction20130529 29 May 2013: DKPro Core and UIMA]
  * Developer Cheat Sheets
