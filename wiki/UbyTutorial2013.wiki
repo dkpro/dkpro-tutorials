@@ -14,7 +14,7 @@ Installing Eclipse
    * [EclipseInstallationAndSetup Eclipse Installation and Setup]
 
 Connecting to Maven repositories
-   * The pom in the example Maven project is configured to connect to public Maven repositories maintained by UKP Lab, TU Darmstadt. If you encounter problems, you can follow the instructions here: [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
+   * You do not have to modify your settings.xml or create one, because the pom in the example Maven project is configured to connect to public Maven repositories maintained by UKP Lab, TU Darmstadt. If you encounter problems, you can follow the instructions here: [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository UKP Public Maven Repository]
 
 
 Check out the tutorial project in Eclipse:
