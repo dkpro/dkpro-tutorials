@@ -2,16 +2,9 @@
 
 =Installing Eclipse=
 
-A pre-packaged Eclipse (*for Linux platforms only*) can be obtained from [http://public.ukp.informatik.tu-darmstadt.de/kdsl/eclipse-SDK-4.2-linux-gtk-ukp-20120727-x86_64.tar.bz2 the UKP public file server].
-   * Download and install the latest pre-packaged version for your platform.
-   * If you like, adapt the template script [http://dkpro-tutorials.googlecode.com/svn/wiki/files/start_eclipse.sh start_eclipse.sh], which configures your workspace, e.g., environment variables; this is not strictly necessary, however.
+Install Eclipse (e.g. Kepler) for your platform from http://www.eclipse.org
 
-Currently supported platforms are:
-
-   * Ubuntu Linux x86 64bit
-   * Sun Java Development Kit 1.6 or !OpenJDK shipping with Ubuntu
-
-The pre-packaged bundles are based on the Eclipse Classic distribution from http://www.eclipse.org which includes the Java Development Tools and the Eclipse Plug-in Development Environment. In addition at least the following plug-ins are also pre-installed
+At least the following plug-ins are required:
 
    * Version Control: Subclipse 1.8.x , see: http://subclipse.tigris.org/update_1.8.x
       * please do not use Subversive. Everybody in the group uses Subclipse and this is the only "supported" Subversion plugin at UKP.
@@ -19,8 +12,6 @@ The pre-packaged bundles are based on the Eclipse Classic distribution from http
    * Subclipse/Maven Integration: Subclipse Maven Integration, update site: http://subclipse.tigris.org/m2eclipse/1.0/
    * Apache UIMA tools , see: http://www.apache.org/dist/uima/eclipse-update-site/.
    * Task Management: Mylyn, is included in Eclipse Classic. Use Help->Install New Software, select "--All available sites--" and choose Collaboration -> Mylyn
-
-Other plug-ins may also be included. A full list should be included in the README file accompanying the pre-packaged bundle.
 
 
 =Further links=
