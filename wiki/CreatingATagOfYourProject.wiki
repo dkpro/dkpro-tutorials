@@ -1,7 +1,7 @@
 #summary This page guides you through creating a tag of your project in SVN.
 
 =Motivation=
-Creating a tag (or even better: performing a Maven release) after you finished a set of scientific experiments (e.g. after submitted the publication where you describe these experiments) is a best practice, especially in research. This way, it is easier for you to reproduce your experiments, e.g. when you are working on a revision of your scientific publication.
+Creating a tag (or even better: performing a Maven release) after you finished a set of scientific experiments (e.g. after submitting the publication where you describe these experiments) is a best practice, especially in research. This way, it is easier for you to reproduce your experiments, e.g. when you are working on a revision of your scientific publication.
 
 =Preparation=
 
