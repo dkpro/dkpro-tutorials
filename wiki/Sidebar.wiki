@@ -8,6 +8,7 @@
    * Eclipse
      * [EclipseInstallationAndSetup Eclipse Setup & Configuration]
      * [CheckingInAProject Checking in a new Project]
+     * [CreatingATagOfYourProject Creating a SVN tag of your project]
      * [EclipseSynchronizeWorkspace Synchronizing]
    * Maven
      * [http://code.google.com/p/dkpro-core-asl/wiki/UkpMavenRepository Public UKP Repositories]
