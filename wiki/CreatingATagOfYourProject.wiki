@@ -1,0 +1,11 @@
+#summary This page guides you through creating a tag of your project in SVN.
+
+=Preparation=
+
+  * We assume that your project is located in a folder named _trunk_
+  * On the same level as the _trunk_ folder, create a new folder _tags_ if it does not exist: Open the _SVN Repository Exploring_ perspective, right click on your project folder -> New -> New remote folder
+
+
+=Creating a new Tag=
+  * right click on your project folder (which is located in the _trunk_ folder) -> Branch/Tag -> select the target by browsing to the _tags_ folder and adding the name of a *new* subfolder like this: tags/NEW_SUBFOLDER 
+  * then click _Next_ (HEAD revision) -> _Next_ -> enter comment -> _Finish_
