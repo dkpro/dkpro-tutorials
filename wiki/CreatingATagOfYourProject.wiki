@@ -1,11 +1,17 @@
-#summary This page guides you through creating a tag of your project in SVN.
+#summary This page guides you through creating a tag of your project code in SVN using eclipse.
 
 =Motivation=
-Creating a tag (or even better: performing a Maven release) after you finished a set of scientific experiments (e.g. after submitting the publication where you describe these experiments) is a best practice, especially in research. This way, it is easier for you to reproduce your experiments, e.g. when you are working on a revision of your scientific publication.
+Creating a SVN tag of your project code (or even better: performing a Maven release) after you finished a set of scientific experiments (e.g. after submitting the publication where you describe these experiments) is a best practice, especially in research. This way, it is easier for you to reproduce your experiments, e.g. when you are working on a revision of your scientific publication.
+
+==What you should not commit to SVN==
+Although any scientific experiment also uses data, you should not check in large datasets into the SVN. 
+
+*Remember* Never commit corpora or other large resources (anything larger than a typical source code file is considered large) to a SVN repository.
+This tutorial is intended only for your project code including any resources that were explicitly created for a test case.
 
 =Preparation=
 
-  * We assume that your project is located in a folder named _trunk_
+  * We assume that you are using eclipse and that your project is located in a folder named _trunk_
   * On the same level as the _trunk_ folder, create a new folder _tags_ if it does not exist: Open the _SVN Repository Exploring_ perspective, right click on your project folder -> New -> New remote folder
 
 
