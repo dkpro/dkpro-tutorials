@@ -1,4 +1,4 @@
-#sidebar TableOfContents
+#sidebar Jython_TableOfContents
 = Stemming & Lemmatization =
 *Table of contents*
 <wiki:toc max_depth="3" />
