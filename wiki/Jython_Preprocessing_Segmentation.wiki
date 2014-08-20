@@ -1,4 +1,4 @@
-#sidebar TableOfContents
+#sidebar Jython_TableOfContents
 = Segmentation =
 *Table of contents*
 <wiki:toc max_depth="3" />
