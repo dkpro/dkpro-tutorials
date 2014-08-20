@@ -1,4 +1,4 @@
-#sidebar TableOfContents
+#sidebar Jython_TableOfContents
 
 = Preprocessing Data =
 Before we are able to work on the task of interest, we often must perform some preprocessing. DKPro comes with a wide range of existent components for basic NLP task, like segmentation, part-of-speech tagging, chunking, and so on. In the following you can find Jython scripts for most of the basic NLP task. You can find a list of all implemented components and models in the [https://code.google.com/p/dkpro-core-asl/ DKPro-Wiki]
