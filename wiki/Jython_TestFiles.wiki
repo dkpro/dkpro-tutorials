@@ -1,4 +1,4 @@
-#sidebar TableOfContents
+#sidebar Jython_TableOfContents
 = Test Files = 
 To be able to run the different pipelines, we will need some textual data that we can process. For this purpose, we create two basic text files, one for English, one for German. For simplicity, we use the following sample sentences but feel free to change the content to anything else you like more.
 
