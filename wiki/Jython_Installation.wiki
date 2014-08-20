@@ -1,4 +1,4 @@
-#sidebar TableOfContents
+#sidebar Jython_TableOfContents
 = Installation =
 
 *Table of contents*
