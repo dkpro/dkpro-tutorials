@@ -1,3 +1,4 @@
 #sidebar Jython_TableOfContents
 
 = Introduction =
+The following pages are a step-by-step tutorial how DKPro can be used with Jython.
