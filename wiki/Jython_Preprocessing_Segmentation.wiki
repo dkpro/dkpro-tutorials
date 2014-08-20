@@ -1,0 +1,149 @@
+#sidebar TableOfContents
+= Segmentation =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+Segmentation, i.e. dividing written text into units like sentences and words, is often one of the first components in any NLP pipeline. Correct segmentation is non-trivial and the further resutls can (heavily) vary for different segmentation strategies.
+
+In DKPro, different segmentation strategies are implemented. In the following, we present code snippets for the most common one. Which strategy is the most suitable often depends on the specific task and cannot be answered in general.
+
+== Segmentation in DKPro ==
+The following script compares the different segmenter that are currently available in DKPro. 
+{{{
+#!/usr/bin/env jython
+# Filename: segmentation.py
+"""
+Reads in a specific text file and runs the different existent segmenter for this file.
+Run by: jython segmentation.py <filename> <language-code>
+"""
+
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# BreakIteratorSegmenter
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.tokit-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.tokit import *
+
+# OpenNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+
+# ClearNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.clearnlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.clearnlp import *
+
+# StanfordNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
+
+# LanguageTool
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.languagetool-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.languagetool import *
+
+
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+# Function to print the detected sentences and tokens
+def printTokens(name, pipeline):
+    print "\n\n%s: " % (name)
+    for jcas in pipeline:
+      for sentence in select(jcas, Sentence):
+          tokens = selectCovered(Token, sentence)
+          print " ".join(token.coveredText for token in tokens)
+
+# Our text reader which we use for all segmenters
+reader =  createReaderDescription(TextReader,
+    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2])
+
+# BreakIteratorSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(BreakIteratorSegmenter));  
+    printTokens('BreakIteratorSegmenter', pipeline)
+except:
+    print 'BreakIteratorSegmenter is not working'
+
+# OpenNlpSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(OpenNlpSegmenter));  
+    printTokens('OpenNlpSegmenter', pipeline)
+except:
+    print 'OpenNlpSegmenter is not working'
+
+# ClearNlpSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(ClearNlpSegmenter));  
+    printTokens('ClearNlpSegmenter', pipeline)
+except:
+    print 'ClearNlpSegmenter is not working'
+    
+# StanfordSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(StanfordSegmenter));  
+    printTokens('StanfordSegmenter', pipeline)
+except:
+    print 'StanfordSegmenter is not working'
+
+
+# LanguageTool
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(LanguageToolSegmenter));  
+    printTokens('LanguageToolSegmenter', pipeline)
+except:
+    print 'LanguageToolSegmenter is not working'
+
+
+
+}}}
+
+The script can be executed with the command:
+{{{
+jython segmentation.py examples/example-segmentation-en.txt en
+}}}
+
+or for the German version:
+{{{
+jython segmentation.py examples/example-segmentation-de.txt de
+}}}
+
+The _example-segmentation-en.txt_ / _example-segmentation-de.txt_ contains a quite difficult example with alot obstacles for correct sentence splitting. Which segmentation rule is most suitable depends, as mentioned, on the later task. Note, for German documents, only the _!BreakIteratorSegmenter_, the _!OpenNlpSegmenter_, and the _!LanguageToolSegmenter_ work.

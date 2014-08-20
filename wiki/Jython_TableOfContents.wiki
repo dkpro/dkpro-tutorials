@@ -1,0 +1,24 @@
+	* *Basics*
+		* Overview DKPro
+		* [Installation]
+		* [TestFiles Files]
+	* *The First Pipelines*
+		* [ReadingData Reading Data] 
+		* [Preprocessing Preprocessing Data]
+			* [Preprocessing_Segmentation Segmentation] 
+			* [Preprocessing_POS Part-Of-Speech Tagging] 
+			* [Preprocessing_Stemming Stemming & Lemmatization] 
+			* [Preprocessing_NER Named Entity Recognition] 
+			* Proper-Noun Detection
+			* Chunking (TreeTagger)
+			* [Preprocessing_Parsing Parsing] 
+			* Koreferenz (dann kommt nicht mehr viel)
+			* Semantic Role Labeling (noch nicht drin in DKPro, in Mate-Tools)
+		* Output
+	* *Advanced Pipelines*
+		* Components in DKPro
+		* Models in DKPro
+		* JavaDocs
+	* *Further Usage of Results*
+		* Extracting Features 
+		* Usage of WEKA

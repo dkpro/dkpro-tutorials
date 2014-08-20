@@ -1,0 +1,223 @@
+#sidebar TableOfContents
+= Stemming & Lemmatization =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+In many languages, words appear in several inflected forms. For example, the verb 'to walk' may appear as 'walk', 'walked', 'walks', 'walking'. In many applications, it can be helpful to work only with a the base form, for example when performaning dictionary lookups, when analyzing the used verbs etc. 
+
+Stemming and Lemmatization helps to map all inflected forms to a single item. Stemming reduce words to their stem.  The stem need not be identical to the morphological root of the word, e.g. 'studied' can be reduced to 'studi'. Stemming algorithms often work with fixed rules, for example removing the pural-s at the end of words. Lemmatization on the otherhand maps the inflected forms back to the base form, which is called the lemma of the word.  
+
+Stemmer usually operate on a single word without knowledge of the context, and therefore cannot discriminate between words which have different meanings depending on part of speech. However, stemmers typically run faster and the reduced accuracy may not matter for some applications.
+
+For more information on Stemming and Lemmtization, see [http://en.wikipedia.org/wiki/Stemming Wikipedia - Stemming], [http://en.wikipedia.org/wiki/Lemmatization Wikipedia - Lemmatization] and [http://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html Stanford - Stemming and lemmatization]
+
+
+== Stemming ==
+DKPro provides you with an interface for the [http://snowball.tartarus.org/ SnowballStemmer]. You can use this stemmer as shown in the following script. To work properly, the text must already be segmented into tokens. We use the _OpenNlpSegmenter_, but any other segmenter would also be suitable.
+
+{{{
+#!/usr/bin/env jython
+# Filename: stemming.py
+"""
+Reads in a specific text file and runs first the OpenNlpSegmenter and then the SnowballStemmer.
+Run by: jython stemming.py <filename> <language-code>
+"""
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# OpenNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+
+# Snowball
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.snowball-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.snowball import *
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+
+# Assemble and run pipeline
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2],
+     ),
+  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(SnowballStemmer));
+
+for jcas in pipeline:
+    print "Word\tStemmed Word"
+    for stem in select(jcas, Stem):
+        print stem.coveredText + "\t" + stem.value
+
+}}}
+
+As before, you can call this script by executing the following command:
+{{{
+jython stemming.py <input-file> <language-code>
+}}}
+
+For the English example, execute:
+{{{
+jython stemming.py examples/example-en.txt en
+}}}
+
+For the German example, execute:
+{{{
+jython stemming.py examples/example-de.txt de
+}}}
+
+The !SnowbalLStemmer adds _Stem_ annotations. The command _`select(jcas, Stem)`_ returns for the current JCas all annotations of Type _Stem_. The stemmed version of a word can then accessed by _`stem.value`_.
+
+
+The !SnowballStemmer works for English, for Russian, for the Romance languages French, Spanish, Portuguese and Italian, for German and Dutch, for Swedish, Norwegian and Danish, and for Finnish.
+
+== Lemmatization ==
+
+We have several more components for lemmatization than for stemming. The following scripts compares some lemmatization components. If you like to use !TreeTagger for lemmatization, please see [Preprocessing_POS#TreeTagger Part-of-Speech Tagging] how to install and use !TreeTagger with DKPro.
+
+{{{
+#!/usr/bin/env jython
+# Filename: lemmatization.py
+"""
+Reads in a specific text file and runs different lemmatization algorithms.
+Run by: jython lemmatization.py <filename> <language-code>
+"""
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# ClearNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.clearnlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.clearnlp import *
+
+# StanfordNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
+
+# LanguageTool
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.languagetool-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.languagetool import *
+
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+# Function to print the detected sentences and tokens
+def printLemmas(name, pipeline):
+    print "\n\n%s: " % (name)
+    for jcas in pipeline:
+        for lemma in select(jcas, Lemma):            
+            print("%s/%s " % (lemma.coveredText, lemma.value)),
+
+#A common reader            
+reader = createReaderDescription(TextReader,
+                                TextReader.PARAM_PATH, sys.argv[1],
+                                TextReader.PARAM_LANGUAGE, sys.argv[2])
+
+# Stanford Tools
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(StanfordSegmenter),
+      createEngineDescription(StanfordLemmatizer));  
+    printLemmas('StanfordLemmatizer', pipeline)
+except:
+    print 'StanfordLemmatizer is not working'
+    
+# ClearNlp Tools
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(ClearNlpSegmenter),
+      createEngineDescription(ClearNlpPosTagger), #Note, ClearNlpLemmatizer requires POS-tags
+      createEngineDescription(ClearNlpLemmatizer));  
+    printLemmas('ClearNlpLemmatizer', pipeline)
+except:
+    print 'ClearNlpLemmatizer is not working'
+    
+# Language Tools
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(LanguageToolSegmenter),
+      createEngineDescription(LanguageToolLemmatizer));  
+    printLemmas('LanguageToolLemmatizer', pipeline)
+except:
+    print 'LanguageToolLemmatizer is not working'
+
+
+}}}
+
+You can execute the above script by:
+{{{
+jython lemmatization.py <input-file> <language-code>
+}}}
+
+Note, if you like to hide the log ouput on the screen, append _2> log.txt_ to your command line. For example, execute the script like this:
+
+{{{
+jython lemmatization.py examples/example-en.txt en 2> log.txt
+}}}
+
+In the script, we used the segmenter as well as the lemmatizer from the same package, e.g. from StanfordNlp or from ClearNlp. You can mix the different componentens, for example you can use the _OpenNlpSegmenter_ togehter with the _StanfordNlpLemmatizer_. But this leads potentially to a wrong lemmatization, as the lemmatizer usually expects a specifc way of segmentation. 
+
+
+In the above script, _!StanfordLemmatizer_ and _!ClearNlpLemmatizer_ only work for English. For German, you can either use the _!LanguageToolLemmatizer_ or !TreeTagger as described [Preprocessing_POS#TreeTagger  here].

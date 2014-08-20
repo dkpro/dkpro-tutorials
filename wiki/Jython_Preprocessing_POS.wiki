@@ -1,0 +1,213 @@
+#sidebar TableOfContents
+= Reading Data =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+Part-of-speech tagging is a basic but highly useful step in many NLP applications. It is used in may further NLP applications, for example in sentiment detection. 
+
+For more information on part of speech, see [http://en.wikipedia.org/wiki/Part-of-speech_tagging Wikipedia - Part-of-speech tagging]
+
+== !OpenNlpPosTagger ==
+Our first example uses the _!OpenNlpPosTagger_:
+
+{{{
+#!/usr/bin/env jython
+# Filename: pos.py
+"""
+Reads in a specific text file and runs first the OpenNlpSegmenter and then the OpenNlpPosTagger.
+Run by: jython pos.py <filename> <language-code>
+"""
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# OpenNLP 
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+
+# Assemble and run pipeline
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2],
+     ),
+  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(OpenNlpPosTagger));
+
+for jcas in pipeline:
+  for token in select(jcas, Token):
+    print token.coveredText + " " + token.pos.posValue
+
+}}}
+
+We can execute this script by calling:
+{{{
+jython pos.py examples/example-en.txt en
+}}}
+
+For a German text file, we execute this script by calling:
+{{{
+jython pos.py examples/example-de.txt de
+}}}
+
+Let's have a closer look at the different parts of the script:
+{{{
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2],
+     ),
+  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(OpenNlpPosTagger));
+}}}
+
+Here we define our pipeline. The first component of the pipeline is _!TextReader_. We set two parameters for _!TextReader_, the path of the file and the language. As path we use the first argument to our script, as language we use the second argument that is passed to our script. 
+
+The second component of the pipeline is the _!OpenNlpSegmenter_, which splits our text into sentences and tokens. See [Preprocessing_Segmentation Segmentation] for further details.
+
+On top of the text reader and the segmenter we can use our part-of-speech tagger. In the given example we use the _!OpenNlpPosTagger_.
+
+The last lines of the script are:
+{{{
+for jcas in pipeline:
+  for token in select(jcas, Token):
+    print token.coveredText + " " + token.pos.posValue
+}}}
+
+Here we first iterate through all JCas in the pipeline. For the above example the _!TextReader_ only reads in one document and passes this through the pipeline. So for the specific example, a for-loop would not be necessary. 
+
+The function `select(jcas, Token)` returns a list with all annotations of type _Token_ in the given JCas, i.e. it returns a list with all tokens. We iterate through this list and print the covered text as well as the POS-value for the corresponding token.
+
+The output of the script should look like:
+{{{
+Some DT
+students NNS
+like VBP
+to TO
+study VB
+in IN
+the DT
+mornings NNS
+. .
+
+[...]
+}}} 
+
+
+== !TreeTagger == 
+Instead of using _OpenNlp_ for POS-tagging, we can also use [http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ TreeTagger] for part-of-speech tagging and lemmatizing. Due to copyright issues, !TreeTagger cannot directly be accessed from the DKPro repository. Instead, you have first to download and to install !TreeTagger to able to use it with DKPro.
+
+=== !TreeTagger Installation for Linux ===
+ * Go to the [http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ TreeTagger website]
+ * From the _download_ section, download the correct tagger package, i.e. _PC-Linux_
+    * Extract the .gz archive
+    * Copy the `tree-tagger-linux-3.2/bin/tree-tagger` file and place it in the same folder as the script `treetagger.py`
+ * From the _parameter file_ section, download the correct model. For the example below download _English parameter file_ (`english-par-linux-3.2-utf8.bin.gz`)
+    * Unzip the file (e.g. `gunzip english-par-linux-3.2-utf8.bin.gz`)
+    * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.py` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
+
+=== !TreeTagger Installation for Windows 7 ===
+ * Ensure that you have a program to unzip `.gz` files. For example you can use [http://www.7-zip.org 7zip]
+ * Go to the [http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ TreeTagger website]
+ * In the _Windows_ section, you find the download link for the `tree-tagger-windows-3.2.zip` file.
+    * Extract the zip-archive
+    * Copy the `tree-tagger-windows-3.2/bin/tree-tagger.exe` to your folder with with the `treetagger.py` script
+ * From the _parameter file_ section, download the correct model. For the example below download _English parameter file_ (`english-par-linux-3.2-utf8.bin.gz`)
+    * Unzip the file (e.g. by using [http://www.7-zip.org 7zip])
+    * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.py` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
+ * In the script below, you find a line `TreeTaggerPosLemmaTT4J.PARAM_EXECUTABLE_PATH, "tree-tagger"`, change the value `tree-tagger` to `tree-tagger.exe` 
+
+
+
+=== Usage of !TreeTagger within DKPro ===
+The following script demonstrates the usage of !TreeTagger:
+
+{{{
+#!/usr/bin/env jython
+# Filename: treetagger.py
+"""
+Reads in a specific text file and runs first the OpenNlpSegmenter and then the TreeTagger for POS-tagging and lemmatisation.
+Run by: jython pos.py <filename> <language-code>
+"""
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.treetagger-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+from de.tudarmstadt.ukp.dkpro.core.treetagger import *
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+# Assemble and run pipeline
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2]),
+  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(TreeTaggerPosLemmaTT4J,
+    TreeTaggerPosLemmaTT4J.PARAM_EXECUTABLE_PATH, "tree-tagger", #!! Change to "tree-tagger.exe" if the script is executed under windows !!
+    TreeTaggerPosLemmaTT4J.PARAM_MODEL_PATH, "english-par-linux-3.2-utf8.bin",
+    TreeTaggerPosLemmaTT4J.PARAM_MODEL_ENCODING, "UTF-8"));
+
+for jcas in pipeline:
+  for token in select(jcas, Token):
+    print token.coveredText + " " + token.pos.posValue + " " + token.lemma.value
+}}}
+
+Call with `C:\jython-2.7b1\jython treetagger.py <foldername> <language>`, e.g. `jython treetagger.py  examples/example-en.txt en`.
+
+If you already have !TreeTagger installed on your system and or if you want to use another model file, you can also set in the script the parameters `PARAM_EXECUTABLE_PATH` and `PARAM_MODEL_PATH` to their respective locations.

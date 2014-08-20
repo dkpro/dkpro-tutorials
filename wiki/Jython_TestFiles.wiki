@@ -1,0 +1,17 @@
+#sidebar TableOfContents
+= Test Files = 
+To be able to run the different pipelines, we will need some textual data that we can process. For this purpose, we create two basic text files, one for English, one for German. For simplicity, we use the following sample sentences but feel free to change the content to anything else you like more.
+
+The content of `example-en.txt` is:
+<blockquote>
+Some students like to study in the mornings. Other students like to do so in the evenings. And some don't study at all.
+</blockquote>
+
+
+The content of `example-de.txt` is:
+<blockquote>
+Vor einem großen Walde wohnte ein armer Holzhacker mit seiner Frau und seinen zwei Kindern. Das Bübchen hieß Hänsel und das Mädchen Grethel. Er hatte wenig zu beißen und zu brechen.
+</blockquote>
+
+
+We will store these files in the subfolder `examples`.

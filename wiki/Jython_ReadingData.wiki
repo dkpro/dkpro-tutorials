@@ -1,0 +1,196 @@
+#sidebar TableOfContents
+= Reading Data =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+The first step of each pipeline is to read in the data (i.e. the text) we like to process. It is possible to read in data from text files, from XML-files or even from databases. This tutorial shows you several methods how data can be read into the pipeline.
+
+== Using existing readers ==
+DKPro comes with several existing reader for common formats like `.txt` or `.xml`. We will show you some basic readers that are useful for the beginning.
+
+=== Text Reader ===
+The following script demonstrates how the text files can be read into the pipeline:
+
+{{{
+#!/usr/bin/env jython
+# Filename: text_reader.py
+
+"""
+Reads in a specific text file
+Run by: jython text_reader.py <filename> <language-code>
+"""
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+# Define different parts of the pipeline
+documentReader = createReaderDescription(TextReader, 
+                                         TextReader.PARAM_PATH, sys.argv[1],
+                                         TextReader.PARAM_LANGUAGE, sys.argv[2],
+                                         TextReader.PARAM_PATTERNS, "*.txt")
+
+# Assemble and run the pipeline 
+pipeline = iteratePipeline(
+    documentReader
+);
+
+for jcas in pipeline:  
+    print jcas.documentText
+
+}}}
+
+
+The script can be executed by calling:
+{{{
+jython text_reader.py examples/example-en.txt en
+}}}
+
+The pipeline does nothing special, it reads in the text file and outputs it to the console. The important part of the script is:
+
+{{{
+documentReader = createReaderDescription(TextReader, 
+                                         TextReader.PARAM_PATH, sys.argv[1],
+                                         TextReader.PARAM_LANGUAGE, sys.argv[2])
+}}}
+Here we say that we like to use the `TextReader` to read text into out pipeline. The file that should be read is specified by the `TextReader.PARAM_PATH`-argument. Here it is set to `sys.argv[1]`, which means use the first command line argument passed to `text_reader.py`. As a second parameter to `TextReader` we pass the language, in the above example `en` for English. For this pipeline so far we wouldn't need the language parameter, but later when doing e.g. Part-of-Speech tagging, the language parameter would be necessary.
+
+
+
+We are not only able to read in a single text file, but we can also specify to read in all text files in a specific folder. This can be done by passing the `TextReader.PARAM_PATTERNS`-parameter to our `documentReader`. The code to read all `.txt` files from a specific folder would look like:
+{{{
+documentReader = createReaderDescription(TextReader, 
+                                         TextReader.PARAM_PATH, sys.argv[1],
+                                         TextReader.PARAM_LANGUAGE, sys.argv[2]
+                                         TextReader.PARAM_PATTERNS, "*.txt")
+
+}}}
+
+We can call this modified script by:
+{{{
+jython text_reader.py examples/ en
+}}}
+
+The output will be:
+<blockquote>
+Vor einem großen Walde wohnte ein armer Holzhacker mit seiner Frau und seinen zwei Kindern. Das Bübchen hieß Hänsel und das Mädchen Grethel. Er hatte wenig zu beißen und zu brechen.
+
+Some students like to study in the mornings. Other students like to do so in the evenings. And some don't study at all.
+</blockquote>
+
+
+
+== Writing own readers ==
+The following script demonstrates how an own document reader can be implemented in Jython:
+{{{
+#!/usr/bin/env jython
+# Filename: own_reader.py
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+from org.apache.uima.fit.factory import JCasFactory
+
+
+# First, define a class which helps us to create an own document reader
+class MyDocumentReader(object):    
+    def internalReadDocument(self):
+        """ Implement here your document reader. This example returns sentences from a defined array with sentences.
+        
+        Returns: A list, first element is the document language, second is the document text
+        """
+        documents = ['This is a test.', 'To test my first own reader.', 'This function returns each sentence as a new jcas. This jcas is then processed by different engines. The output is written to the console.']
+        documentLanguage = "en"
+        for documentText in documents:        
+            yield documentLanguage, documentText
+            
+    def pipelineComponents(self, *args):
+        """ Call this function to specific your pipeline components, e.g. a segmenter, POS tagger, chunker etc."""
+        aaeDesc = createEngineDescription(args);
+        self.processEngine = createEngine(aaeDesc);
+    
+    
+    def read(self):
+        """ This function yields the jcas with the specified components applied"""
+        jcas = JCasFactory.createJCas()
+        
+        for documentLanguage, document in self.internalReadDocument():            
+            jcas.reset()
+            jcas.documentText = document
+            jcas.documentLanguage = documentLanguage
+            self.processEngine.process(jcas)
+            yield jcas
+                    
+    
+######################################
+#
+# A small example how MyDocumentReader can be used 
+#
+######################################
+
+reader = MyDocumentReader()
+reader.pipelineComponents(
+                        createEngineDescription(OpenNlpSegmenter), 
+                        createEngineDescription(OpenNlpPosTagger)
+                        )
+
+# Now we can iterate through the jcas returned by MyDocumentReader
+for jcas in reader.read():    
+    print "\n\n ------- New Document ------- \n\n"
+    for token in select(jcas, Token):
+          print token.coveredText + " " + token.pos.posValue
+
+
+}}}
+
+The defined _`MyDocumentReader`_ class implements three methods. The _`internalReadDocument`_ method implements the logic to return the document text and the document language. In the given example, we implemented a simple reader which returns the document text from a given array. If you want to read you documents from a different source, e.g. from a database, you just need to update the _`internalReadDocument`_ method. 
+
+Using the _`pipelineComponents`_ method, you can set the components of your pipeline like a segmenter, a POS tagger, or a chunker. For example, by calling:
+{{{
+reader.pipelineComponents(
+   createEngineDescription(OpenNlpSegmenter),
+   createEngineDescription(OpenNlpPosTagger)
+)
+}}}
+you set the _`OpenNlpSegmenter`_ and _`OpenNlpPosTagger`_ as the components of your pipeline.
+
+The last method of the created class is _`read`_. This method iterates through your _`internalReadDocument`_ and executes the components of your specified pipeline, i.e. in the given example the segmenter and the POS tagger would be executed for each returned text of _`internalDocumentReader`_.
+
+
+This _`MyDocumentReader`_ class allows you to easily set your pipeline components and to iterate through the document. For each document returned by _`internalReadDocument`_ the pipeline components are applied and the JCas with all annotations are returned. 
