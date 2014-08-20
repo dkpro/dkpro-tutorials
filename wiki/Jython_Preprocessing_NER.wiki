@@ -4,10 +4,18 @@
 <wiki:toc max_depth="3" />
 
 == Introduction ==
+Named Entity Recognition (NER) is the task of identifying named entities like persons, locations or organizations in text. For further information, see [http://en.wikipedia.org/wiki/Named-entity_recognition Wikipedia - Named-entity Recognition]
 
-== Named Entity Recognition ==
+In this tutorial we present scripts for the _Stanford NER_ as well as for the _OpenNlp NameFinder_.
+
+== Named Entity Recognition using Stanford NER ==
+
+The Stanford NER comes with several models for different languages. For further details, please see [http://nlp.stanford.edu/software/CRF-NER.shtml Stanford NER].
+
+The Stanford NER models for English come with either 3 classes (Location, Person, Organization), 4 classes (Location, Person, Organization, Misc) or 7 classes (Time, Location, Organization, Person, Money, Percent, Date). For German, we only have models with 4 classes (Location, Person, Organization, Misc). Further details on the German NER models can be found [http://www.nlpado.de/~sebastian/software/ner_german.shtml here].
 
 {{{
+#!!!!!!!!!!!! Currently under development !!!!!!!!!!
 #!/usr/bin/env jython
 # Filename: ner.py
 """
@@ -65,7 +73,7 @@ pipeline = iteratePipeline(
     TextReader.PARAM_PATH, sys.argv[1],
     TextReader.PARAM_LANGUAGE, sys.argv[2],
      ),
-  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(StanfordSegmenter),
   createEngineDescription(StanfordNamedEntityRecognizer));
 
 for jcas in pipeline:
@@ -73,4 +81,31 @@ for jcas in pipeline:
     for token in select(jcas, NamedEntity):
         print token.coveredText
 
+}}}
+
+
+You can execute the script by calling:
+{{{
+jython ner.py examples/example-ner-en.txt en
+}}}
+
+for the English version. For German, you can call this script by:
+{{{
+jython ner.py examples/example-ner-de.txt de
+}}}
+
+=== Selecting a different model ===
+For the Stanford NER, we can choose different models:
+
+
+== !OpenNlp !NameFinder ==
+
+!OpenNlp also comes with an implementation which allows us to detect named entities in a sentence. Further information can be found on the [https://opennlp.apache.org/documentation/1.5.3/manual/opennlp.html#tools.namefind OpenNlp website].
+
+In contrast to Stanford NER, the !OpenNlp !Namefinder only finds certain named entities, depending on the selected model. The existent models can be found [http://opennlp.sourceforge.net/models-1.5/ here].
+
+The following script gives an example how the !OpenNlp !NameFinder can be applied to identify persons and dates in a text.
+
+{{{
+#Filename: ner_opennlp.py
 }}}
