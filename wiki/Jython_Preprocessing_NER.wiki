@@ -6,7 +6,7 @@
 == Introduction ==
 Named Entity Recognition (NER) is the task of identifying named entities like persons, locations or organizations in text. For further information, see [http://en.wikipedia.org/wiki/Named-entity_recognition Wikipedia - Named-entity Recognition]
 
-In this tutorial we present scripts for the _Stanford NER_ as well as for the _OpenNlp NameFinder_.
+In this tutorial we present scripts for the _Stanford NER_ as well as for the _!OpenNlp !NameFinder_.
 
 == Named Entity Recognition using Stanford NER ==
 
@@ -93,9 +93,25 @@ for the English version. For German, you can call this script by:
 jython ner.py examples/example-ner-de.txt de 2> log.txt
 }}}
 
-=== Selecting a different model ===
-For the Stanford NER, we can choose different models:
+The named entity annotations have the type `NamedEntity` and are located in the `de.tudarmstadt.ukp.dkpro.core.api.ner.type` package. The following code selects all named entities and prints them:
 
+{{{
+# Import from de.tudarmstadt.ukp.dkpro.core.api.ner.type to be able to select NamedEntity
+from de.tudarmstadt.ukp.dkpro.core.api.ner.type import *  
+
+# ... My program code ... 
+
+for ne in select(jcas, NamedEntity):
+  print ne.coveredText+"\t"+ne.value
+}}}
+
+=== Selecting a different model ===
+For the Stanford NER, we can choose different models. To do so, we need set the `StanfordNamedEntityRecognizer.PARAM_VARIANT` parameter to the desired model. For example:
+{{{
+createEngineDescription(StanfordNamedEntityRecognizer, StanfordNamedEntityRecognizer.PARAM_VARIANT, "hgc_175m_600.crf")
+}}} 
+
+The above code selects the model for German which was trained on the Huge German Corpus (HGC).
 
 == !OpenNlp !NameFinder ==
 
