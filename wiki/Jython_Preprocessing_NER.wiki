@@ -15,7 +15,6 @@ The Stanford NER comes with several models for different languages. For further 
 The Stanford NER models for English come with either 3 classes (Location, Person, Organization), 4 classes (Location, Person, Organization, Misc) or 7 classes (Time, Location, Organization, Person, Money, Percent, Date). For German, we only have models with 4 classes (Location, Person, Organization, Misc). Further details on the German NER models can be found [http://www.nlpado.de/~sebastian/software/ner_german.shtml here].
 
 {{{
-#!!!!!!!!!!!! Currently under development !!!!!!!!!!
 #!/usr/bin/env jython
 # Filename: ner.py
 """
@@ -33,22 +32,22 @@ Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 from jip.embed import require
 
 # Text Reader
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.io.text import *
 
 # StanfordNlp
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
 
-
 # OpenNlp
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 
 
 # Dependencies for selecting specific annotations like sentences/tokens
-from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
-from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Lemma, Stem 
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import * #Chunk, PennTree
+from de.tudarmstadt.ukp.dkpro.core.api.ner.type import * #NamedEntitiy 
 
 # uimaFIT imports
 from org.apache.uima.fit.util.JCasUtil import *
@@ -73,25 +72,25 @@ pipeline = iteratePipeline(
     TextReader.PARAM_PATH, sys.argv[1],
     TextReader.PARAM_LANGUAGE, sys.argv[2],
      ),
-  createEngineDescription(StanfordSegmenter),
+  createEngineDescription(OpenNlpSegmenter),
   createEngineDescription(StanfordNamedEntityRecognizer));
 
 for jcas in pipeline:
     print "Named Entities:"
-    for token in select(jcas, NamedEntity):
-        print token.coveredText
+    for ne in select(jcas, NamedEntity):
+        print ne.coveredText+"\t"+ne.value
 
 }}}
 
 
 You can execute the script by calling:
 {{{
-jython ner.py examples/example-ner-en.txt en
+jython ner.py examples/example-ner-en.txt en 2> log.txt
 }}}
 
 for the English version. For German, you can call this script by:
 {{{
-jython ner.py examples/example-ner-de.txt de
+jython ner.py examples/example-ner-de.txt de 2> log.txt
 }}}
 
 === Selecting a different model ===
