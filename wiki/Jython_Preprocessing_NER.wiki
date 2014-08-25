@@ -117,10 +117,34 @@ The above code selects the model for German which was trained on the Huge German
 
 !OpenNlp also comes with an implementation which allows us to detect named entities in a sentence. Further information can be found on the [https://opennlp.apache.org/documentation/1.5.3/manual/opennlp.html#tools.namefind OpenNlp website].
 
-In contrast to Stanford NER, the !OpenNlp !Namefinder only finds certain named entities, depending on the selected model. The existent models can be found [http://opennlp.sourceforge.net/models-1.5/ here].
+In contrast to Stanford NER, the !OpenNlp !Namefinder only finds certain named entities, depending on the selected model. The existent models can be found in the DKPro models overview.
 
-The following script gives an example how the !OpenNlp !NameFinder can be applied to identify persons and dates in a text.
+The following script gives an example how the !OpenNlp !NameFinder can be applied to identify named entities in a text. Note, !OpenNlpNameFinder works only for English texts.
 
 {{{
 #Filename: ner_opennlp.py
+}}}
+
+
+We can call this script by executing:
+{{{
+jython ner_opennlp.py examples/example-ner-en.txt en location 2> log.txt
+}}}
+
+Note, the script expects as a third parameter the model name that should be used. Currently (as of version 1.6.2), the following models exist: location, money, organization, percentage, time, date, person. 
+
+If you like to tag multiple types of named entities, for example persons and locations, you need to create for each an own engine description and pass the different models. The pipeline would then look like:
+
+{{{
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_SOURCE_LOCATION, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2],
+     ),
+  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(OpenNlpNameFinder,   #Find persons                         
+    OpenNlpNameFinder.PARAM_VARIANT, 'person'),
+  createEngineDescription(OpenNlpNameFinder,  #Find locations                         
+    OpenNlpNameFinder.PARAM_VARIANT, 'location'),
+);
 }}}
