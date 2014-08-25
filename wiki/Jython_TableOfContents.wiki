@@ -1,6 +1,6 @@
 	* *Basics*
 		* Overview DKPro
-		* [Jython_Installation]
+		* [Jython_Installation Installation]
 		* [Jython_TestFiles Files]
 	* *The First Pipelines*
 		* [Jython_ReadingData Reading Data] 
