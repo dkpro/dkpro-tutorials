@@ -51,7 +51,7 @@ if len(sys.argv) < 3:
 # Assemble and run pipeline
 pipeline = iteratePipeline(
   createReaderDescription(TextReader,
-    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_SOURCE_LOCATION, sys.argv[1],
     TextReader.PARAM_LANGUAGE, sys.argv[2],
      ),
   createEngineDescription(OpenNlpSegmenter),
