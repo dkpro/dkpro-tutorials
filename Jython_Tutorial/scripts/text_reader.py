@@ -12,7 +12,7 @@ Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 
 # Dependencies and imports for DKPro modules
 from jip.embed import require
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.io.text import *
 
 

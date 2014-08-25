@@ -14,15 +14,15 @@ Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 from jip.embed import require
 
 # Text Reader
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.io.text import *
 
 # OpenNlp
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 
 # Snowball
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.snowball-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.snowball-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.snowball import *
 
 # Dependencies for selecting specific annotations like sentences/tokens

@@ -6,7 +6,7 @@ Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 
 # Dependencies and imports for DKPro modules
 from jip.embed import require
-require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
 from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *

@@ -1,10 +1,15 @@
+#!/usr/bin/env python
 """
 Updates all code files in the Wiki.
-Run by: python includeCode.py <wiki-dir> <code-dir>
+Run by: python includeCode.py <code-dir> <wiki-file1> <wiki-file2> ....
+
+Note: You can use globbing to hand over multiple wiki files, e.g. by running the script like this:
+python includeCode.py scripts/ wiki/*.wiki 
 """
 import os
 import sys
 import re
+
 
 def getFiles(dirname, extension):
     for fname in os.listdir(dirname):
@@ -17,7 +22,8 @@ if len(sys.argv) < 3:
     print globals()['__doc__'] % locals()
     sys.exit(1)
 
-wikiDir, codeDir = sys.argv[1:3]
+codeDir = sys.argv[1]
+wikiFiles = sys.argv[2:]
 
 #############################################
 # Read all code files
@@ -25,6 +31,8 @@ wikiDir, codeDir = sys.argv[1:3]
 programcodeStartLine = '#!/usr/bin/env jython'
 replaceTabsWithSpace = 4
 codes = {}
+
+
 for fName, path in getFiles(codeDir, '.py'):
     fIn = open(path, 'r')
     lines = fIn.readlines();
@@ -52,7 +60,8 @@ for fName, path in getFiles(codeDir, '.py'):
 #############################################
 # Read all wiki files
 #############################################
-for fName, path in getFiles(wikiDir, '.wiki'):
+for path in wikiFiles:
+    fName = os.path.basename(path)
     fIn = open(path, 'r')
     lines = fIn.readlines()
     fIn.close
