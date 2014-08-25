@@ -28,8 +28,9 @@ from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 
 
 # Dependencies for selecting specific annotations like sentences/tokens
-from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
-from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Lemma, Stem 
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import * #Chunk, PennTree
+from de.tudarmstadt.ukp.dkpro.core.api.ner.type import * #NamedEntitiy 
 
 # uimaFIT imports
 from org.apache.uima.fit.util.JCasUtil import *
@@ -59,5 +60,5 @@ pipeline = iteratePipeline(
 
 for jcas in pipeline:
     print "Named Entities:"
-    for token in select(jcas, NamedEntity):
-        print token.coveredText
+    for ne in select(jcas, NamedEntity):
+        print ne.coveredText+"\t"+ne.value
