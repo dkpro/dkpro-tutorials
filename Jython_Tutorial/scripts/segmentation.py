@@ -1,0 +1,121 @@
+#!/usr/bin/env jython
+"""
+Reads in a specific text file and runs the different existent segmenter for this file.
+Run by: jython segmentation.py <filename> <language-code>
+"""
+
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# BreakIteratorSegmenter
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.tokit-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.tokit import *
+
+# OpenNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+
+# ClearNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.clearnlp-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.clearnlp import *
+
+# StanfordNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
+
+# LanguageTool
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.languagetool-asl:1.6.1')
+from de.tudarmstadt.ukp.dkpro.core.languagetool import *
+
+
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+# Function to print the detected sentences and tokens
+def printTokens(name, pipeline):
+    print "\n\n%s: " % (name)
+    for jcas in pipeline:
+      for sentence in select(jcas, Sentence):
+          tokens = selectCovered(Token, sentence)
+          print " ".join(token.coveredText for token in tokens)
+
+# Our text reader which we use for all segmenters
+reader =  createReaderDescription(TextReader,
+    TextReader.PARAM_PATH, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2])
+
+# BreakIteratorSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(BreakIteratorSegmenter));  
+    printTokens('BreakIteratorSegmenter', pipeline)
+except:
+    print 'BreakIteratorSegmenter is not working'
+
+# OpenNlpSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(OpenNlpSegmenter));  
+    printTokens('OpenNlpSegmenter', pipeline)
+except:
+    print 'OpenNlpSegmenter is not working'
+
+# ClearNlpSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(ClearNlpSegmenter));  
+    printTokens('ClearNlpSegmenter', pipeline)
+except:
+    print 'ClearNlpSegmenter is not working'
+    
+# StanfordSegmenter
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(StanfordSegmenter));  
+    printTokens('StanfordSegmenter', pipeline)
+except:
+    print 'StanfordSegmenter is not working'
+
+
+# LanguageTool
+try:
+    pipeline = iteratePipeline(
+      reader,
+      createEngineDescription(LanguageToolSegmenter));  
+    printTokens('LanguageToolSegmenter', pipeline)
+except:
+    print 'LanguageToolSegmenter is not working'
+
+
