@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and detects named entities
-Run by: jython ner_opennlp.py <filename> <language-code> <OpenNlpNameFinder-model>
+Run by: jython ner_opennlp.jy <filename> <language-code> <OpenNlpNameFinder-model>
 """
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and detects named entities
-Run by: jython ner.py <filename> <language-code>
+Run by: jython ner.jy <filename> <language-code>
 """
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and runs the different existent segmenter for this file.
-Run by: jython segmentation.py <filename> <language-code>
+Run by: jython segmentation.jy <filename> <language-code>
 """
 
 

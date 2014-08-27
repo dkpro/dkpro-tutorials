@@ -1,4 +1,9 @@
 #!/usr/bin/env jython
+"""
+Demonstrates the implementation of an own document reader
+Run by: jython own_reader.jy
+"""
+
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types
 from java.lang import Thread
 from org.python.core.imp import *

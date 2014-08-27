@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and runs different lemmatization algorithms.
-Run by: jython lemmatization.py <filename> <language-code>
+Run by: jython lemmatization.jy <filename> <language-code>
 """
 
 

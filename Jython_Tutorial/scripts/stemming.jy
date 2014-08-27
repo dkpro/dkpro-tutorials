@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and runs first the OpenNlpSegmenter and then the SnowballStemmer.
-Run by: jython stemming.py <filename> <language-code>
+Run by: jython stemming.jy <filename> <language-code>
 """
 
 

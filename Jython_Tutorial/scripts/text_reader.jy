@@ -1,8 +1,7 @@
 #!/usr/bin/env jython
-
 """
 Reads in a specific text file
-Run by: jython text_reader.py <filename> <language-code>
+Run by: jython text_reader.jy <filename> <language-code>
 """
 
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types

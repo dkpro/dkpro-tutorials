@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
-Reads in a specific text file and runs first the OpenNlpSegmenter and then the TreeTagger for POS-tagging and lemmatisation.
-Run by: jython pos.py <filename> <language-code>
+Reads in a specific text file and runs first the OpenNlpSegmenter and then the TreeTagger for POS-tagging and lemmatization.
+Run by: jython treetagger.jy <filename> <language-code>
 """
 
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types

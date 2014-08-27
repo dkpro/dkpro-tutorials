@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and chunks the input text
-Run by: jython chunking.py <filename> <language-code>
+Run by: jython chunking.jy <filename> <language-code>
 """
 
 

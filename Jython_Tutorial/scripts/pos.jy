@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and runs first the OpenNlpSegmenter and then the OpenNlpPosTagger.
-Run by: jython pos.py <filename> <language-code>
+Run by: jython pos.jy <filename> <language-code>
 """
 
 

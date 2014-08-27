@@ -33,7 +33,7 @@ replaceTabsWithSpace = 4
 codes = {}
 
 
-for fName, path in getFiles(codeDir, '.py'):
+for fName, path in getFiles(codeDir, '.jy'):
     fIn = open(path, 'r')
     lines = fIn.readlines();
     fIn.close()

@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
 Reads in a specific text file and prints a parse tree following the conventions of Penn TreeBank
-Run by: jython parsing_dependency.py <filename> <language-code>
+Run by: jython parsing_dependency.jy <filename> <language-code>
 """
 
 
