@@ -62,8 +62,8 @@ from de.tudarmstadt.ukp.dkpro.core.treetagger import *
 #Sentence, Token, Lemma, Stem
 from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * 
 
-#Chunck
-from de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunck import * 
+#Chunk
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk import * 
 
 #Constituent
 from de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent import * 
