@@ -1,0 +1,37 @@
+#sidebar Jython_TableOfContents
+= Chunking =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+
+Chunking (or shallow parsing) divides a sentence into its constituents like noun groups, verb groups, etc. However, it does not specify their internal structure nor their role in the sentence.
+
+== !OpenNlpChunker ==
+
+The _!OpenNlpChunker_ can be used straight forward. The following script depicts the usage of this chunker.
+
+{{{
+#Filename: chunking.jy
+}}}
+
+You can execute this script by calling:
+{{{
+jython chunking.jy examples/example-en.txt en
+}}}
+
+== !TreeTagger Chunker ==
+Due to copyright reasons, the !TreeTagger chunker cannot be directly downloaded from our repository. Instead, we must first download it from the !TreeTagger website and point DKPro to the location of !TreeTagger.
+
+See [Jython_Preprocessing_POS#TreeTagger Part-of-Speech Tagging with TreeTagger] for further information on the setup.
+
+The following script first runs TreeTagger to determine the POS-tags and then to derive the chunks. Note, in case you execute this script under Windows, you need to change the parameter for the !TreeTaggerPosLemmaTT4J and !TreeTaggerChunkerTT4J to `tree-tagger.exe`.
+
+{{{
+#Filename: chunking_treetagger.jy
+}}}
+
+You can execute this script by calling: 
+{{{
+jython chunking_treetagger.jy examples/example-de.txt de
+}}}
