@@ -83,7 +83,7 @@ jython chunking.jy examples/example-en.txt en
 == !TreeTagger Chunker ==
 Due to copyright reasons, the !TreeTagger chunker cannot be directly downloaded from our repository. Instead, we must first download it from the !TreeTagger website and point DKPro to the location of !TreeTagger.
 
-See [Jython_Preprocessing_POS#TreeTagger Part-of-Speech Tagging with TreeTagger] for further information on the setup.
+See [Jython_Preprocessing_POS#TreeTagger Part-of-Speech Tagging with TreeTagger] for further information on the setup. Also make sure to download the corresponding chunking model from the !TreeTagger website and place it in the same folder as `chunking_treetagger.jy` (or alternatively, update the value for `PARAM_MODEL_PATH`).
 
 The following script first runs TreeTagger to determine the POS-tags and then to derive the chunks. Note, in case you execute this script under Windows, you need to change the parameter for the !TreeTaggerPosLemmaTT4J and !TreeTaggerChunkerTT4J to `tree-tagger.exe`.
 
