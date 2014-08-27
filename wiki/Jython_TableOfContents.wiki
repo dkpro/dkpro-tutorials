@@ -1,5 +1,5 @@
 	* *Basics*
-		* Overview DKPro
+		* [Jython_Overview_DKPro Overview DKPro]
 		* [Jython_Installation Installation]
 		* [Jython_TestFiles Files]
 	* *The First Pipelines*
@@ -9,12 +9,12 @@
 			* [Jython_Preprocessing_POS Part-Of-Speech Tagging] 
 			* [Jython_Preprocessing_Stemming Stemming & Lemmatization] 
 			* [Jython_Preprocessing_NER Named Entity Recognition] 
-			* Proper-Noun Detection
 			* Chunking (!TreeTagger)
 			* [Jython_Preprocessing_Parsing Parsing] 
 			* Koreferenz 
 			* Semantic Role Labeling 
 		* Output
+                * [Jython_CheatSheet CheatSheet] 
 	* *Advanced Pipelines*
 		* Components in DKPro
 		* Models in DKPro
