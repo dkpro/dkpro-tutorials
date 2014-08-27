@@ -130,6 +130,15 @@ You can execute the script by running:
 jython parsing_constituency.jy examples/example-en.txt en 2> log.txt
 }}}
 
+
+It might happen, that the parser runs *out of memory*. To allow Jython to allocate more memory, try the following command:
+{{{
+Linux: export JAVA_MEM="-Xmx1g"
+Windows: SET JAVA_MEM="-Xmx1g"
+}}} 
+
+We calling this command, we allow any Java application to allocate up to 1 GB of memory. If your application still need more memory, you can change the `1g` e.g. to `2g` for 2 GB of memory or `4g` for 4 GB of memory. But be careful, allowing your script to allocate more memory than available will extremly slow down your machine. So keep your RAM size in mind for your experiments.
+
 == Dependency Parsing ==
 
 For dependency parsing, we can select between the _!ClearNlpDependencyParser_, the _!MaltParser_, the _!MateParser_ and the _!MstParser_.
