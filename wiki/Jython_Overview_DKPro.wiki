@@ -1,0 +1,6 @@
+#sidebar Jython_TableOfContents
+= Overview DKPro =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
