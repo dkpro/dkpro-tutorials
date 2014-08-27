@@ -9,7 +9,7 @@
    * [Jython_Preprocessing_POS Part-Of-Speech Tagging] 
    * [Jython_Preprocessing_Stemming Stemming & Lemmatization] 
    * [Jython_Preprocessing_NER Named Entity Recognition] 
-   * Chunking (!TreeTagger)
+   * [Jython_Preprocessing_Chunking Chunking] (!TreeTagger)
    * [Jython_Preprocessing_Parsing Parsing] 
    * Koreferenz 
    * Semantic Role Labeling 
