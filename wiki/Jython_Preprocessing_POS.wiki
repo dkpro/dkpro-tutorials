@@ -13,7 +13,7 @@ Our first example uses the _!OpenNlpPosTagger_:
 
 {{{
 #!/usr/bin/env jython
-# Filename: pos.py
+# Filename: pos.jy
 """
 Reads in a specific text file and runs first the OpenNlpSegmenter and then the OpenNlpPosTagger.
 Run by: jython pos.py <filename> <language-code>
@@ -74,12 +74,12 @@ for jcas in pipeline:
 
 We can execute this script by calling:
 {{{
-jython pos.py examples/example-en.txt en
+jython pos.jy examples/example-en.txt en
 }}}
 
 For a German text file, we execute this script by calling:
 {{{
-jython pos.py examples/example-de.txt de
+jython pos.jy examples/example-de.txt de
 }}}
 
 Let's have a closer look at the different parts of the script:
@@ -133,20 +133,20 @@ Instead of using _OpenNlp_ for POS-tagging, we can also use [http://www.cis.uni-
  * Go to the [http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ TreeTagger website]
  * From the _download_ section, download the correct tagger package, i.e. _PC-Linux_
     * Extract the .gz archive
-    * Copy the `tree-tagger-linux-3.2/bin/tree-tagger` file and place it in the same folder as the script `treetagger.py`
+    * Copy the `tree-tagger-linux-3.2/bin/tree-tagger` file and place it in the same folder as the script `treetagger.jy`
  * From the _parameter file_ section, download the correct model. For the example below download _English parameter file_ (`english-par-linux-3.2-utf8.bin.gz`)
     * Unzip the file (e.g. `gunzip english-par-linux-3.2-utf8.bin.gz`)
-    * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.py` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
+    * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.jy` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
 
 === !TreeTagger Installation for Windows 7 ===
  * Ensure that you have a program to unzip `.gz` files. For example you can use [http://www.7-zip.org 7zip]
  * Go to the [http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ TreeTagger website]
  * In the _Windows_ section, you find the download link for the `tree-tagger-windows-3.2.zip` file.
     * Extract the zip-archive
-    * Copy the `tree-tagger-windows-3.2/bin/tree-tagger.exe` to your folder with with the `treetagger.py` script
+    * Copy the `tree-tagger-windows-3.2/bin/tree-tagger.exe` to your folder with with the `treetagger.jy` script
  * From the _parameter file_ section, download the correct model. For the example below download _English parameter file_ (`english-par-linux-3.2-utf8.bin.gz`)
     * Unzip the file (e.g. by using [http://www.7-zip.org 7zip])
-    * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.py` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
+    * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.jy` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
  * In the script below, you find a line `TreeTaggerPosLemmaTT4J.PARAM_EXECUTABLE_PATH, "tree-tagger"`, change the value `tree-tagger` to `tree-tagger.exe` 
 
 
@@ -156,7 +156,7 @@ The following script demonstrates the usage of !TreeTagger:
 
 {{{
 #!/usr/bin/env jython
-# Filename: treetagger.py
+# Filename: treetagger.jy
 """
 Reads in a specific text file and runs first the OpenNlpSegmenter and then the TreeTagger for POS-tagging and lemmatisation.
 Run by: jython pos.py <filename> <language-code>
@@ -208,6 +208,6 @@ for jcas in pipeline:
     print token.coveredText + " " + token.pos.posValue + " " + token.lemma.value
 }}}
 
-Call with `C:\jython-2.7b1\jython treetagger.py <foldername> <language>`, e.g. `jython treetagger.py  examples/example-en.txt en`.
+Call with `C:\jython-2.7b1\jython treetagger.jy <foldername> <language>`, e.g. `jython treetagger.jy  examples/example-en.txt en`.
 
 If you already have !TreeTagger installed on your system and or if you want to use another model file, you can also set in the script the parameters `PARAM_EXECUTABLE_PATH` and `PARAM_MODEL_PATH` to their respective locations.

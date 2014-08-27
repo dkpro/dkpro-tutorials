@@ -14,11 +14,11 @@ The following script demonstrates how the text files can be read into the pipeli
 
 {{{
 #!/usr/bin/env jython
-# Filename: text_reader.py
+# Filename: text_reader.jy
 
 """
 Reads in a specific text file
-Run by: jython text_reader.py <filename> <language-code>
+Run by: jython text_reader.jy <filename> <language-code>
 """
 
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types
@@ -67,7 +67,7 @@ for jcas in pipeline:
 
 The script can be executed by calling:
 {{{
-jython text_reader.py examples/example-en.txt en
+jython text_reader.jy examples/example-en.txt en
 }}}
 
 The pipeline does nothing special, it reads in the text file and outputs it to the console. The important part of the script is:
@@ -77,7 +77,7 @@ documentReader = createReaderDescription(TextReader,
                                          TextReader.PARAM_PATH, sys.argv[1],
                                          TextReader.PARAM_LANGUAGE, sys.argv[2])
 }}}
-Here we say that we like to use the `TextReader` to read text into out pipeline. The file that should be read is specified by the `TextReader.PARAM_PATH`-argument. Here it is set to `sys.argv[1]`, which means use the first command line argument passed to `text_reader.py`. As a second parameter to `TextReader` we pass the language, in the above example `en` for English. For this pipeline so far we wouldn't need the language parameter, but later when doing e.g. Part-of-Speech tagging, the language parameter would be necessary.
+Here we say that we like to use the `TextReader` to read text into out pipeline. The file that should be read is specified by the `TextReader.PARAM_PATH`-argument. Here it is set to `sys.argv[1]`, which means use the first command line argument passed to `text_reader.jy`. As a second parameter to `TextReader` we pass the language, in the above example `en` for English. For this pipeline so far we wouldn't need the language parameter, but later when doing e.g. Part-of-Speech tagging, the language parameter would be necessary.
 
 
 
@@ -92,7 +92,7 @@ documentReader = createReaderDescription(TextReader,
 
 We can call this modified script by:
 {{{
-jython text_reader.py examples/ en
+jython text_reader.jy examples/ en
 }}}
 
 The output will be:
@@ -108,7 +108,7 @@ Some students like to study in the mornings. Other students like to do so in the
 The following script demonstrates how an own document reader can be implemented in Jython:
 {{{
 #!/usr/bin/env jython
-# Filename: own_reader.py
+# Filename: own_reader.jy
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types
 from java.lang import Thread
 from org.python.core.imp import *

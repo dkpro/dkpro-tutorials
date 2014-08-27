@@ -13,7 +13,7 @@ The following script parses the input file and returns an output which follows t
 
 {{{
 #!/usr/bin/env jython
-# Filename: parsing_constituency.py
+# Filename: parsing_constituency.jy
 """
 Reads in a specific text file and prints a parse tree following the conventions of Penn TreeBank
 Run by: jython parsing_constituency.py <filename> <language-code>
@@ -127,7 +127,7 @@ except:
 
 You can execute the script by running:
 {{{
-jython parsing_constituency.py examples/example-en.txt en 2> log.txt
+jython parsing_constituency.jy examples/example-en.txt en 2> log.txt
 }}}
 
 == Dependency Parsing ==
@@ -136,7 +136,7 @@ For dependency parsing, we can select between the _!ClearNlpDependencyParser_, t
 
 {{{
 #!/usr/bin/env jython
-# Filename: parsing_dependency.py
+# Filename: parsing_dependency.jy
 """
 Reads in a specific text file and prints a parse tree following the conventions of Penn TreeBank
 Run by: jython parsing_dependency.py <filename> <language-code>
@@ -244,5 +244,5 @@ except:
 
 You can execute the script by running:
 {{{
-jython parsing_dependency.py examples/example-en.txt en 2> log.txt
+jython parsing_dependency.jy examples/example-en.txt en 2> log.txt
 }}}

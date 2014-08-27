@@ -12,10 +12,10 @@ In DKPro, different segmentation strategies are implemented. In the following, w
 The following script compares the different segmenter that are currently available in DKPro. 
 {{{
 #!/usr/bin/env jython
-# Filename: segmentation.py
+# Filename: segmentation.jy
 """
 Reads in a specific text file and runs the different existent segmenter for this file.
-Run by: jython segmentation.py <filename> <language-code>
+Run by: jython segmentation.jy <filename> <language-code>
 """
 
 
@@ -138,12 +138,12 @@ except:
 
 The script can be executed with the command:
 {{{
-jython segmentation.py examples/example-segmentation-en.txt en
+jython segmentation.jy examples/example-segmentation-en.txt en
 }}}
 
 or for the German version:
 {{{
-jython segmentation.py examples/example-segmentation-de.txt de
+jython segmentation.jy examples/example-segmentation-de.txt de
 }}}
 
 The _example-segmentation-en.txt_ / _example-segmentation-de.txt_ contains a quite difficult example with alot obstacles for correct sentence splitting. Which segmentation rule is most suitable depends, as mentioned, on the later task. Note, for German documents, only the _!BreakIteratorSegmenter_, the _!OpenNlpSegmenter_, and the _!LanguageToolSegmenter_ work.

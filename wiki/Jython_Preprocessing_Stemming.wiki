@@ -18,10 +18,10 @@ DKPro provides you with an interface for the [http://snowball.tartarus.org/ Snow
 
 {{{
 #!/usr/bin/env jython
-# Filename: stemming.py
+# Filename: stemming.jy
 """
 Reads in a specific text file and runs first the OpenNlpSegmenter and then the SnowballStemmer.
-Run by: jython stemming.py <filename> <language-code>
+Run by: jython stemming.jy <filename> <language-code>
 """
 
 
@@ -84,17 +84,17 @@ for jcas in pipeline:
 
 As before, you can call this script by executing the following command:
 {{{
-jython stemming.py <input-file> <language-code>
+jython stemming.jy <input-file> <language-code>
 }}}
 
 For the English example, execute:
 {{{
-jython stemming.py examples/example-en.txt en
+jython stemming.jy examples/example-en.txt en
 }}}
 
 For the German example, execute:
 {{{
-jython stemming.py examples/example-de.txt de
+jython stemming.jy examples/example-de.txt de
 }}}
 
 The !SnowbalLStemmer adds _Stem_ annotations. The command _`select(jcas, Stem)`_ returns for the current JCas all annotations of Type _Stem_. The stemmed version of a word can then accessed by _`stem.value`_.
@@ -108,10 +108,10 @@ We have several more components for lemmatization than for stemming. The followi
 
 {{{
 #!/usr/bin/env jython
-# Filename: lemmatization.py
+# Filename: lemmatization.jy
 """
 Reads in a specific text file and runs different lemmatization algorithms.
-Run by: jython lemmatization.py <filename> <language-code>
+Run by: jython lemmatization.jy <filename> <language-code>
 """
 
 
@@ -208,13 +208,13 @@ except:
 
 You can execute the above script by:
 {{{
-jython lemmatization.py <input-file> <language-code>
+jython lemmatization.jy <input-file> <language-code>
 }}}
 
 Note, if you like to hide the log ouput on the screen, append _2> log.txt_ to your command line. For example, execute the script like this:
 
 {{{
-jython lemmatization.py examples/example-en.txt en 2> log.txt
+jython lemmatization.jy examples/example-en.txt en 2> log.txt
 }}}
 
 In the script, we used the segmenter as well as the lemmatizer from the same package, e.g. from StanfordNlp or from ClearNlp. You can mix the different componentens, for example you can use the _OpenNlpSegmenter_ togehter with the _StanfordNlpLemmatizer_. But this leads potentially to a wrong lemmatization, as the lemmatizer usually expects a specifc way of segmentation. 
