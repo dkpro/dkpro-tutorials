@@ -15,9 +15,6 @@
    * Semantic Role Labeling 
   * Output                 
  * *Advanced Pipelines*
-  * Components in DKPro
-  * Models in DKPro
-  * !JavaDocs
  * *Further Usage of Results*
   * Extracting Features 
   * Usage of WEKA
