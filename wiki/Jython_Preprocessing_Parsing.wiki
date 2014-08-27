@@ -43,7 +43,7 @@ from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
 
-# Berkeley
+# BerkeleyParser
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.berkeleyparser import *
 
