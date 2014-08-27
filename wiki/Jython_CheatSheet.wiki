@@ -11,4 +11,4 @@ The following lines can be used to import the different NLP tools (!OpenNlp, Sta
 
 
 || Name || Jython Code ||
-||BreakIteratorSegmenter || `require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.tokit-asl:1.6.2')`<br />`from de.tudarmstadt.ukp.dkpro.core.tokit import *` ||
+|| !BreakIteratorSegmenter || <tt>require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.tokit-asl:1.6.2') <br /> from de.tudarmstadt.ukp.dkpro.core.tokit import * </tt>||
