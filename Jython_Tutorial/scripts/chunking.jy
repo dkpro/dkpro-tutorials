@@ -17,15 +17,14 @@ from jip.embed import require
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.io.text import *
 
-
 # OpenNlp
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 
 
 # Dependencies for selecting specific annotations like sentences/tokens
-from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
-from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Stem, Lemma
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk import * #Chunk
 
 # uimaFIT imports
 from org.apache.uima.fit.util.JCasUtil import *
@@ -51,9 +50,10 @@ pipeline = iteratePipeline(
     TextReader.PARAM_LANGUAGE, sys.argv[2],
      ),
   createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(OpenNlpPosTagger),
   createEngineDescription(OpenNlpChunker));
 
 for jcas in pipeline:
-    print "Named Entities:"
-    for token in select(jcas, Token):
-        print token.coveredText
+    print "Chunks:"
+    for chunk in select(jcas, Chunk):
+        print chunk.coveredText+"\t"+chunk.chunkValue

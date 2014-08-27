@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
-Reads in a specific text file and runs first the OpenNlpSegmenter and then the TreeTagger for POS-tagging and lemmatization.
-Run by: jython treetagger.jy <filename> <language-code>
+Reads in a specific text file and runs first the OpenNlpSegmenter and then the TreeTagger for POS-tagging and chunking.
+Run by: jython chunking_treetagger.jy <filename> <language-code>
 """
 
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types
@@ -25,7 +25,8 @@ require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl
 from de.tudarmstadt.ukp.dkpro.core.io.text import *
 
 # Dependencies for selecting specific annotations like sentences/tokens
-from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Sentence, Token
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Stem, Lemma
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type.chunk import * #Chunk
 
 # uimaFIT imports
 from org.apache.uima.fit.util.JCasUtil import *
@@ -50,9 +51,19 @@ pipeline = iteratePipeline(
   createEngineDescription(OpenNlpSegmenter),
   createEngineDescription(TreeTaggerPosLemmaTT4J,
     TreeTaggerPosLemmaTT4J.PARAM_EXECUTABLE_PATH, "tree-tagger", #!! Change to "tree-tagger.exe" if the script is executed under windows !!
-    TreeTaggerPosLemmaTT4J.PARAM_MODEL_PATH, "english-par-linux-3.2-utf8.bin",
-    TreeTaggerPosLemmaTT4J.PARAM_MODEL_ENCODING, "UTF-8"));
+    TreeTaggerPosLemmaTT4J.PARAM_MODEL_PATH, "german-par-linux-3.2-utf8.bin",
+    TreeTaggerPosLemmaTT4J.PARAM_MODEL_ENCODING, "UTF-8"),
+  createEngineDescription(TreeTaggerChunkerTT4J,
+    TreeTaggerChunkerTT4J.PARAM_EXECUTABLE_PATH, "tree-tagger", #!! Change to "tree-tagger.exe" if the script is executed under windows !!
+    TreeTaggerChunkerTT4J.PARAM_MODEL_PATH, "german-chunker-utf8.par",
+    TreeTaggerChunkerTT4J.PARAM_MODEL_ENCODING, "UTF-8"));
+
 
 for jcas in pipeline:
-  for token in select(jcas, Token):
-    print token.coveredText + " " + token.pos.posValue + " " + token.lemma.value
+    print "Token\tPOS\tLemma"
+    for token in select(jcas, Token):
+        print token.coveredText + "\t" + token.pos.posValue + "\t" + token.lemma.value
+    
+    print "\n\nChunk\tChunk Value"
+    for chunk in select(jcas, Chunk):
+        print chunk.coveredText + "\t" + chunk.chunkValue

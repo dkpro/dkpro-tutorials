@@ -10,6 +10,9 @@ from java.lang import Thread
 from org.python.core.imp import *
 Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 
+from java.lang import Exception
+from java.lang import OutOfMemoryError
+
 # Dependencies and imports for DKPro modules
 from jip.embed import require
 
@@ -25,7 +28,7 @@ from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
 
-# Berkeley
+# BerkeleyParser
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.berkeleyparser import *
 
@@ -64,6 +67,7 @@ reader = createReaderDescription(TextReader,
 
 
 # Run OpenNlpParser
+
 try:
     pipeline = iteratePipeline(
       reader,
@@ -74,13 +78,15 @@ try:
     );
     
     printParseOutput("OpenNlpParser", pipeline)
+except OutOfMemoryError:
+    print 'OpenNlpParser out of memory'
 except:
     print 'OpenNlpParser is not working'
-    
+
     
 # Run StanfordParser
 try:
-	pipeline = iteratePipeline(
+    pipeline = iteratePipeline(
           reader,
           createEngineDescription(StanfordSegmenter),
           createEngineDescription(StanfordPosTagger),
@@ -88,9 +94,12 @@ try:
             StanfordParser.PARAM_WRITE_PENN_TREE, True)
         );
         
-	printParseOutput("StanfordParser", pipeline)
+    printParseOutput("StanfordParser", pipeline)
+except OutOfMemoryError:
+    print 'StanfordParser out of memory'
 except:
     print 'StanfordParser is not working'
+
     
 
 # Run BerkeleyParser
@@ -104,6 +113,8 @@ try:
         );
         
     printParseOutput("BerkeleyParser", pipeline)
+except OutOfMemoryError:
+    print 'BerkeleyParser out of memory'
 except:
     print 'BerkeleyParser is not working'
     
