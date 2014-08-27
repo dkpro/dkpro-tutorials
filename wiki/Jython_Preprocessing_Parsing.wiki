@@ -25,6 +25,9 @@ from java.lang import Thread
 from org.python.core.imp import *
 Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 
+from java.lang import Exception
+from java.lang import OutOfMemoryError
+
 # Dependencies and imports for DKPro modules
 from jip.embed import require
 
@@ -79,6 +82,7 @@ reader = createReaderDescription(TextReader,
 
 
 # Run OpenNlpParser
+
 try:
     pipeline = iteratePipeline(
       reader,
@@ -89,9 +93,11 @@ try:
     );
     
     printParseOutput("OpenNlpParser", pipeline)
+except OutOfMemoryError:
+    print 'OpenNlpParser out of memory'
 except:
     print 'OpenNlpParser is not working'
-    
+
     
 # Run StanfordParser
 try:
@@ -104,8 +110,11 @@ try:
         );
         
     printParseOutput("StanfordParser", pipeline)
+except OutOfMemoryError:
+    print 'StanfordParser out of memory'
 except:
     print 'StanfordParser is not working'
+
     
 
 # Run BerkeleyParser
@@ -119,6 +128,8 @@ try:
         );
         
     printParseOutput("BerkeleyParser", pipeline)
+except OutOfMemoryError:
+    print 'BerkeleyParser out of memory'
 except:
     print 'BerkeleyParser is not working'
     
@@ -157,6 +168,9 @@ from java.lang import Thread
 from org.python.core.imp import *
 Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
 
+from java.lang import Exception
+from java.lang import OutOfMemoryError
+
 # Dependencies and imports for DKPro modules
 from jip.embed import require
 
@@ -168,11 +182,22 @@ from de.tudarmstadt.ukp.dkpro.core.io.text import *
 require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.2')
 from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 
+# ClearNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.clearnlp-asl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.clearnlp import *
+
+# MaltParser
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.maltparser-asl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.maltparser import *
+
 # MateTools
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.matetools-gpl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.matetools import *
+
 
 # Dependencies for selecting specific annotations like sentences/tokens
-from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import *
-from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import *
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Stem, Lemma
+from de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency import * #Dependency
 
 
 # uimaFIT imports
@@ -191,11 +216,16 @@ if len(sys.argv) < 3:
     sys.exit(1)
     
 # Function to print the parser output
-def printParseOutput(name, pipeline):
+def printDependencyOutput(name, pipeline):
     print "\n\n%s:" % name
+    print "Token\tDependency Type\tGovernor"
     for jcas in pipeline:
-        for tree in select(jcas, PennTree):
-            print tree.pennTree
+        for token in select(jcas, Token):
+            dependencyAnnotations = selectCovered(Dependency, token)
+            depend = dependencyAnnotations[0] if len(dependencyAnnotations) > 0 else None
+            dependencyType = depend.dependencyType if depend != None else "-"
+            governorText = depend.getGovernor().coveredText if depend != None else "-"
+            print "%s\t%s\t%s" % (token.coveredText, dependencyType, governorText)
 
 # Our text reader which we use for all parser
 reader = createReaderDescription(TextReader,
@@ -204,50 +234,55 @@ reader = createReaderDescription(TextReader,
      )
 
 
-# Run OpenNlpParser
-try:
-    pipeline = iteratePipeline(
-      reader,
-      createEngineDescription(OpenNlpSegmenter),
-      createEngineDescription(OpenNlpPosTagger),
-      createEngineDescription(OpenNlpParser,                          
-        OpenNlpParser.PARAM_WRITE_PENN_TREE, True)
-    );
-    
-    printParseOutput("OpenNlpParser", pipeline)
-except:
-    print 'OpenNlpParser is not working'
-    
-    
-# Run StanfordParser
+# Run ClearNlpDependencyParser
 try:
     pipeline = iteratePipeline(
           reader,
-          createEngineDescription(StanfordSegmenter),
-          createEngineDescription(StanfordPosTagger),
-          createEngineDescription(StanfordParser,                          
-            StanfordParser.PARAM_WRITE_PENN_TREE, True)
+          createEngineDescription(ClearNlpSegmenter),
+          createEngineDescription(ClearNlpPosTagger),
+          createEngineDescription(ClearNlpLemmatizer),
+          createEngineDescription(ClearNlpDependencyParser)
         );
         
-    printParseOutput("StanfordParser", pipeline)
+    printDependencyOutput("ClearNlpDependencyParser", pipeline)
+except OutOfMemoryError:
+    print 'ClearNlpDependencyParser out of memory'
 except:
-    print 'StanfordParser is not working'
+    print 'ClearNlpDependencyParser is not working'
     
-
-# Run BerkeleyParser
+ 
+# Run MaltParser
 try:
     pipeline = iteratePipeline(
           reader,
           createEngineDescription(OpenNlpSegmenter),
           createEngineDescription(OpenNlpPosTagger),
-          createEngineDescription(BerkeleyParser,                          
-            BerkeleyParser.PARAM_WRITE_PENN_TREE, True)
+          createEngineDescription(MaltParser)
         );
         
-    printParseOutput("BerkeleyParser", pipeline)
+    printDependencyOutput("MaltParser", pipeline)
+except OutOfMemoryError:
+    print 'MaltParser out of memory'
 except:
-    print 'BerkeleyParser is not working'
+    print 'MaltParser is not working'
+
+
+# Run MateParser
+try:
+    pipeline = iteratePipeline(
+          reader,
+          createEngineDescription(OpenNlpSegmenter),
+          createEngineDescription(MatePosTagger),
+          createEngineDescription(MateParser)
+        );
+        
+    printDependencyOutput("MateParser", pipeline)
+except OutOfMemoryError:
+    print 'MateParser out of memory'
+except:
+    print 'MateParser is not working'
     
+
 
 }}}
 
