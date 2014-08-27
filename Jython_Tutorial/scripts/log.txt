@@ -1,0 +1,91 @@
+[1mjip[0m [Checking] pom file http://repo1.maven.org/maven2/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core-asl/1.6.2/de.tudarmstadt.ukp.dkpro.core-asl-1.6.2.pom
+[1mjip[0m [Checking] pom file http://repo1.maven.org/maven2/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl/1.6.2/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl-1.6.2.pom
+[1mjip[0m [Checking] pom file http://repo1.maven.org/maven2/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core-asl/1.6.2/de.tudarmstadt.ukp.dkpro.core-asl-1.6.2.pom
+[1mjip[0m [Downloading] jar from http://repo1.maven.org/maven2/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl/1.6.2/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl-1.6.2.jar
+[1mjip[0m [Downloading] http://repo1.maven.org/maven2/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl/1.6.2/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl-1.6.2.jar 27290 bytes to download
+[1mjip[0m [Downloading] Download http://repo1.maven.org/maven2/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl/1.6.2/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl-1.6.2.jar completed in 0.111000 secs
+*sys-package-mgr*: processing new jar, '/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-gpl-1.6.2.jar'
+Aug 27, 2014 9:57:12 AM de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase scan(384)
+Information: Scanning [file:/home/likewise-open/UKP/reimers/Dropbox/Doktor/DARIAH/dkpro-tutorials/Jython_Tutorial/scripts/examples/example-en.txt]
+Aug 27, 2014 9:57:12 AM de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase initialize(219)
+Information: Found [1] resources to be read
+Aug 27, 2014 9:57:15 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:15 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:16 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-sentence-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-sentence-en-maxent-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/sentence-en-maxent.bin] redirected from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent-20120616.1.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/sentence-en-maxent.properties]
+Aug 27, 2014 9:57:16 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:16 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-token-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-token-en-maxent-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/token-en-maxent.bin] redirected from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent-20120616.1.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/token-en-maxent.properties]
+Aug 27, 2014 9:57:16 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:17 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-tagger-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-tagger-en-maxent-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/tagger-en-maxent.bin
+Aug 27, 2014 9:57:18 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl-1.6.2.jar!/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/en-ptb-pos.map
+Aug 27, 2014 9:57:18 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:19 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-parser-en-chunking/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-parser-en-chunking-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/parser-en-chunking.bin
+Aug 27, 2014 9:57:28 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl-1.6.2.jar!/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/en-ptb-pos.map
+Aug 27, 2014 9:57:29 AM de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase scan(384)
+Information: Scanning [file:/home/likewise-open/UKP/reimers/Dropbox/Doktor/DARIAH/dkpro-tutorials/Jython_Tutorial/scripts/examples/example-en.txt]
+Aug 27, 2014 9:57:29 AM de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase initialize(219)
+Information: Found [1] resources to be read
+Aug 27, 2014 9:57:30 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:30 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-tagger-en-bidirectional-distsim/jars/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-tagger-en-bidirectional-distsim-20140104.jar!/de/tudarmstadt/ukp/dkpro/core/stanfordnlp/lib/tagger-en-bidirectional-distsim.tagger] redirected from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-tagger-en-bidirectional-distsim/jars/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-tagger-en-bidirectional-distsim-20140104.1.jar!/de/tudarmstadt/ukp/dkpro/core/stanfordnlp/lib/tagger-en-bidirectional-distsim.properties]
+Aug 27, 2014 9:57:34 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl-1.6.2.jar!/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/en-ptb-pos.map
+Aug 27, 2014 9:57:35 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:57:37 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: downloading http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-parser-en-factored/20140104.1/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-parser-en-factored-20140104.1.jar ...
+Aug 27, 2014 9:57:37 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: 	[SUCCESSFUL ] de.tudarmstadt.ukp.dkpro.core#de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-parser-en-factored;20140104.1!de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-parser-en-factored.jar (120ms)
+Aug 27, 2014 9:57:37 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: downloading http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored/20140104/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored-20140104.jar ...
+Aug 27, 2014 9:57:38 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: 	[SUCCESSFUL ] de.tudarmstadt.ukp.dkpro.core#de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored;20140104!de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored.jar (435ms)
+Aug 27, 2014 9:57:38 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored/jars/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored-20140104.jar!/de/tudarmstadt/ukp/dkpro/core/stanfordnlp/lib/parser-en-factored.ser.gz] redirected from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-parser-en-factored/jars/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-model-parser-en-factored-20140104.1.jar!/de/tudarmstadt/ukp/dkpro/core/stanfordnlp/lib/parser-en-factored.properties]
+Aug 27, 2014 9:57:38 AM de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser$StanfordParserModelProvider produceResource(541)
+Information: Loading parser from serialized file jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored/jars/de.tudarmstadt.ukp.dkpro.core.stanfordnlp-upstream-parser-en-factored-20140104.jar!/de/tudarmstadt/ukp/dkpro/core/stanfordnlp/lib/parser-en-factored.ser.gz ...
+Aug 27, 2014 9:58:09 AM de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase scan(384)
+Information: Scanning [file:/home/likewise-open/UKP/reimers/Dropbox/Doktor/DARIAH/dkpro-tutorials/Jython_Tutorial/scripts/examples/example-en.txt]
+Aug 27, 2014 9:58:09 AM de.tudarmstadt.ukp.dkpro.core.api.io.ResourceCollectionReaderBase initialize(219)
+Information: Found [1] resources to be read
+Aug 27, 2014 9:58:09 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:58:09 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-sentence-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-sentence-en-maxent-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/sentence-en-maxent.bin] redirected from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-model-sentence-en-maxent-20120616.1.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/sentence-en-maxent.properties]
+Aug 27, 2014 9:58:09 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:58:09 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-token-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-token-en-maxent-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/token-en-maxent.bin] redirected from [jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-model-token-en-maxent-20120616.1.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/token-en-maxent.properties]
+Aug 27, 2014 9:58:10 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:58:10 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-tagger-en-maxent/jars/de.tudarmstadt.ukp.dkpro.core.opennlp-upstream-tagger-en-maxent-20120616.jar!/de/tudarmstadt/ukp/dkpro/core/opennlp/lib/tagger-en-maxent.bin
+Aug 27, 2014 9:58:10 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl-1.6.2.jar!/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/en-ptb-pos.map
+Aug 27, 2014 9:58:10 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: :: loading settings :: url = jar:file:/home/likewise-open/UKP/reimers/.jip/cache/org.apache.ivy/ivy/ivy-2.3.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
+Aug 27, 2014 9:58:12 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: downloading http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-model-parser-en-sm6/20100819.1/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-model-parser-en-sm6-20100819.1.jar ...
+Aug 27, 2014 9:58:12 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: 	[SUCCESSFUL ] de.tudarmstadt.ukp.dkpro.core#de.tudarmstadt.ukp.dkpro.core.berkeleyparser-model-parser-en-sm6;20100819.1!de.tudarmstadt.ukp.dkpro.core.berkeleyparser-model-parser-en-sm6.jar (57ms)
+Aug 27, 2014 9:58:12 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: downloading http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-model-releases-local/de/tudarmstadt/ukp/dkpro/core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-upstream-parser-en-sm6/20100819/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-upstream-parser-en-sm6-20100819.jar ...
+Aug 27, 2014 9:58:13 AM de.tudarmstadt.ukp.dkpro.core.api.resources.internal.ApacheCommonsLoggingAdapter info
+Information: 	[SUCCESSFUL ] de.tudarmstadt.ukp.dkpro.core#de.tudarmstadt.ukp.dkpro.core.berkeleyparser-upstream-parser-en-sm6;20100819!de.tudarmstadt.ukp.dkpro.core.berkeleyparser-upstream-parser-en-sm6.jar (419ms)
+Aug 27, 2014 9:58:13 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.ivy2/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-upstream-parser-en-sm6/jars/de.tudarmstadt.ukp.dkpro.core.berkeleyparser-upstream-parser-en-sm6-20100819.jar!/de/tudarmstadt/ukp/dkpro/core/berkeleyparser/lib/parser-en-sm6.bin
+Aug 27, 2014 9:58:21 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl/de.tudarmstadt.ukp.dkpro.core.api.lexmorph-asl-1.6.2.jar!/de/tudarmstadt/ukp/dkpro/core/api/lexmorph/tagset/en-ptb-pos.map
+Aug 27, 2014 9:58:21 AM de.tudarmstadt.ukp.dkpro.core.api.resources.ResourceObjectProviderBase loadResource
+Information: Producing resource from jar:file:/home/likewise-open/UKP/reimers/.jip/cache/de.tudarmstadt.ukp.dkpro.core/de.tudarmstadt.ukp.dkpro.core.api.syntax-asl/de.tudarmstadt.ukp.dkpro.core.api.syntax-asl-1.6.2.jar!/de/tudarmstadt/ukp/dkpro/core/api/syntax/tagset/en-default-constituency.map
