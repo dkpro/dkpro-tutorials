@@ -1,0 +1,14 @@
+#sidebar Jython_TableOfContents
+= !CheatSheet =
+*Table of contents*
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+This page is a !CheatSheet for Jython and DKPro. It contains many useful information in a compressed way. The intention of this sheet is _not_ to introduce or explain certain concepts. Instead, it is intended as a lookup cheat for the advanced user. For an introduction into DKPro and the different concepts, please see the previous articles.
+
+== Import of NLP Tools ==
+The following lines can be used to import the different NLP tools (!OpenNlp, Stanford etc.).
+
+
+|| Name || Jython Code ||
+||BreakIteratorSegmenter || `require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.tokit-asl:1.6.2')`<br />`from de.tudarmstadt.ukp.dkpro.core.tokit import *` ||
