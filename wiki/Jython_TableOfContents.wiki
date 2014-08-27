@@ -21,4 +21,5 @@
  * *Further Usage of Results*
   * Extracting Features 
   * Usage of WEKA
- * *[Jython_CheatSheet CheatSheet]*
+ * *Helpful Resources*
+  *[Jython_CheatSheet CheatSheet]*
