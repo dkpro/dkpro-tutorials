@@ -19,7 +19,7 @@ The Stanford NER models for English come with either 3 classes (Location, Person
 # Filename: ner.jy
 """
 Reads in a specific text file and detects named entities
-Run by: jython ner.py <filename> <language-code>
+Run by: jython ner.jy <filename> <language-code>
 """
 
 
@@ -126,7 +126,7 @@ The following script gives an example how the !OpenNlp !NameFinder can be applie
 # Filename: ner_opennlp.jy
 """
 Reads in a specific text file and detects named entities
-Run by: jython ner_opennlp.py <filename> <language-code> <OpenNlpNameFinder-model>
+Run by: jython ner_opennlp.jy <filename> <language-code> <OpenNlpNameFinder-model>
 """
 
 

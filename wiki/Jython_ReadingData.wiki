@@ -15,7 +15,6 @@ The following script demonstrates how the text files can be read into the pipeli
 {{{
 #!/usr/bin/env jython
 # Filename: text_reader.jy
-
 """
 Reads in a specific text file
 Run by: jython text_reader.jy <filename> <language-code>
@@ -109,6 +108,11 @@ The following script demonstrates how an own document reader can be implemented 
 {{{
 #!/usr/bin/env jython
 # Filename: own_reader.jy
+"""
+Demonstrates the implementation of an own document reader
+Run by: jython own_reader.jy
+"""
+
 # Fix classpath scanning - otherise uimaFIT will not find the UIMA types
 from java.lang import Thread
 from org.python.core.imp import *
