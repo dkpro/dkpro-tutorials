@@ -1,5 +1,5 @@
 #sidebar Jython_TableOfContents
-= Named Entity Recognition =
+= Parsing =
 *Table of contents*
 <wiki:toc max_depth="3" />
 
