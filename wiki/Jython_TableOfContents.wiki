@@ -22,4 +22,4 @@
   * Extracting Features 
   * Usage of WEKA
  * *Helpful Resources*
-  *[Jython_CheatSheet CheatSheet]*
+  * [Jython_CheatSheet CheatSheet]
