@@ -13,8 +13,7 @@
 			* [Jython_Preprocessing_Parsing Parsing] 
 			* Koreferenz 
 			* Semantic Role Labeling 
-		* Output
-                * [Jython_CheatSheet CheatSheet] 
+		* Output                 
 	* *Advanced Pipelines*
 		* Components in DKPro
 		* Models in DKPro
@@ -22,3 +21,4 @@
 	* *Further Usage of Results*
 		* Extracting Features 
 		* Usage of WEKA
+        * [Jython_CheatSheet CheatSheet]
