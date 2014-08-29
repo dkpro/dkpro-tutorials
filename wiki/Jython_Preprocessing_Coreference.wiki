@@ -4,6 +4,33 @@
 <wiki:toc max_depth="3" />
 
 == Introduction ==
+Coreference occurs when two or more expressions in a text refer to the same entity. For example in the sentence _The students were too lazy to study, therefore they failed the test_ the words _students_ and _they_ refer to the same entity. 
 
+Coreference resolution is the process of identifying these coreference and linking them together. In the current version of DKPro, we can use the _!StanfordCoreferenceResolver_ for detecting and resolving coreferences.
+
+For further information, see [http://en.wikipedia.org/wiki/Coreference Wikipedia-Coreference]. 
 
 == Stanford Coreference Resolver ==
+
+The following script demonstrates the usage of the _!StanfordCoreferenceResolver_. The resolver requires that the text is segmented, is annotated with POS-tags, that lemmas are derived, that named entities are tagged and that the sentences are parsed. Therefore we must invoke several components before we can use the _!StanfordCoReferenceResolver_. For details on the Stanford Coreference Resolver, please see [http://nlp.stanford.edu/software/dcoref.shtml Stanford Coref Website].
+
+
+{{{
+#Filename: coreference.jy
+}}}
+
+You can invoke the script by calling:
+
+{{{
+jython coreference.jy examples/example-coreference-en.txt en
+}}}
+
+Note, parsing can require a lot of memory. Maybe you need to increase the amount Jython is allowed to allocate. For further details, see [Jython_Preprocessing_Parsing Parsing].
+
+The _!StanfordCoreferenceResolver_ produces two different annotation types: _!CoreferenceLink_ and _!CoreferenceChain_.
+
+Each referring expression (e.g. named entites or pronouns) are annotated with an _!CoreferenceLink_-annotation. If two or more referring expression map to the same identity, a _!CoreferenceChain_ is created which captures the information.
+
+
+The previous script ouputs all detected coreference chains. By invoking the _getFirst()_ method, we get the first _!CoreferenceLink_ of the chain. Succeeding coreferences to the same entity can be get by calling _getNext()_. So the above script prints all referring expressions, that refer to the same entity. Additionally, the left and right context is given for each referring expression.
+
