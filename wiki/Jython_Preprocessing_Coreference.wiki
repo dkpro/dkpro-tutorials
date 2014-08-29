@@ -16,7 +16,82 @@ The following script demonstrates the usage of the _!StanfordCoreferenceResolver
 
 
 {{{
-#Filename: coreference.jy
+#!/usr/bin/env jython
+# Filename: coreference.jy
+"""
+Reads in a specific text file and coreference chains
+Run by: jython coreference.jy <filename> <language-code>
+"""
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# StanfordNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
+
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Lemma, Stem 
+from de.tudarmstadt.ukp.dkpro.core.api.coref.type import * #CoreferenceChain, CoreferenceLink
+
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+
+# Assemble and run pipeline
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_SOURCE_LOCATION, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2],
+     ),
+  createEngineDescription(StanfordSegmenter),
+  createEngineDescription(StanfordPosTagger),
+  createEngineDescription(StanfordLemmatizer),
+  createEngineDescription(StanfordParser),
+  createEngineDescription(StanfordNamedEntityRecognizer),
+  createEngineDescription(StanfordCoreferenceResolver,
+                          StanfordCoreferenceResolver.PARAM_POSTPROCESSING, True),
+  );
+
+for jcas in pipeline:
+    for corefChain in select(jcas, CoreferenceChain):
+        print "\n\nCoreference Chain:"
+        print "Link\tLeft context\t...\tRight context"
+        link = corefChain.getFirst()
+        
+        while link != None:
+            sentence = selectCovering(Sentence, link).get(0)
+            precedingTokens = [token.coveredText for token in selectPreceding(Token, link, 5)]
+            followingTokens = [token.coveredText for token in selectFollowing(Token, link, 5)]
+            print "%s\t%s\t...\t%s" % (link.coveredText, " ".join(precedingTokens), " ".join(followingTokens))
+            link = link.getNext();
+        
+
 }}}
 
 You can invoke the script by calling:
