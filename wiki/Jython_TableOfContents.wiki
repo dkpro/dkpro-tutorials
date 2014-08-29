@@ -11,7 +11,7 @@
    * [Jython_Preprocessing_NER Named Entity Recognition] 
    * [Jython_Preprocessing_Chunking Chunking] 
    * [Jython_Preprocessing_Parsing Parsing] 
-   * Coreference 
+   * [Jython_Preprocessing_Coreference Coreference] 
    * Semantic Role Labeling 
   * Output                 
  * *Advanced Pipelines*
