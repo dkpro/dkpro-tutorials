@@ -14,6 +14,8 @@ The Stanford NER comes with several models for different languages. For further 
 
 The Stanford NER models for English come with either 3 classes (Location, Person, Organization), 4 classes (Location, Person, Organization, Misc) or 7 classes (Time, Location, Organization, Person, Money, Percent, Date). For German, we only have models with 4 classes (Location, Person, Organization, Misc). Further details on the German NER models can be found [http://www.nlpado.de/~sebastian/software/ner_german.shtml here].
 
+For the names of the models in DKPro, please see the [https://docs.google.com/spreadsheet/pub?key=0ApGcdapz0xSYdFNTREhKeFVEU1RsQzc0V0NKcE04b3c&single=true&gid=0&output=html models spreadsheet].
+
 {{{
 #!/usr/bin/env jython
 # Filename: ner.jy
