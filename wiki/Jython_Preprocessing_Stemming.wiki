@@ -220,4 +220,4 @@ jython lemmatization.jy examples/example-en.txt en 2> log.txt
 In the script, we used the segmenter as well as the lemmatizer from the same package, e.g. from StanfordNlp or from ClearNlp. You can mix the different componentens, for example you can use the _OpenNlpSegmenter_ togehter with the _StanfordNlpLemmatizer_. But this leads potentially to a wrong lemmatization, as the lemmatizer usually expects a specifc way of segmentation. 
 
 
-In the above script, _!StanfordLemmatizer_ and _!ClearNlpLemmatizer_ only work for English. For German, you can either use the _!LanguageToolLemmatizer_ or !TreeTagger as described [Preprocessing_POS#TreeTagger  here].
+In the above script, _!StanfordLemmatizer_ and _!ClearNlpLemmatizer_ only work for English. For German, you can either use the _!LanguageToolLemmatizer_ or !TreeTagger as described [Jython_Preprocessing_POS#TreeTagger  here].
