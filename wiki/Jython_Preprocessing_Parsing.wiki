@@ -293,4 +293,4 @@ jython parsing_dependency.jy examples/example-en.txt en 2> log.txt
 }}}
 
 
-The `MateParser` expects POS-tags using the Treebank tag set. We can get these tags using the `OpenNlpPosTagger`.
+The `MaltParser` expects POS-tags using the Treebank tag set. We can get these tags using the `OpenNlpPosTagger`.
