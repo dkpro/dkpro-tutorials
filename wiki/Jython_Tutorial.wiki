@@ -6,3 +6,13 @@ The following pages are a step-by-step tutorial how DKPro can be used with Jytho
 After knowing how to read-in data and to process it, we cover the topic of creating a structured output for further processing, for example how can the results written to an XML or an Excel file.
 
 The file part covers the topic how we can combine DKPro with WEKA, a machine learning tool. We will present some use-cases how features, e.g. for authorship identification, can be extracted using DKPro and how a classifier can be learned in WEKA.  
+
+= Content =
+Please check on the sidebar on the left side. 
+
+
+= Acknowledgments =
+
+The development of this tutorial is supported by [https://de.dariah.eu/ DARIAH-DE project].
+
+https://de.dariah.eu/liferay-dariah-theme/images/dariah-logo.png
