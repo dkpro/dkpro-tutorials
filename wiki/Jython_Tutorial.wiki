@@ -8,7 +8,7 @@ After knowing how to read-in data and to process it, we cover the topic of creat
 The file part covers the topic how we can combine DKPro with WEKA, a machine learning tool. We will present some use-cases how features, e.g. for authorship identification, can be extracted using DKPro and how a classifier can be learned in WEKA.  
 
 = Content =
-Please check on the sidebar on the left side. 
+Please check the sidebar on the left side. 
 
 
 = Acknowledgments =
