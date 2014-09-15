@@ -139,7 +139,7 @@ Instead of using _OpenNlp_ for POS-tagging, we can also use [http://www.cis.uni-
     * Copy the file `english-par-linux-3.2-utf8.bin` into the same folder as the `treetagger.jy` script. Ensure that the name for the model is `english-par-linux-3.2-utf8.bin`
 
 === !TreeTagger Installation for Windows 7 ===
- * Ensure that you have a program to unzip `.gz` files. For example you can use [http://www.7-zip.org 7zip]
+ * Ensure that you have a program to unzip `.gz` files. For example you can use [http://www.7-zip.org 7zip] or !WinRar or many others.
  * Go to the [http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ TreeTagger website]
  * In the _Windows_ section, you find the download link for the `tree-tagger-windows-3.2.zip` file.
     * Extract the zip-archive
