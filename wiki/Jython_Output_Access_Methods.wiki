@@ -4,3 +4,10 @@
 <wiki:toc max_depth="3" />
 
 == Introduction ==
+
+uimaFIT supports several convenient methods to access the annotations added by the pipelines components. In the previous code examples we mainly used `select` to select all annotations of a certain types. In this tutorial we will introduce the different methods in a more structured way and will show some handy code examples.
+
+Also please check the following site from the uimaFIT documentation: [https://uima.apache.org/d/uimafit-current/tools.uimafit.book.html#d5e218 uimaFIT Guide and References].
+
+
+== Select ==
