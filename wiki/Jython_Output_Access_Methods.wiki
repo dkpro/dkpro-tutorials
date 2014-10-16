@@ -16,7 +16,73 @@ As mentioned in the introduction, UIMA uses the concept of annotations. Each inf
 The following script runs some components like POS-tagging and NER and then prints *all* annotations that are added to the CAS.
 
 {{{
+#!/usr/bin/env jython
 # Filename: print_all_annotations.jy
+"""
+Reads in a specific text file, runs several analysis components, and then prints all annotation types
+Run by: jython print_all_annotations.jy <filename> <language-code>
+"""
+
+
+# Fix classpath scanning - otherise uimaFIT will not find the UIMA types
+from java.lang import Thread
+from org.python.core.imp import *
+Thread.currentThread().contextClassLoader = getSyspathJavaLoader()
+
+# Dependencies and imports for DKPro modules
+from jip.embed import require
+
+# Text Reader
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.io.text-asl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.io.text import *
+
+# StanfordNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.stanfordnlp-gpl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.stanfordnlp import *
+
+# OpenNlp
+require('de.tudarmstadt.ukp.dkpro.core:de.tudarmstadt.ukp.dkpro.core.opennlp-asl:1.6.2')
+from de.tudarmstadt.ukp.dkpro.core.opennlp import *
+
+
+# Dependencies for selecting specific annotations like sentences/tokens
+from org.apache.uima.jcas.tcas import Annotation
+
+
+# uimaFIT imports
+from org.apache.uima.fit.util.JCasUtil import *
+from org.apache.uima.fit.pipeline.SimplePipeline import *
+from org.apache.uima.fit.factory.CollectionReaderFactory import *
+from org.apache.uima.fit.factory.AnalysisEngineFactory import *
+
+
+# Access to commandline arguments
+import sys
+
+# Check that all necessary arguments have been passed to the program
+if len(sys.argv) < 3:
+    print globals()['__doc__'] % locals()
+    sys.exit(1)
+
+
+
+# Assemble and run pipeline
+pipeline = iteratePipeline(
+  createReaderDescription(TextReader,
+    TextReader.PARAM_SOURCE_LOCATION, sys.argv[1],
+    TextReader.PARAM_LANGUAGE, sys.argv[2],
+     ),
+  createEngineDescription(OpenNlpSegmenter),
+  createEngineDescription(OpenNlpPosTagger),
+  createEngineDescription(StanfordLemmatizer),
+  createEngineDescription(StanfordNamedEntityRecognizer)
+  );
+
+for jcas in pipeline:
+    print "[Type][Parent Type](Begin, End) CoveredText:"
+    for ann in select(jcas, Annotation):
+        print "[%s][%s](%d, %d) %s" %(ann.getType().getName(), ann.getClass().getSuperclass().getName(), ann.getBegin(), ann.getEnd(), ann.getCoveredText())
+        print ann
 }}}
 
 
