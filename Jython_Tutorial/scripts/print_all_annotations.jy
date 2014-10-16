@@ -1,7 +1,7 @@
 #!/usr/bin/env jython
 """
-Reads in a specific text file and detects named entities
-Run by: jython ner.jy <filename> <language-code>
+Reads in a specific text file, runs several analysis components, and then prints all annotation types
+Run by: jython print_all_annotations.jy <filename> <language-code>
 """
 
 
@@ -27,9 +27,8 @@ from de.tudarmstadt.ukp.dkpro.core.opennlp import *
 
 
 # Dependencies for selecting specific annotations like sentences/tokens
-from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence, Lemma, Stem 
-from de.tudarmstadt.ukp.dkpro.core.api.syntax.type import * #Chunk, PennTree
-from de.tudarmstadt.ukp.dkpro.core.api.ner.type import * #NamedEntity 
+from org.apache.uima.jcas.tcas import Annotation
+
 
 # uimaFIT imports
 from org.apache.uima.fit.util.JCasUtil import *
@@ -55,9 +54,13 @@ pipeline = iteratePipeline(
     TextReader.PARAM_LANGUAGE, sys.argv[2],
      ),
   createEngineDescription(OpenNlpSegmenter),
-  createEngineDescription(StanfordNamedEntityRecognizer));
+  createEngineDescription(OpenNlpPosTagger),
+  createEngineDescription(StanfordLemmatizer),
+  createEngineDescription(StanfordNamedEntityRecognizer)
+  );
 
 for jcas in pipeline:
-    print "Named Entities:"
-    for ne in select(jcas, NamedEntity):
-        print ne.coveredText+"\t"+ne.value
+    print "[Type][Parent Type](Begin, End) CoveredText:"
+    for ann in select(jcas, Annotation):
+        print "[%s][%s](%d, %d) %s" %(ann.getType().getName(), ann.getClass().getSuperclass().getName(), ann.getBegin(), ann.getEnd(), ann.getCoveredText())
+        print ann
