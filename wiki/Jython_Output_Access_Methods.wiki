@@ -89,6 +89,12 @@ Below the class and superclass, you can find accessible fields for the types. So
 `begin` and `end` stands for the beginning and ending of the annotation, i.e. in this case the annotation spans from character 0 to character 4. The final attribute you can access for the above example is the `PosValue`, which contains the more specific POS information. In this case, _Some_ is tagged as a `DT`.
 
 
-The different attributes can easily be accessed within Jython by calling `myVariableName.attributeName`. *Note*, to access the attributes, the first character must *always* be in lowercase. So the correct way to access the POS-value is `myVariableName.posValue`.
+The different attributes can easily be accessed within Jython by calling `myVariableName.attributeName`. *Note*, to access the attributes, the first character must *always* be in lowercase. So the correct way to access the POS-value is 
+{{{
+myVariableName.posValue
+}}}
 
-Some annotations, like the `Token`-annotations, can also reference to other annotations (if present). For example the `Token`-annotation contains also the information about the lemma, about the stem and about the POS-tag of the word (of course only if you used a lemmatizer/stemmer/POS-tagger). So lets say the variable `myToken` is of Type `Token`, then you can access the POS-value for this Token via `myToken.pos.posValue`.
+Some annotations, like the `Token`-annotations, can also reference to other annotations (if present). For example the `Token`-annotation contains also the information about the lemma, about the stem and about the POS-tag of the word (of course only if you used a lemmatizer/stemmer/POS-tagger). So lets say the variable `myToken` is of Type `Token`, then you can access the POS-value for this Token via 
+{{{
+myToken.pos.posValue
+}}}
