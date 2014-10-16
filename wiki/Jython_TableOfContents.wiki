@@ -13,7 +13,8 @@
    * [Jython_Preprocessing_Parsing Parsing] 
    * [Jython_Preprocessing_Coreference Coreference] 
    * Semantic Role Labeling 
-  * Output                 
+  * [Jython_Output Output]
+   * [Jython_Output_uimafit UIMAFit]                
  * *Advanced Pipelines*
  * *Further Usage of Results*
   * Extracting Features 
