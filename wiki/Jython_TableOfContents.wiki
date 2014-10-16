@@ -14,7 +14,7 @@
    * [Jython_Preprocessing_Coreference Coreference] 
    * Semantic Role Labeling 
   * [Jython_Output Output]
-   * [Jython_Output_uimafit UIMAFit]                
+   * [Jython_Output_Access_Methods Access Methods]                
  * *Advanced Pipelines*
  * *Further Usage of Results*
   * Extracting Features 
