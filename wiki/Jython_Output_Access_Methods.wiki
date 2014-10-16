@@ -10,4 +10,11 @@ uimaFIT supports several convenient methods to access the annotations added by t
 Also please check the following site from the uimaFIT documentation: [https://uima.apache.org/d/uimafit-current/tools.uimafit.book.html#d5e218 uimaFIT Guide and References].
 
 
-== Select ==
+== Annotations and Type System ==
+As mentioned in the introduction, UIMA uses the concept of annotations. Each information, for example the part-of-speech-tag for a word, is added as an annotation to the CAS (Common Analysis System). Different annotations are represented by different types, e.g. there are types for part-of-speech information, types for the lemma of word, types for named entity information and so on. Understanding which annotations with which types are added by a component is a crucial part for further using the results.
+
+The following script runs some components like POS-tagging and NER and then prints *all* annotations that are added to the CAS.
+
+{{{
+# Filename: print_all_annotations.jy
+}}}
