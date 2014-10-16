@@ -18,3 +18,77 @@ The following script runs some components like POS-tagging and NER and then prin
 {{{
 # Filename: print_all_annotations.jy
 }}}
+
+
+You can execute this script by calling:
+{{{
+jython print_all_annotations.jy examples/example-en.txt en
+}}}
+
+The output will be quite long and look a bit confusing in the beginning. Here are the first lines of the output:
+
+{{{
+[de.tudarmstadt.ukp.dkpro.core.api.metadata.type.DocumentMetaData][org.apache.uima.jcas.tcas.DocumentAnnotation](0, 120) Some students like to study in the mornings. Other students like to do so in the evenings. And some don't study at all.
+DocumentMetaData
+   sofa: _InitialView
+   begin: 0
+   end: 120
+   language: "en"
+   documentTitle: ""
+   documentId: ""
+   documentUri: "file:/home/reimers/examples/example-en.txt"
+   collectionId: "file:/home/reimers/examples/"
+   documentBaseUri: "file:/home/reimers/examples/"
+   isLastSegment: false
+
+
+[de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence][org.apache.uima.jcas.tcas.Annotation](0, 44) Some students like to study in the mornings.
+Sentence
+   sofa: _InitialView
+   begin: 0
+   end: 44
+
+[de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma][org.apache.uima.jcas.tcas.Annotation](0, 4) Some
+Lemma
+   sofa: _InitialView
+   begin: 0
+   end: 4
+   value: "some"
+
+[de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token][org.apache.uima.jcas.tcas.Annotation](0, 4) Some
+Token
+   sofa: _InitialView
+   begin: 0
+   end: 4
+   parent: <null>
+   lemma: Lemma
+      sofa: _InitialView
+      begin: 0
+      end: 4
+      value: "some"
+   stem: <null>
+   pos: ART
+      sofa: _InitialView
+      begin: 0
+      end: 4
+      PosValue: "DT"
+
+[de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART][de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS](0, 4) Some
+ART
+   sofa: _InitialView
+   begin: 0
+   end: 4
+   PosValue: "DT"
+
+}}}
+
+The different annotations are separated by an empty line. The information in the first two square-brackets are the type and the parent-type. For example for the last paragraph in the above output. There, we have the type `de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.ART` and the parent of this annotation is of type `de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS`. The POS-tagger adds for each article an annotation of type `ART`. This type, as well as all other POS-types, are derived from the `POS`-type. So in case we like to get all articles, we can either use the `select`-method and search only for annotations of type `ART` or we can select als `POS`-annotations and then check the `PosValue` for the correct type (later more).
+
+Below the class and superclass, you can find accessible fields for the types. So for example for the POS-annotation of _Some_ you cann access the `sofa`, the `begin`, the `end` and the `PosValue`-attributes. The `sofa` (Subject of Analysis) contains the used view. You can have different views on one text, for example you could have a view containing the English version of a text and a different view containing the corresponding German version of the same text. By using different views / Sofas, you can process both versions in a single pipeline. But usually we have only a single view, the `_InitialView`.
+
+`begin` and `end` stands for the beginning and ending of the annotation, i.e. in this case the annotation spans from character 0 to character 4. The final attribute you can access for the above example is the `PosValue`, which contains the more specific POS information. In this case, _Some_ is tagged as a `DT`.
+
+
+The different attributes can easily be accessed within Jython by calling `myVariableName.attributeName`. *Note*, to access the attributes, the first character must *always* be in lowercase. So the correct way to access the POS-value is `myVariableName.posValue`.
+
+Some annotations, like the `Token`-annotations, can also reference to other annotations (if present). For example the `Token`-annotation contains also the information about the lemma, about the stem and about the POS-tag of the word (of course only if you used a lemmatizer/stemmer/POS-tagger). So lets say the variable `myToken` is of Type `Token`, then you can access the POS-value for this Token via `myToken.pos.posValue`.
