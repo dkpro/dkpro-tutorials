@@ -1,0 +1,4 @@
+#sidebar Jython_TableOfContents
+
+= Outputting Data =
+In this part of the tutorial, we will introduce the basic concepts of outputting data. First of all, we will introduce convenient methods for accessing the annotations added by our components. Next, we present short examples how the data can be exported to the most common formats, e.g. for further processing / analysis. 
