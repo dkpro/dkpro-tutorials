@@ -168,3 +168,29 @@ myToken.pos.posValue
 == Access Methods ==
 
 In the previous section, we outputted all annotations. Usually we are only interested in certain types of annotations, for example in all Tokens with a certain Part-of-Speech-Value. Next we present different access methods to select specific annotations. A short summary of the different access methods can be found in the uimaFIT documentation: [https://uima.apache.org/d/uimafit-current/tools.uimafit.book.html#d5e218 uimaFIT Guide and References].
+
+
+=== Select ===
+The most simple access method is `select`, which takes two arguments:
+
+{{{
+select(jcas, AnnotationType)
+}}}
+
+For example if we like to access Token-annotations. From the above script we see that the classpath for the Token annotation is `de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token`. So in order to select all Token-Annotations, we must first import the corresponding module. After that, we can call select:
+
+{{{
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import Token
+# ...
+select(jcas, Token)
+}}}
+
+
+Select returns a Java Collection over which we can for example iterate. Sometime we like to use the Jython internal methods for lists. This can be achieved quite easily:
+
+{{{
+allTokens = [token for token in select(jcas, Token)]
+print "Number of tokens: %d" % (len(allTokens))
+print "First three tokens:"
+print allTokens[0:3]
+}}}
