@@ -298,7 +298,7 @@ Note, `selectCovered` is quite useful to get annotations from a specific part of
 
 {{{
 for jcas in pipeline:
-    for noun in select(jcas, NN): #Select all nouns in the sentence        
+    for noun in select(jcas, NN): #Select all nouns in the jcas        
         print "\n\nNoun: "+noun.coveredText
         
         print "Preceding verbs:"
