@@ -291,3 +291,21 @@ So with `selectCovered(jcas, POS, 0, 50)` we get all POS annotation within the r
 With `selectCovering(jcas, Sentence, 0, 10)` we would get all sentences that cover at least over the span 0 to 10.
 
 Note, `selectCovered` is quite useful to get annotations from a specific part of the document (e.g. for the first 100 or last 100 characters), whereas the useful usage of `selectCovering` is quite limited.
+
+
+=== !SelectPreceding and !SelectFollowing ===
+`selectPreceding` and `selectFollowing` selects the preceding / following n annotations for a given annotation.
+
+{{{
+for jcas in pipeline:
+    for noun in select(jcas, NN): #Select all nouns in the sentence        
+        print "\n\nNoun: "+noun.coveredText
+        
+        print "Preceding verbs:"
+        for verb in selectPreceding(V, noun, 2):
+            print verb.coveredText
+        
+        print "Following verbs:"
+        for verb in selectFollowing(V, noun, 2):
+            print verb.coveredText
+}}}
