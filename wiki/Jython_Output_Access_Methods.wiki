@@ -7,7 +7,7 @@
 
 uimaFIT supports several convenient methods to access the annotations added by the pipelines components. In the previous code examples we mainly used `select` to select all annotations of a certain types. In this tutorial we will introduce the different methods in a more structured way and will show some handy code examples.
 
-Also please check the following site from the uimaFIT documentation: [https://uima.apache.org/d/uimafit-current/tools.uimafit.book.html#d5e218 uimaFIT Guide and References].
+
 
 
 == Annotations and Type System ==
@@ -164,3 +164,7 @@ Some annotations, like the `Token`-annotations, can also reference to other anno
 {{{
 myToken.pos.posValue
 }}}
+
+== Access Methods ==
+
+In the previous section, we outputted all annotations. Usually we are only interested in certain types of annotations, for example in all Tokens with a certain Part-of-Speech-Value. Next we present different access methods to select specific annotations. A short summary of the different access methods can be found in the uimaFIT documentation: [https://uima.apache.org/d/uimafit-current/tools.uimafit.book.html#d5e218 uimaFIT Guide and References].
