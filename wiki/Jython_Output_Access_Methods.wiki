@@ -286,7 +286,7 @@ selectCovering returns all annotations of the specified type which covers the pr
 
 Instead of passing a concrete annotation, we can also pass a start and end position to both functions. 
 
-So with `selectCovered(jcas, POS, 0, 20)` we get all POS annotation within the range character 0 to character 20.
+So with `selectCovered(jcas, POS, 0, 50)` we get all POS annotation within the range character 0 to character 50.
 
 With `selectCovering(jcas, Sentence, 0, 10)` we would get all sentences that cover at least over the span 0 to 10.
 
