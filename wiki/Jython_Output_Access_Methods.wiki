@@ -280,3 +280,14 @@ for jcas in pipeline:
 
 selectCovering returns all annotations of the specified type which covers the provided annotation, i.e. in the above example it returns all `Sentence` annotations that span over the provided `pos` annotation. So even if there can be only such annotation, the method still returns a Java collection.
 
+
+
+=== !SelectCovered and !SelectCovering with Begin and End Positions ===
+
+Instead of passing a concrete annotation, we can also pass a start and end position to both functions. 
+
+So with `selectCovered(jcas, POS, 0, 20)` we get all POS annotation within the range character 0 to character 20.
+
+With `selectCovering(jcas, Sentence, 0, 10)` we would get all sentences that cover at least over the span 0 to 10.
+
+Note, `selectCovered` is quite useful to get annotations from a specific part of the document (e.g. for the first 100 or last 100 characters), whereas the useful usage of `selectCovering` is quite limited.
