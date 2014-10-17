@@ -266,3 +266,17 @@ for jcas in pipeline:
            
         print "--------"
 }}}
+
+
+=== !SelectCovering ===
+The opposite to selectCovered is selectCovering. Given a certain annotation, for example a POS annotation, we can get easily the covering sentence for this annotation by calling selectCovering:
+
+{{{
+for jcas in pipeline:
+    for pos in select(jcas, NN): #Select all nouns in the sentence
+        sentencesForNoun = [sentence for sentence in selectCovering(Sentence, pos)]
+        print "%s/%s | %s" % (pos.coveredText, pos.posValue, sentencesForNoun[0].coveredText)
+}}}
+
+selectCovering returns all annotations of the specified type which covers the provided annotation, i.e. in the above example it returns all `Sentence` annotations that span over the provided `pos` annotation. So even if there can be only such annotation, the method still returns a Java collection.
+
