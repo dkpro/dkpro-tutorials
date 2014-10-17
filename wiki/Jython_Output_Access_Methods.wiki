@@ -225,3 +225,27 @@ for jcas in pipeline:
    vbpPos = [pos for pos in select(jcas, POS) if pos.posValue == 'VBP']
    print vbpPos
 }}}
+
+=== SelectBetween ===
+With the `selectBetween` method we can select the annotations that are between two given annotations.
+
+For example we want to get all tokens between the first an the second noun in the document. We can then execute the following script:
+
+{{{
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence etc
+from de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos import * #Nouns etc
+
+# ....
+for jcas in pipeline:
+   nouns = [pos for pos in select(jcas, NN)]
+   if len(nouns) >= 2:
+       print nouns[0].coveredText+" "+nouns[0].posValue
+       tokensBetween = [token for token in selectBetween(Token, nouns[0], nouns[1])]
+       for token in tokensBetween:
+           print token.coveredText
+       print nouns[1].coveredText+" "+nouns[1].posValue
+}}}
+
+By calling `selectBetween(Token, nouns[0], nouns[1])` we get a Java collection of all Tokens between the first and second noun. With the trick mentioned before we convert it to a Jython list.
+
+=== SelectBetween ===
