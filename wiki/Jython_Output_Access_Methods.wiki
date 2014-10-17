@@ -226,7 +226,7 @@ for jcas in pipeline:
    print vbpPos
 }}}
 
-=== SelectBetween ===
+=== !SelectBetween ===
 With the `selectBetween` method we can select the annotations that are between two given annotations.
 
 For example we want to get all tokens between the first an the second noun in the document. We can then execute the following script:
@@ -248,4 +248,21 @@ for jcas in pipeline:
 
 By calling `selectBetween(Token, nouns[0], nouns[1])` we get a Java collection of all Tokens between the first and second noun. With the trick mentioned before we convert it to a Jython list.
 
-=== SelectBetween ===
+=== !SelectCovered ===
+This method fetchs all annotations covered by the given annotation. For example given a sentence, we can use this method to fetch all POS oder Named Entities annotations.
+
+The following code demonstrates the usage of selectCovered. First we select all sentences and then we select all nouns in the sentences.
+
+{{{
+from de.tudarmstadt.ukp.dkpro.core.api.segmentation.type import * #Token, Sentence etc
+from de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos import * #Nouns etc
+# ...
+for jcas in pipeline:
+   for sentence in select(jcas, Sentence):
+        print sentence.coveredText
+       
+        for pos in selectCovered(NN, sentence): #Select all nouns in the sentence
+           print pos.coveredText + " " + pos.posValue
+           
+        print "--------"
+}}}
