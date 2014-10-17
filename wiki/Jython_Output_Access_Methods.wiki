@@ -194,3 +194,34 @@ print "Number of tokens: %d" % (len(allTokens))
 print "First three tokens:"
 print allTokens[0:3]
 }}}
+
+
+DKPro uses for the different annotations different types. For example there are 12 base types for Part-of-Speech. We can use this type information to select only certain annotations we are interested in.
+
+For example we like to get all nouns from a text. We can do this the following way:
+
+{{{
+from de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos import * #Import all POS types
+# ...
+for jcas in pipeline:
+   for pos in select(jcas, NN):
+       print pos.coveredText + " " + pos.posValue
+}}}
+
+In case we need more fine-grained POS-tagset than the 12 bases types, we can select all POS-annotations an then filter for the `posValue`. The following script for example only gets the POS-annotations with a 'VBP' as POS-Value.
+
+{{{
+for jcas in pipeline:
+   for pos in select(jcas, POS):
+       if pos.posValue == 'VBP'
+          print pos.coveredText + " " + pos.posValue
+}}}
+
+
+In case we like to have this as list, e.g. for further processing, we can use the built-in list construction operations provided by Jython.
+
+{{{
+for jcas in pipeline:
+   vbpPos = [pos for pos in select(jcas, POS) if pos.posValue == 'VBP']
+   print vbpPos
+}}}
