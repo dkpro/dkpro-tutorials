@@ -3,7 +3,7 @@
 = Introduction =
 This tutorial is currently under construction and will consist of 3 parts:
  * DKPro Introduction (Java)
- * DKPro Book Pipeline (Java)
+ * [DARIAH2_DKPro_Pipeline DKPro Book Pipeline (Java)]
  * Analyzing narrative techniques in books (Python)
 
 
