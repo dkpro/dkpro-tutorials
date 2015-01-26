@@ -1,0 +1,13 @@
+#sidebar DARIAH2_TableOfContents
+
+= Introduction =
+
+= Content =
+Please check the sidebar on the left side. 
+
+
+= Acknowledgments =
+
+The development of this tutorial is supported by [https://de.dariah.eu/ DARIAH-DE project].
+
+[https://de.dariah.eu/ https://de.dariah.eu/liferay-dariah-theme/images/dariah-logo.png]
