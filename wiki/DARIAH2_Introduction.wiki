@@ -1,6 +1,11 @@
 #sidebar DARIAH2_TableOfContents
 
 = Introduction =
+This tutorial is currently under construction and will consist of 3 parts:
+ * DKPro Introduction (Java)
+ * DKPro Book Pipeline (Java)
+ * Analyzing narrative techniques in books (Python)
+
 
 = Content =
 Please check the sidebar on the left side. 
