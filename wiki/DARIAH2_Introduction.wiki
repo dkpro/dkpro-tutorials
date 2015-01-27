@@ -1,10 +1,17 @@
 #sidebar DARIAH2_TableOfContents
 
 = Introduction =
-This tutorial is currently under construction and will consist of 3 parts:
+This tutorial is currently under construction and will consists of 3 parts:
  * DKPro Introduction (Java)
+   * Topic Modelling mit Mallet
  * [DARIAH2_DKPro_Pipeline DKPro Book Pipeline (Java)]
  * Analyzing narrative techniques in books (Python)
+   * POS n-gramme
+   * Figurennetzwerke erstellen & visualisieren mit Gephi
+   * Topic Modelling (Preprocessing Lemmatisierung, NER, POS, Topic Modelling mit Gensim)
+   * Dramen: Sprecherabhängiges Topic Modelling
+   * Sprecher Identifikation in Erzähltexten
+   * van Halteren Authorship Detection
 
 
 = Content =
