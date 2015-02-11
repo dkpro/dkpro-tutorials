@@ -9,6 +9,14 @@
 	<groupId>de.tudarmstadt.ukp.dariah</groupId>
 	<artifactId>de.tudarmstadt.ukp.dariah.pipeline</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
+	<distributionManagement>
+		<repository>
+			<id>dariah.nexus.snapshots</id>
+			<layout>default</layout>
+			<name>DARIAH Maven Repository</name>
+			<url>http://dev.dariah.eu/nexus/content/repositories/snapshots/</url>
+		</repository>
+	</distributionManagement>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -98,13 +106,46 @@
 									implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
 									<resource>META-INF/org.apache.uima.fit/typepriorities.txt</resource>
 								</transformer>
-							</transformers>
-							<!-- Prevent huge shaded artifacts from being deployed to Artifactory -->
-							<outputFile>${project.build.directory}/${artifactId}-${version}-standalone.jar</outputFile>
+							</transformers>							
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>attach-standalone</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<configuration>
+							<shadedArtifactAttached>true</shadedArtifactAttached>
+							<shadedClassifierName>standalone</shadedClassifierName>				
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>dont-attach-standalone</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-shade-plugin</artifactId>
+						<configuration>
+							<!-- Prevent huge shaded artifacts from being deployed to Artifactory -->
+							<outputFile>${project.build.directory}/${artifactId}-${version}-standalone.jar</outputFile>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
