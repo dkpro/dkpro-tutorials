@@ -18,6 +18,7 @@ import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2006Writer;
+import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2012Writer;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateLemmatizer;
 import de.tudarmstadt.ukp.dkpro.core.matetools.MateMorphTagger;
@@ -26,6 +27,7 @@ import de.tudarmstadt.ukp.dkpro.core.matetools.MatePosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpPosTagger;
 import de.tudarmstadt.ukp.dkpro.core.opennlp.OpenNlpSegmenter;
 import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
+import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser;
 import de.tudarmstadt.ukp.dkpro.core.tokit.ParagraphSplitter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.PatternBasedTokenSegmenter;
 
@@ -154,7 +156,9 @@ public class RunPipeline {
 		AnalysisEngineDescription tagger = createEngineDescription(MatePosTagger.class);	     
 		AnalysisEngineDescription lemma = createEngineDescription(MateLemmatizer.class);	     
 		AnalysisEngineDescription morph = createEngineDescription(MateMorphTagger.class);	     
-		AnalysisEngineDescription parser = createEngineDescription(MateParser.class); 
+		AnalysisEngineDescription depParser = createEngineDescription(MateParser.class); 		
+		AnalysisEngineDescription constituencyParser = createEngineDescription(StanfordParser.class);
+		
 		AnalysisEngineDescription ner = createEngineDescription(StanfordNamedEntityRecognizer.class); 
 		AnalysisEngineDescription directSpeech =createEngineDescription(
 				DirectSpeechAnnotator.class,
@@ -169,6 +173,8 @@ public class RunPipeline {
 				AnnotationWriter.class
 				);
 		
+		
+		
 		SimplePipeline.runPipeline(reader, 
 				paragraph,
 				seg, 
@@ -178,7 +184,8 @@ public class RunPipeline {
 				lemma,
 				morph,
 				directSpeech,
-				parser,
+				depParser,
+				constituencyParser,
 				ner,
 				writer
 //				annWriter

@@ -26,6 +26,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,10 @@ import de.tudarmstadt.ukp.dkpro.core.api.parameter.ComponentParameters;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Paragraph;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence;
 import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token;
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.ROOT;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
+import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeNode;
+import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeUtils;
 import de.tudarmstadt.ukp.dariah.types.DirectSpeech;
 
 /**
@@ -131,6 +135,19 @@ extends JCasFileWriter_ImplBase
 				// Check if we should try to include the FEATS in output
 				List<Morpheme> morphology = selectCovered(Morpheme.class, sentence);
 				boolean useFeats = tokens.size() == morphology.size();
+				
+				//Parsing information
+				String[] parseFragments = null;
+	            List<ROOT> root = selectCovered(ROOT.class, sentence);
+	            if (root.size() == 1) {
+	                PennTreeNode rootNode = PennTreeUtils.convertPennTree(root.get(0));
+	                if ("ROOT".equals(rootNode.getLabel())) {
+	                    rootNode.setLabel("TOP");
+	                }
+	                parseFragments = toPrettyPennTree(rootNode);
+	            }
+	            boolean useParseFragements = (parseFragments.length == tokens.size());
+	            
 
 				for (int i = 0; i < tokens.size(); i++) {
 					Row row = new Row();
@@ -138,10 +155,16 @@ extends JCasFileWriter_ImplBase
 					row.sentenceId = sentenceId;
 					row.tokenId = tokenId;
 					row.token = tokens.get(i);
+					
+					if(useParseFragements) {
+						row.parseFragment = parseFragments[i];
+					}
+					
 					if (useFeats) {
 						row.morphology = morphology.get(i);
 					}
 
+					// Named entities
 					Collection<NamedEntity> ne = neCoveringMap.get(row.token);
 					if(ne.size() > 0)
 						row.ne = ne.toArray(new NamedEntity[0])[0];
@@ -160,13 +183,15 @@ extends JCasFileWriter_ImplBase
 					ctokens.get(rel.getDependent()).deprel = rel;
 				}
 
-				// Named entities
+				
+	            
 
 				// Write sentence 
 				for (Row row : ctokens.values()) {
 					String[] output = getData(ctokens, row);					
 					aOut.printf("%s\n",StringUtils.join(output, "\t"));
 				}           
+	            
 				sentenceId++;
 			}
 			paragraphId++;
@@ -226,11 +251,15 @@ extends JCasFileWriter_ImplBase
 			}
 		}
 
-		String directSpeech = "0";
+		String quoteMarker = "0";
 		if(row.directSpeech != null){
-			directSpeech = "1";
+			quoteMarker = "1";
 		}
 
+		
+		String parseFragment = UNUSED;
+		if(row.parseFragment != null)
+			parseFragment = row.parseFragment;
 
 
 		String[] output = new String[] {
@@ -248,7 +277,9 @@ extends JCasFileWriter_ImplBase
 				head, 
 				deprel,
 				ne,
-				directSpeech
+				quoteMarker,
+				parseFragment
+				
 		};
 		return output;
 	}
@@ -269,11 +300,42 @@ extends JCasFileWriter_ImplBase
 				"DependencyHead",
 				"DependencyRelation",
 				"NamedEntity",
-				"DirectSpeech"
+				"QuoteMarker",
+				"SyntaxTree"
 		};
 
 		return header;
 	}
+	
+	public static String[] toPrettyPennTree(PennTreeNode aNode)
+    {
+        StringBuilder sb = new StringBuilder();
+        toPennTree(sb, aNode);
+        return sb.toString().trim().split("\n+");
+    }
+
+    private static void toPennTree(StringBuilder aSb, PennTreeNode aNode)
+    {
+        // This is a "(Label Token)"
+        if (aNode.isPreTerminal()) {
+            aSb.append("*");
+        }
+        else {
+            aSb.append('(');
+            aSb.append(aNode.getLabel());
+            
+            Iterator<PennTreeNode> i = aNode.getChildren().iterator();
+            while (i.hasNext()) {
+                PennTreeNode child = i.next();
+                toPennTree(aSb, child);
+                if (i.hasNext()) {
+                    aSb.append("\n");
+                }
+            }
+            
+            aSb.append(')');
+        }
+    }
 
 
 
@@ -287,5 +349,6 @@ extends JCasFileWriter_ImplBase
 		Dependency deprel;
 		NamedEntity ne;
 		DirectSpeech directSpeech;
+		String parseFragment;
 	}
 }
