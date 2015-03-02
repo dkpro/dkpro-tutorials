@@ -11,12 +11,13 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.component.CasDumpWriter;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
-
+ 
 import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2006Writer;
 import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2012Writer;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
@@ -165,6 +166,8 @@ public class RunPipeline {
 				DirectSpeechAnnotator.PARAM_START_QUOTE, optStartQuote
 		);
 
+//		AnalysisEngineDescription srl = createEngineDescription(MateSemanticRoleLabeler.class); //Requires DKPro 1.8.0
+		
 		AnalysisEngineDescription writer = createEngineDescription(
 				DARIAHWriter.class,
 				DARIAHWriter.PARAM_TARGET_LOCATION, optOutput);
@@ -187,6 +190,7 @@ public class RunPipeline {
 				depParser,
 				constituencyParser,
 				ner,
+//				srl, //Requires DKPro 1.8.0
 				writer
 //				annWriter
 		);
