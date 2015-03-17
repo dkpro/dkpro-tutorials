@@ -51,7 +51,7 @@ import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.ROOT;
 import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.dependency.Dependency;
 import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeNode;
 import de.tudarmstadt.ukp.dkpro.core.io.penntree.PennTreeUtils;
-import de.tudarmstadt.ukp.dariah.types.DirectSpeech;
+import de.tudarmstadt.ukp.dariah.type.DirectSpeech;
 
 /**
  * @author Nils Reimers

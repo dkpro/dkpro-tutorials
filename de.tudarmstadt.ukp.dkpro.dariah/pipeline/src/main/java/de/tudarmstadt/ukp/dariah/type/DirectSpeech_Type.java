@@ -1,6 +1,6 @@
 
 /* First created by JCasGen Thu Jan 08 15:18:26 CET 2015 */
-package de.tudarmstadt.ukp.dariah.types;
+package de.tudarmstadt.ukp.dariah.type;
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;

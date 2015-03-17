@@ -11,7 +11,7 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 
-import de.tudarmstadt.ukp.dariah.types.DirectSpeech;
+import de.tudarmstadt.ukp.dariah.type.DirectSpeech;
 
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 

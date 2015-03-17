@@ -14,7 +14,7 @@ import org.apache.uima.fit.component.JCasConsumer_ImplBase;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
 import org.apache.uima.fit.util.JCasUtil;
 
-import de.tudarmstadt.ukp.dariah.types.DirectSpeech;
+import de.tudarmstadt.ukp.dariah.type.DirectSpeech;
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceChain;
 import de.tudarmstadt.ukp.dkpro.core.api.coref.type.CoreferenceLink;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;

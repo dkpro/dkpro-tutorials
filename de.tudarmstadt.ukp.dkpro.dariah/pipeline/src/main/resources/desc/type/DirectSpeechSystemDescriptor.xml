@@ -5,7 +5,7 @@
   <vendor/>
   <types>
     <typeDescription>
-      <name>de.tudarmstadt.ukp.dariah.types.DirectSpeech</name>
+      <name>de.tudarmstadt.ukp.dariah.type.DirectSpeech</name>
       <description/>
       <supertypeName>uima.tcas.Annotation</supertypeName>
     </typeDescription>
