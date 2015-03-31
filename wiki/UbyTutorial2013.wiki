@@ -1,5 +1,7 @@
 = The Practitioner's Cookbook for Linked Lexical Resources - UBY Code Examples =
 
+This tutorial is based on Uby version *0.4.0*.
+
 == Step-by-step Instructions for the Setup ==
 
 System requirements
