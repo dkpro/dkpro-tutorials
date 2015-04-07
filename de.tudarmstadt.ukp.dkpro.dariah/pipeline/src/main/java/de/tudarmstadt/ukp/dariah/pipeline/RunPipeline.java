@@ -11,13 +11,13 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-
 import org.apache.uima.analysis_engine.AnalysisEngineDescription;
 import org.apache.uima.collection.CollectionReaderDescription;
 import org.apache.uima.fit.component.CasDumpWriter;
+import org.apache.uima.fit.component.NoOpAnnotator;
 import org.apache.uima.fit.pipeline.SimplePipeline;
 import org.apache.uima.resource.ResourceInitializationException;
- 
+
 import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2006Writer;
 import de.tudarmstadt.ukp.dkpro.core.io.conll.Conll2012Writer;
 import de.tudarmstadt.ukp.dkpro.core.io.text.TextReader;
@@ -145,7 +145,7 @@ public class RunPipeline {
 		CollectionReaderDescription reader = createReaderDescription(
 				TextReader.class,
 				TextReader.PARAM_SOURCE_LOCATION, optInput,
-				TextReader.PARAM_LANGUAGE, "de");
+				TextReader.PARAM_LANGUAGE, optLanguage);
 
 		AnalysisEngineDescription paragraph = createEngineDescription(ParagraphSplitter.class,
 				ParagraphSplitter.PARAM_SPLIT_PATTERN, (optParagraphSingleLineBreak) ? ParagraphSplitter.SINGLE_LINE_BREAKS_PATTERN : ParagraphSplitter.DOUBLE_LINE_BREAKS_PATTERN);	
@@ -155,8 +155,11 @@ public class RunPipeline {
 		AnalysisEngineDescription quotesSeg = createEngineDescription(PatternBasedTokenSegmenter.class,
 			    PatternBasedTokenSegmenter.PARAM_PATTERNS, "+|[\"\"]");
 		AnalysisEngineDescription tagger = createEngineDescription(MatePosTagger.class);	     
-		AnalysisEngineDescription lemma = createEngineDescription(MateLemmatizer.class);	     
-		AnalysisEngineDescription morph = createEngineDescription(MateMorphTagger.class);	     
+		AnalysisEngineDescription lemma = createEngineDescription(MateLemmatizer.class);	
+		
+		
+		AnalysisEngineDescription morph = optLanguage.toLowerCase().equals("de") ? createEngineDescription(MateMorphTagger.class) : createEngineDescription(NoOpAnnotator.class);	 
+		
 		AnalysisEngineDescription depParser = createEngineDescription(MateParser.class); 		
 		AnalysisEngineDescription constituencyParser = createEngineDescription(StanfordParser.class);
 		
