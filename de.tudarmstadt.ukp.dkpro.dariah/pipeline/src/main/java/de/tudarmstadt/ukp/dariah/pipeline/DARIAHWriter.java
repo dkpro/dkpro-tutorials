@@ -146,7 +146,7 @@ extends JCasFileWriter_ImplBase
 	                }
 	                parseFragments = toPrettyPennTree(rootNode);
 	            }
-	            boolean useParseFragements = (parseFragments.length == tokens.size());
+	            boolean useParseFragements = (parseFragments != null && parseFragments.length == tokens.size());
 	            
 
 				for (int i = 0; i < tokens.size(); i++) {
