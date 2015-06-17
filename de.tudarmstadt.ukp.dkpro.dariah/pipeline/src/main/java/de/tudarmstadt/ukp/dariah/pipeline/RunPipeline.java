@@ -32,9 +32,14 @@ import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordParser;
 import de.tudarmstadt.ukp.dkpro.core.tokit.ParagraphSplitter;
 import de.tudarmstadt.ukp.dkpro.core.tokit.PatternBasedTokenSegmenter;
 
-import java.io.FileInputStream;
 import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
+
 
 public class RunPipeline {
 	
@@ -43,13 +48,49 @@ public class RunPipeline {
 	private static String optOutput;
 	private static String optStartQuote = "»\"„";
 	private static boolean optParagraphSingleLineBreak = false;
+	
+	private static String[] parseConfigFile(String configFile, String[] cmdArgs) throws IOException {
+		HashMap<String, String> properties = new HashMap<>();
+		
+		//Read the config file
+		Properties javaProperties = new Properties();
+		BufferedInputStream stream = new BufferedInputStream(new FileInputStream(configFile));
+		javaProperties.load(stream);
+		stream.close();
+		
+		for (final Entry<Object, Object> entry : javaProperties.entrySet()) {
+	        properties.put((String) entry.getKey(), (String) entry.getValue());
+	    }
+		
+		//Cmd Args overwrites config file
+		for(int i=0;i<cmdArgs.length-1; i++) {
+			if(cmdArgs[i].startsWith("-")) { 
+				properties.put(cmdArgs[i], cmdArgs[i+1]);
+				i++;
+			}
+		}
+		
+		//Map Hashmap for args array
+		String[] newArgs = new String[2*properties.size()];
+		int i=0;
+		for (Map.Entry<String, String> entry : properties.entrySet()) {
+			newArgs[i] = "-"+entry.getKey();
+			newArgs[i+1] = entry.getValue();
+			i += 2;
+		}
+		
+		return newArgs;
+	}
+
 
 	@SuppressWarnings("static-access")
 	private static boolean parseArgs(String[] args) throws ParseException {
 		Options options = new Options();
 		options.addOption("help", false, "print this message");
 		
-		Option paragraphSingleLineBreak = OptionBuilder.withDescription("Paragraphs are splitted along single line breaks")
+		Option paragraphSingleLineBreak = OptionBuilder.withArgName("True/False")
+											.hasArg()
+											.withDescription("Paragraphs are splitted along single line breaks (default: "+optParagraphSingleLineBreak+")")
 											.create("paragraphSingleLineBreak");
 		options.addOption(paragraphSingleLineBreak);
 		
@@ -76,6 +117,12 @@ public class RunPipeline {
 				.withDescription("Starting quoates (default: "+optStartQuote+")")							
 				.create("quotestart");
 		options.addOption(startQuote);
+		
+		Option configFile = OptionBuilder.withArgName("path")
+				.hasArg()
+				.withDescription("Config file")							
+				.create("config");
+		options.addOption(configFile);
 
 		
 		CommandLineParser argParser = new BasicParser();
@@ -111,9 +158,9 @@ public class RunPipeline {
 		}
 		
 
-		
-		optParagraphSingleLineBreak = cmd.hasOption(paragraphSingleLineBreak.getOpt());
-		
+		if(cmd.hasOption(paragraphSingleLineBreak.getOpt())) {			
+			optParagraphSingleLineBreak = Boolean.parseBoolean(cmd.getOptionValue(paragraphSingleLineBreak.getOpt()));
+		}
 		return true;
 		
 	}
@@ -130,9 +177,19 @@ public class RunPipeline {
 	
 	public static void main(String[] args) throws Exception {
 		
+		//Check if -config parameter is specified
+		for(int i=0; i<args.length-1; i++) {
+			if(args[i].equals("-config")) {
+				String configFile = args[i+1];
+				
+				args = parseConfigFile(configFile, args);
+			}
+		}
+		
 		if(!parseArgs(args)) {
 			System.out.println("Usage: java -jar pipeline.jar -input <Input File> -output <Output Folder>");
 			System.out.println("Usage: java -jar pipeline.jar -help");
+			System.out.println("Usage: java -jar pipeline.jar -config <Config File> -input <Input File> -output <Output Folder>");
 			return;
 		}
 		
@@ -201,6 +258,7 @@ public class RunPipeline {
 
 	}
 
+	
 
 	
 
