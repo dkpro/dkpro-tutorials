@@ -49,6 +49,13 @@ public class RunPipeline {
 	private static String optStartQuote = "»\"„";
 	private static boolean optParagraphSingleLineBreak = false;
 	
+	private static boolean optPOSTagger = true;
+	private static boolean optLemmatizer = true;
+	private static boolean optMorphTagger = true;
+	private static boolean optDependencyParsing = true;
+	private static boolean optConstituencyParsing = true;
+	private static boolean optNER = true;
+	
 	private static String[] parseConfigFile(String configFile, String[] cmdArgs) throws IOException {
 		HashMap<String, String> properties = new HashMap<>();
 		
@@ -123,6 +130,27 @@ public class RunPipeline {
 				.withDescription("Config file")							
 				.create("config");
 		options.addOption(configFile);
+		
+		
+		//For the components of the pipeline
+		Option posTagger = OptionBuilder.withArgName("True/False").hasArg().withDescription("POS-tagging").create("pos_tagger");
+		options.addOption(posTagger);
+		
+		Option lemmatizer = OptionBuilder.withArgName("True/False").hasArg().withDescription("Lemmatizer").create("lemmaitzer");
+		options.addOption(lemmatizer);
+		
+		Option morphTagger = OptionBuilder.withArgName("True/False").hasArg().withDescription("Morphology-tagging").create("morph_tagger");
+		options.addOption(morphTagger);
+		
+		Option depParser = OptionBuilder.withArgName("True/False").hasArg().withDescription("Dependency Parsing").create("dep_parser");
+		options.addOption(depParser);
+		
+		Option conParser = OptionBuilder.withArgName("True/False").hasArg().withDescription("Constituency Parsing").create("con_parser");
+		options.addOption(conParser);
+		
+		Option ner = OptionBuilder.withArgName("True/False").hasArg().withDescription("Named Entity Recognition").create("ner");
+		options.addOption(ner);
+		
 
 		
 		CommandLineParser argParser = new BasicParser();
@@ -155,12 +183,33 @@ public class RunPipeline {
 		
 		if(cmd.hasOption(startQuote.getOpt())) {
 			optStartQuote = cmd.getOptionValue(startQuote.getOpt());
-		}
-		
+		}		
 
 		if(cmd.hasOption(paragraphSingleLineBreak.getOpt())) {			
 			optParagraphSingleLineBreak = Boolean.parseBoolean(cmd.getOptionValue(paragraphSingleLineBreak.getOpt()));
 		}
+		
+		//For the components of the pipeline
+		if(cmd.hasOption(posTagger.getOpt())) {			
+			optPOSTagger = Boolean.parseBoolean(cmd.getOptionValue(posTagger.getOpt()));
+		}
+		if(cmd.hasOption(lemmatizer.getOpt())) {			
+			optLemmatizer = Boolean.parseBoolean(cmd.getOptionValue(lemmatizer.getOpt()));
+		}
+		if(cmd.hasOption(morphTagger.getOpt())) {			
+			optMorphTagger = Boolean.parseBoolean(cmd.getOptionValue(morphTagger.getOpt()));
+		}
+		if(cmd.hasOption(depParser.getOpt())) {			
+			optDependencyParsing = Boolean.parseBoolean(cmd.getOptionValue(depParser.getOpt()));
+		}
+		if(cmd.hasOption(conParser.getOpt())) {			
+			optConstituencyParsing = Boolean.parseBoolean(cmd.getOptionValue(conParser.getOpt()));
+		}
+		if(cmd.hasOption(ner.getOpt())) {			
+			optNER = Boolean.parseBoolean(cmd.getOptionValue(ner.getOpt()));
+		}
+		
+		
 		return true;
 		
 	}
@@ -172,6 +221,12 @@ public class RunPipeline {
 		System.out.println("Start Quote: "+optStartQuote);
 		System.out.println("Paragraph Single Line Break: "+optParagraphSingleLineBreak);
 		
+		System.out.println("POS-Tagger: "+optPOSTagger);
+		System.out.println("Lemmatizer: "+optLemmatizer);
+		System.out.println("Morphology Tagging: "+optMorphTagger);
+		System.out.println("Dependency Parsing: "+optDependencyParsing);
+		System.out.println("Constituency Parsing: "+optConstituencyParsing);
+		System.out.println("Named Entity Recognition: "+optNER);		
 	}
 	
 	
@@ -236,6 +291,8 @@ public class RunPipeline {
 				AnnotationWriter.class
 				);
 		
+		AnalysisEngineDescription noOp = createEngineDescription(NoOpAnnotator.class);
+		
 		
 		
 		SimplePipeline.runPipeline(reader, 
@@ -243,13 +300,13 @@ public class RunPipeline {
 				seg, 
 				frenchQuotesSeg,
 				quotesSeg,
-				tagger, 
-				lemma,
-				morph,
+				(optPOSTagger) ? tagger : noOp, 
+				(optLemmatizer) ? lemma : noOp,
+				(optMorphTagger) ? morph : noOp,
 				directSpeech,
-				depParser,
-				constituencyParser,
-				ner,
+				(optDependencyParsing) ? depParser : noOp,
+				(optConstituencyParsing) ? constituencyParser : noOp,
+				(optNER) ? ner : noOp,
 //				srl, //Requires DKPro 1.8.0
 				writer
 //				annWriter
