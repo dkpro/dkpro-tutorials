@@ -136,7 +136,7 @@ public class RunPipeline {
 		Option posTagger = OptionBuilder.withArgName("True/False").hasArg().withDescription("POS-tagging").create("pos_tagger");
 		options.addOption(posTagger);
 		
-		Option lemmatizer = OptionBuilder.withArgName("True/False").hasArg().withDescription("Lemmatizer").create("lemmaitzer");
+		Option lemmatizer = OptionBuilder.withArgName("True/False").hasArg().withDescription("Lemmatizer").create("lemmatizer");
 		options.addOption(lemmatizer);
 		
 		Option morphTagger = OptionBuilder.withArgName("True/False").hasArg().withDescription("Morphology-tagging").create("morph_tagger");
@@ -266,7 +266,7 @@ public class RunPipeline {
 			    PatternBasedTokenSegmenter.PARAM_PATTERNS, "+|[»«]");
 		AnalysisEngineDescription quotesSeg = createEngineDescription(PatternBasedTokenSegmenter.class,
 			    PatternBasedTokenSegmenter.PARAM_PATTERNS, "+|[\"\"]");
-		AnalysisEngineDescription tagger = createEngineDescription(MatePosTagger.class);	     
+		AnalysisEngineDescription posTagger = createEngineDescription(MatePosTagger.class);	     
 		AnalysisEngineDescription lemma = createEngineDescription(MateLemmatizer.class);	
 		
 		
@@ -300,7 +300,7 @@ public class RunPipeline {
 				seg, 
 				frenchQuotesSeg,
 				quotesSeg,
-				(optPOSTagger) ? tagger : noOp, 
+				(optPOSTagger) ? posTagger : noOp, 
 				(optLemmatizer) ? lemma : noOp,
 				(optMorphTagger) ? morph : noOp,
 				directSpeech,
