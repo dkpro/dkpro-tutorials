@@ -1,4 +1,4 @@
-Quellcode der folgenden Projekte (falls der Scratch Offline-Editor verwendet wird):
+Scratch-Projekte im .sb2 Format (falls der Scratch Offline-Editor verwendet wird):
 
 Penguin Jokes (German): https://scratch.mit.edu/projects/146341155/
 
